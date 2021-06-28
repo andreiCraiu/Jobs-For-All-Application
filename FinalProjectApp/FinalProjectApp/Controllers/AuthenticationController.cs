@@ -38,7 +38,7 @@ namespace FinalProjectApp.Controllers
         }
 
         [HttpPost]
-        [Route("register")] // /api/autherization/register
+        [Route("register")]
         public async Task<ActionResult> RegisterUser(RegisterRequest registerRequest)
         {
             var user = new ApplicationUser

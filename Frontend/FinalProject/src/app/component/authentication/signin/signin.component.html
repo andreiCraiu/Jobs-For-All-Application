@@ -1,19 +1,23 @@
 
-    <mat-card >
-        <mat-card-header fxLayout="column">
+    <mat-card id="login-mat-card">
+      <mat-card-header id="login-header">
            <mat-card-title>Login</mat-card-title>
          </mat-card-header>
-     
-         <mat-card-content>
+      
+         <mat-card-content id="login-content">
              <mat-form-field>
-                 <input matInput placeholder="Email">
+                 <input  matInput placeholder="Email"  id="email" [(ngModel)]="email">
              </mat-form-field><br/>
      
              <mat-form-field>
-                 <input matInput placeholder="Password">
+                 <input matInput placeholder="Password" type="password" id="password" [(ngModel)]="password">
              </mat-form-field>
          </mat-card-content>
-         <mat-card-actions>
-           <button mat-button>Login</button>
-         </mat-card-actions>
+         <mat-card-actions id="login-button">
+           <button mat-button (click)="login()">Login</button>
+         </mat-card-actions> 
+
+         <mat-card-actions id="login-button">
+            <a href="">Don't have account</a>
+          </mat-card-actions> 
      </mat-card>
