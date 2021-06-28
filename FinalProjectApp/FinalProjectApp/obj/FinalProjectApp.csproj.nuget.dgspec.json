@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Code\\Final Project\\.NET-Project\\FinalProjectApp\\FinalProjectApp\\FinalProjectApp.csproj": {}
+    "D:\\Repos\\Code\\Final Project\\.NET-Project\\FinalProjectApp\\FinalProjectApp\\FinalProjectApp.csproj": {}
   },
   "projects": {
-    "C:\\Code\\Final Project\\.NET-Project\\FinalProjectApp\\FinalProjectApp\\FinalProjectApp.csproj": {
+    "D:\\Repos\\Code\\Final Project\\.NET-Project\\FinalProjectApp\\FinalProjectApp\\FinalProjectApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Code\\Final Project\\.NET-Project\\FinalProjectApp\\FinalProjectApp\\FinalProjectApp.csproj",
+        "projectUniqueName": "D:\\Repos\\Code\\Final Project\\.NET-Project\\FinalProjectApp\\FinalProjectApp\\FinalProjectApp.csproj",
         "projectName": "FinalProjectApp",
-        "projectPath": "C:\\Code\\Final Project\\.NET-Project\\FinalProjectApp\\FinalProjectApp\\FinalProjectApp.csproj",
+        "projectPath": "D:\\Repos\\Code\\Final Project\\.NET-Project\\FinalProjectApp\\FinalProjectApp\\FinalProjectApp.csproj",
         "packagesPath": "C:\\Users\\craiua\\.nuget\\packages\\",
-        "outputPath": "C:\\Code\\Final Project\\.NET-Project\\FinalProjectApp\\FinalProjectApp\\obj\\",
+        "outputPath": "D:\\Repos\\Code\\Final Project\\.NET-Project\\FinalProjectApp\\FinalProjectApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -52,6 +52,14 @@
               "target": "Package",
               "version": "[5.0.7, )"
             },
+            "Microsoft.AspNetCore.Authentication": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[5.0.7, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.7, )"
@@ -69,6 +77,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.11.1, )"
             }
           },
           "imports": [

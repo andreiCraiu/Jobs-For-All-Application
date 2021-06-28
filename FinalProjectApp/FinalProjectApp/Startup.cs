@@ -14,6 +14,19 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 using FinalProjectApp.Data;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using FinalProjectApp.Models;
+using IdentityServer4.Stores.Default;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.AspNetCore.Http;
+using FinalProjectApp.Controllers;
+using IdentityServer4.Stores;
+using System.Reflection;
+using System.IO;
+using System.Security.Cryptography.X509Certificates;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace FinalProjectApp
 {
@@ -32,12 +45,44 @@ namespace FinalProjectApp
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+           
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+              .AddIdentityServerJwt()
+              .AddJwtBearer(options =>
+              {
+                  options.TokenValidationParameters = new TokenValidationParameters()
+                  {
+                      ValidateIssuer = true,
+                      ValidateAudience = true,
+                      ValidAudience = Configuration["Jwt:Site"],
+                      ValidIssuer = Configuration["Jwt:Site"],
+                      IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:SigningKey"]))
+                  };
+              });
 
+            services.AddIdentityServerBuilder();
+            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+               .AddEntityFrameworkStores<ApplicationDbContext>()
+               .AddDefaultTokenProviders();
+
+     
+
+            services.AddRazorPages();
+
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddControllers();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "FinalProjectApp", Version = "v1" });
             });
+            services.AddMvc();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +101,7 @@ namespace FinalProjectApp
 
             app.UseAuthorization();
 
+            app.UseAuthentication();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
