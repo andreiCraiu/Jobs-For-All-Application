@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/service/authentication/authentication.service';
 import { ApplicationUserLogin } from 'src/app/model/loginUser';
-import { Router } from '@angular/router';
+import { StorageService } from 'src/app/service/storage.service';
 
 @Component({
   selector: 'app-signin',
@@ -15,30 +15,24 @@ export class SigninComponent implements OnInit {
 
 
   constructor(
-    private authenticateService: AuthenticationService
+    private authenticateService: AuthenticationService,
+    private storageService: StorageService
   ) { }
 
-  login(){
-     var user = {
-       email: this.email,
+  login() {
+    var user = {
+      email: this.email,
       password: this.password
-     };
+    };
 
-       this.authenticateService.authorizeUser(user).subscribe(response => {
-        this.setLoggedInUser(response);
-       })
-        
+    this.authenticateService.authorizeUser(user).subscribe(response => {
+      this.storageService.setLoggedInUser(response);
+    })
+
   }
-   
-  setLoggedInUser(loggedInUser: ApplicationUserLogin){
-    this.setItem('loggedInUser', JSON.stringify(loggedInUser));
-}
-private setItem(key: any, value: any){
-  localStorage.setItem(key, value);
-}
- 
+
+
   ngOnInit(): void {
   }
-
 
 }

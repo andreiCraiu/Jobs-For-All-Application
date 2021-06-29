@@ -2,6 +2,7 @@
 using FinalProjectApp.Data;
 using FinalProjectApp.Models;
 using FinalProjectApp.ViewModels.Authentication;
+using FinalProjectApp.ViewModels.Authenticatoin;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -38,7 +39,7 @@ namespace FinalProjectApp.Controllers
         }
 
         [HttpPost]
-        [Route("register")]
+        [Route("registration")]
         public async Task<ActionResult> RegisterUser(RegisterRequest registerRequest)
         {
             var user = new ApplicationUser
@@ -102,12 +103,15 @@ namespace FinalProjectApp.Controllers
                  claims: claims
             );
 
+                
                 return Ok(
-                    new
+                    new LoginResponse
                     {
-                        token = new JwtSecurityTokenHandler().WriteToken(token),
-                        expiration = token.ValidTo
+                        Email = user.Email,
+                        ExpirationDate = token.ValidTo,
+                        JwtcToken = new JwtSecurityTokenHandler().WriteToken(token)
                     });
+               
             }
             return Unauthorized();
 

@@ -13,7 +13,12 @@ import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import { FormsModule } from '@angular/forms'; 
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { HttpAuthInterceptor } from './interceptors/authorise.interceptor';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { StorageService } from './service/storage.service';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 
 @NgModule({
@@ -21,7 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     HeaderComponent,
     SigninComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,9 +37,16 @@ import { HttpClientModule } from '@angular/common/http';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule,
+    OverlayModule
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS, useClass: HttpAuthInterceptor, multi: true},
+    StorageService,
+    MatSnackBar,
+    MatSnackBarModule
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

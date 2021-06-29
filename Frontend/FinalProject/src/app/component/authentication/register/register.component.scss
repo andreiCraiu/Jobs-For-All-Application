@@ -1,0 +1,32 @@
+#register-mat-card{
+    width: 350px;
+    height: 400px;
+    display: block;
+    margin-left:auto;
+    margin-right:auto;  
+    top: 10%;
+}
+
+#register-header{
+    text-align: center;
+    display: block;
+    color: #8ACAF9 ;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+#register-content{
+    margin-top: 10%;
+}
+
+#register-button button{
+    font-family: 'Ubuntu', sans-serif;  
+    display: block;
+    margin-left:auto;
+    margin-right:auto;  
+}
+
+#register-content mat-form-field{
+  display: block;
+  margin-left:5%;
+  margin-right:5%;
+}
