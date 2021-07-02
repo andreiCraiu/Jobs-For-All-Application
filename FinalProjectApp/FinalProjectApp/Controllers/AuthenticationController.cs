@@ -19,7 +19,6 @@ using System.Threading.Tasks;
 
 namespace FinalProjectApp.Controllers
 {
-   // [Authorize(AuthenticationSchemes = "IdentityServerJwt, IdentityServerJwtBearer")]
     [Route("[controller]")]
     [ApiController]
     public class AuthenticationController : ControllerBase
@@ -36,26 +35,6 @@ namespace FinalProjectApp.Controllers
             _signInManager = signInManager;
             _context = context;
             _configuration = configuration;
-        }
-
-        [HttpPost]
-        [Route("registration")]
-        public async Task<ActionResult> RegisterUser(RegisterRequest registerRequest)
-        {
-            var user = new ApplicationUser
-            {
-                Email = registerRequest.Email,
-                UserName = registerRequest.Email,
-                SecurityStamp = Guid.NewGuid().ToString()
-            };
-            var result = await _userManager.CreateAsync(user, registerRequest.Password);
-
-            if (result.Succeeded)
-            {
-                return Ok(new RegisterResponse { ConfirmationToken = user.SecurityStamp });
-            }
-
-            return BadRequest();
         }
 
 
@@ -116,6 +95,28 @@ namespace FinalProjectApp.Controllers
             return Unauthorized();
 
         }
+
+        [HttpPost]
+        [Route("registration")]
+        public async Task<ActionResult> RegisterUser(RegisterRequest registerRequest)
+        {
+            var user = new ApplicationUser
+            {
+                Email = registerRequest.Email,
+                UserName = registerRequest.Email,
+                SecurityStamp = Guid.NewGuid().ToString()
+            };
+            var result = await _userManager.CreateAsync(user, registerRequest.Password);
+
+            if (result.Succeeded)
+            {
+                return Ok(new RegisterResponse { ConfirmationToken = user.SecurityStamp });
+            }
+
+            return BadRequest();
+        }
+
     }
+
 
 }

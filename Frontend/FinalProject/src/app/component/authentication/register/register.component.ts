@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApplicationUserLogin } from 'src/app/model/loginUser';
-import { AuthenticationService } from 'src/app/service/authentication/authentication.service';
+import { RegistrationService } from 'src/app/service/registration.service';
 import { StorageService } from 'src/app/service/storage.service';
 
 @Component({
@@ -16,7 +15,7 @@ export class RegisterComponent implements OnInit {
 
 
   constructor(
-    private authenticateService: AuthenticationService,
+    private registerService: RegistrationService,
     private storageService: StorageService
   ) { }
 
@@ -27,7 +26,7 @@ export class RegisterComponent implements OnInit {
       confirmPassword: this.confirmPassword
     };
 
-    this.authenticateService.registerUser(registerRequest).subscribe(response => {
+    this.registerService.registerUser(registerRequest).subscribe(response => {
       this.storageService.setLoggedInUser(response);
     })
 

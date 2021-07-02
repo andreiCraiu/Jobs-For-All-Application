@@ -9,8 +9,7 @@ import { ApplicationUserRegister } from 'src/app/model/registerUser';
 })
 
 export class AuthenticationService {
-  private baseApiUrlLogin= `${environment.baseApiUrl}/authentication/registration`;
-  private baseApiUrlRegister= `${environment.baseApiUrl}/authentication/registration`;
+  private baseApiUrlLogin= `${environment.baseApiUrl}/Authentication/login`;
 
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
@@ -20,7 +19,4 @@ export class AuthenticationService {
     return this.httpClient.post<ApplicationUserLogin>(`${this.baseApiUrlLogin}`, authRequest, { headers: this.headers });
   }
 
-  public registerUser(registerRequest: any){
-    return this.httpClient.post<ApplicationUserRegister>(`${this.baseApiUrlRegister}`, registerRequest, { headers: this.headers });
-  }
 }

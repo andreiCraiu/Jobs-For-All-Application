@@ -1,0 +1,106 @@
+<div id="header-2-text" fxLayout="row" fxLayoutAlign="center center">
+  <p>Now, let's finish configure you're Profile</p>
+</div>
+
+<mat-stepper linear #stepper>
+  <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+    <form id="about_user_profile_form" [formGroup]="firstFormGroup" fxLayout="column" fxLayoutAlign="center center">
+      <ng-template matStepLabel>About you</ng-template>
+      <mat-form-field appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstCtrl" placeholder="John" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="firstCtrl" placeholder="Smith" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Phone Number</mat-label>
+        <input matInput formControlName="firstCtrl" placeholder="+40722558821" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Adress</mat-label>
+        <input matInput formControlName="firstCtrl" placeholder="FishHouse Avenue, 28, Watford, UK" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Postcode</mat-label>
+        <input matInput formControlName="firstCtrl" placeholder="WD987TU" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
+    <form [formGroup]="secondFormGroup" fxLayout="column" fxLayoutAlign="center center">
+      <ng-template matStepLabel>You're profession </ng-template>
+      <h4>Let's configure youre profession profile</h4>
+      <mat-form-field appearance="fill">
+        <mat-label>What is your main profession</mat-label>
+        <mat-select formControlName="secondCtrl" required>
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+      <mat-form-field appearance="fill">
+        <mat-label>Outher Secundary Profession</mat-label>
+        <mat-select [formControl]="outherProfessions" multiple>
+          <mat-select-trigger>
+            {{outherProfessions.value ? outherProfessions.value[0] : ''}}
+            <span *ngIf="outherProfessions.value?.length > 1" class="example-additional-selection">
+              (+{{outherProfessions.value.length - 1}} {{outherProfessions.value?.length === 2 ? 'other' : 'others'}})
+            </span>
+          </mat-select-trigger>
+          <mat-option *ngFor="let outherProfession of outherProfessionList" [value]="outherProfession">
+            {{outherProfession}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Hobby/ Passtion</mat-label>
+        <input matInput placeholder="Paintig, Fishing, etc">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Fun fact about you</mat-label>
+        <input matInput placeholder="Paintig, Fishing, etc">
+      </mat-form-field>
+
+   <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step> 
+
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p id="succes_message" fxLayout="column" fxLayoutAlign="center center">Youre profile sucessfully configured</p>
+
+    <div fxLayoutAlign="center center">
+      <mat-icon id="all_done_icon" aria-hidden="false" aria-label="Example home icon">done_all</mat-icon>
+    </div>
+
+    <br><br>
+    <div id="butons_area"div fxLayout="row" fxLayoutAlign="space-evenly center">
+      <div>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+        <mat-icon class="icon_inside" aria-hidden="false" aria-label="Example home icon">autorenew</mat-icon>
+      </div>
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <mat-icon class="icon_inside">settings_backup_restore</mat-icon>
+      </div>
+
+      <div>
+        <button mat-button>Finish</button>
+        <mat-icon class="icon_inside">done_outline</mat-icon>
+      </div>
+
+    </div>
+
+  </mat-step>
+
+</mat-stepper>

@@ -19,6 +19,15 @@ import { HttpAuthInterceptor } from './interceptors/authorise.interceptor';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { StorageService } from './service/storage.service';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { MainPageComponent } from './component/main-page/main-page.component';
+import { SetupRoleComponent } from './component/setup-role/setup-role.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatRadioModule} from '@angular/material/radio';
+import { FlexLayoutModule } from "@angular/flex-layout";
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatSelectModule} from '@angular/material/select';
+import {MatIconModule} from '@angular/material/icon';
+import { UserProfileComponent } from './component/user-profile/user-profile.component';
 
 
 @NgModule({
@@ -27,6 +36,9 @@ import { OverlayModule } from '@angular/cdk/overlay';
     HeaderComponent,
     SigninComponent,
     RegisterComponent,
+    MainPageComponent,
+    SetupRoleComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +51,13 @@ import { OverlayModule } from '@angular/cdk/overlay';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
-    OverlayModule
+    OverlayModule,
+    FlexLayoutModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    MatStepperModule,
+    MatSelectModule,
+    MatIconModule
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS, useClass: HttpAuthInterceptor, multi: true},

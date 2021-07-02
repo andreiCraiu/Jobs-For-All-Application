@@ -1,28 +1,40 @@
 #register-mat-card{
-    width: 350px;
-    height: 400px;
+    width: 600px;
+    height: 620px;
     display: block;
     margin-left:auto;
     margin-right:auto;  
     top: 10%;
 }
 
+mat-card-title p{
+    font-weight: 1000;
+    font-size: 30px;
+ }
+
 #register-header{
     text-align: center;
     display: block;
-    color: #8ACAF9 ;
+    color: #117864;
     font-family: 'Ubuntu', sans-serif;
 }
 
 #register-content{
-    margin-top: 10%;
+  display: block;
+  width: 600px;
+  font-size: 20px;
+  margin-top: 10%;
 }
 
 #register-button button{
     font-family: 'Ubuntu', sans-serif;  
     display: block;
     margin-left:auto;
-    margin-right:auto;  
+    margin-right:auto; 
+    width: 150px;
+    height: 40px;
+    font-weight: 800;  
+    margin-top: 10%;
 }
 
 #register-content mat-form-field{
@@ -30,3 +42,14 @@
   margin-left:5%;
   margin-right:5%;
 }
+
+#back-to-login-path a{
+    font-style: none;
+    color: #117864;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 15px;
+    font-weight: 600; 
+    text-decoration: none;
+}
+
+

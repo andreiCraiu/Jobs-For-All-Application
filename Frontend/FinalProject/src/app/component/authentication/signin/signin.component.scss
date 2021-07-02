@@ -1,32 +1,48 @@
 #login-mat-card{
-    width: 350px;
-    height: 400px;
-    display: block;
-    margin-left:auto;
-    margin-right:auto;  
-    top: 10%;
+    width: 600px;
+    height: 620px;
+    margin: auto;
+    margin-top: 5%;
 }
 
 #login-header{
     text-align: center;
     display: block;
-    color: #8ACAF9 ;
+    color: #117864;
     font-family: 'Ubuntu', sans-serif;
 }
 
-#login-content{
-    margin-top: 10%;
+mat-card-title p{
+   font-weight: 1000;
+   font-size: 30px;
 }
 
 #login-button button{
     font-family: 'Ubuntu', sans-serif;  
     display: block;
     margin-left:auto;
-    margin-right:auto;  
+    margin-right:auto; 
+    width: 150px;
+    height: 40px;
+    font-weight: 800; 
 }
 
 #login-content mat-form-field{
   display: block;
   margin-left:5%;
   margin-right:5%;
+  width: 450px;
+  margin: 20px;
+  font-size: 20px;
 }
+
+#register-path a{
+    font-style: none;
+    color: #117864;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 15px;
+    font-weight: 600; 
+    text-decoration: none;
+}
+
+
