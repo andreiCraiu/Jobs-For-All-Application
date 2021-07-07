@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "3RFziT6yVXEZRVYlmngdXQyYWSS7TJqyRPVMnrZejUyCWlajIexGRtZ3zVoyP5D3eWRaedjpCFJ9LrPeZjMy+w==",
+  "dgSpecHash": "kX5Oum3Z49e4dKQ2KDnFcb4Pg3WlMgWSOHiQZ47IBB3d7oC7qpXKBtwMuWspomsJh2SSvCSMEbv7vnuIYF4MVA==",
   "success": true,
   "projectFilePath": "D:\\Repos\\Code\\Final Project\\.NET-Project\\FinalProjectApp\\FinalProjectApp\\FinalProjectApp.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\craiua\\.nuget\\packages\\automapper\\10.0.0\\automapper.10.0.0.nupkg.sha512",
+    "C:\\Users\\craiua\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\craiua\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
     "C:\\Users\\craiua\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\craiua\\.nuget\\packages\\identitymodel\\4.4.0\\identitymodel.4.4.0.nupkg.sha512",
     "C:\\Users\\craiua\\.nuget\\packages\\identityserver4\\4.1.0\\identityserver4.4.1.0.nupkg.sha512",

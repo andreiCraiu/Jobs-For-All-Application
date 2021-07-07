@@ -29,13 +29,10 @@ export class SigninComponent implements OnInit {
 
     this.authenticateService.authorizeUser(user).subscribe(response => {
       this.storageService.setLoggedInUser(response);
-      this.router.navigate(['main-page']);
-
+      this.router.navigate(['setup-role']);
     })
-
   }
-
-
+  
   ngOnInit(): void {
   }
 

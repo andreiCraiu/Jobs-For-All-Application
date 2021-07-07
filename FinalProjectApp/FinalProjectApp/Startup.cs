@@ -50,11 +50,11 @@ namespace FinalProjectApp
                     .AllowCredentials()
                     .SetIsOriginAllowed((host) => true));
             });
-
+ 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-           
+            services.AddAutoMapper(typeof(MappingProfile));
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

@@ -28,6 +28,12 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
 import { UserProfileComponent } from './component/user-profile/user-profile.component';
+import { CommonModule } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { NavbarModule, WavesModule, ButtonsModule } from 'angular-bootstrap-md';
+import { IconsModule } from 'angular-bootstrap-md';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 
 @NgModule({
@@ -57,8 +63,17 @@ import { UserProfileComponent } from './component/user-profile/user-profile.comp
     MatRadioModule,
     MatStepperModule,
     MatSelectModule,
-    MatIconModule
+    MatIconModule,
+    CommonModule,
+    MatFormFieldModule,
+    NavbarModule,
+    WavesModule,
+    ButtonsModule,
+    IconsModule,
+    MatSidenavModule,
+    MatButtonToggleModule
   ],
+  
   providers: [
     {provide:HTTP_INTERCEPTORS, useClass: HttpAuthInterceptor, multi: true},
     StorageService,

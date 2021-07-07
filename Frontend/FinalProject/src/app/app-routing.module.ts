@@ -5,6 +5,7 @@ import { SigninComponent } from './component/authentication/signin/signin.compon
 import { HeaderComponent } from './component/header/header.component';
 import { MainPageComponent } from './component/main-page/main-page.component';
 import { SetupRoleComponent } from './component/setup-role/setup-role.component';
+import { UserProfileComponent } from './component/user-profile/user-profile.component';
 import { AuthenticationGuard } from './guards/authentication.guard';
 
 const routes: Routes = [
@@ -12,7 +13,9 @@ const routes: Routes = [
   {path:'', component: SigninComponent},
   {path:'setup-role', component:SetupRoleComponent},
   {path:'main-page', component: MainPageComponent},
-  {path:'header', component: HeaderComponent, canActivate: [AuthenticationGuard]}
+  {path:'user-profile', component: UserProfileComponent},
+  //{path:'header', component: HeaderComponent, canActivate: [AuthenticationGuard]},
+  {path:'header', component: HeaderComponent}
 ];
 
 @NgModule({

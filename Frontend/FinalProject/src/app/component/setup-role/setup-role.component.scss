@@ -36,3 +36,18 @@ button{
 #butons_area{
   margin-top: 80px;
 }
+
+#select-role-area{
+  margin-left: 20px;
+}
+#select-role-area p{
+  color: #117864;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px; 
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 20px;
+}
