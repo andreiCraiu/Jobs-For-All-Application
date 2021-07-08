@@ -34,6 +34,10 @@ import { NavbarModule, WavesModule, ButtonsModule } from 'angular-bootstrap-md';
 import { IconsModule } from 'angular-bootstrap-md';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { IgxAvatarModule } from 'igniteui-angular';
+import { UpdateUserProfileComponent } from './component/update-user-profile/update-user-profile.component';
+import { UpdateUserAccountComponent } from './component/update-user-account/update-user-account.component';
+
 
 
 @NgModule({
@@ -45,6 +49,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MainPageComponent,
     SetupRoleComponent,
     UserProfileComponent,
+    UpdateUserProfileComponent,
+    UpdateUserAccountComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,9 +77,9 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     ButtonsModule,
     IconsModule,
     MatSidenavModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    IgxAvatarModule
   ],
-  
   providers: [
     {provide:HTTP_INTERCEPTORS, useClass: HttpAuthInterceptor, multi: true},
     StorageService,
@@ -83,3 +89,5 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+ {
+}

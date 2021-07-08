@@ -1,59 +1,38 @@
 <mat-drawer-container class="example-container" autosize>
-    <mat-drawer #drawer class="example-sidenav" mode="side">  
-        <div id="user-update-menu" fxLayout="column" fxLayoutAlign="space-between center" name="fontStyle" aria-label="Font Style">
-            <mat-button-toggle value="bold">
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+        <div id="user-update-menu" fxLayout="column" fxLayoutAlign="space-between center" name="fontStyle"
+            aria-label="Font Style">
+            <mat-button-toggle (click)="isUserProfile=true">
                 Profile
                 <mat-icon>account_circle</mat-icon>
             </mat-button-toggle>
-            <mat-button-toggle value="italic">
+            <mat-button-toggle (click)="isUserProfile=false">
                 Account
                 <mat-icon>lock</mat-icon>
             </mat-button-toggle>
-            <mat-button-toggle value="underline">
+            <mat-button-toggle>
                 SignOut
                 <span class="material-icons">
                     logout
-                </span>     
+                </span>
             </mat-button-toggle>
         </div>
 
     </mat-drawer>
 
     <div class="example-sidenav-content">
-        <button type="button" mat-button (click)="drawer.toggle()">
-            <span class="material-icons">
-                edit
-            </span>
-        </button>
-        
-        <form id="about_user_profile_form" [formGroup]="editUserFormGroup" fxLayout="column" fxLayoutAlign="center center"> 
-            <ng-template matStepLabel>About you</ng-template>
-            <mat-form-field appearance="fill">
-              <mat-label >First Name</mat-label>
-              <input  matInput  formControlName="firstName" placeholder="John" required>
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>Last Name</mat-label>
-              <input matInput formControlName="lastName" placeholder="Smith" required>
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>Phone Number</mat-label>
-              <input matInput formControlName="phoneNumber" placeholder="+40722558821" required>
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>Adress</mat-label>
-              <input matInput formControlName="adress" placeholder="FishHouse Avenue, 28, Watford, UK" required>
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>Postcode</mat-label>
-              <input matInput formControlName="postcode" placeholder="WD987TU" required>
-            </mat-form-field>
-            <div>
-              <button mat-button matStepperNext>Next</button>
-              {{firstFormGroup.value | json}}
-            </div>
-          </form>
+   
+            <button type="button" mat-button (click)="drawer.toggle()">
+                <span *ngIf="!isShowMoreActive" class="material-icons" (click)="isShowMoreActive=true">
+                    read_more
+                </span>
+                <span *ngIf="isShowMoreActive" #showLess class="material-icons" (click)="isShowMoreActive=false">
+                    unfold_less
+                </span>
+            </button>
+
+            <app-update-user-profile *ngIf="isUserProfile"> </app-update-user-profile>
+            <app-update-user-account *ngIf="!isUserProfile"></app-update-user-account>
+
     </div>
-</mat-drawer-container> 
-
-
+</mat-drawer-container>

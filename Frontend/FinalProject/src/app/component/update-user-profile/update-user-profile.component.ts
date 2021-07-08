@@ -2,16 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-user-profile',
-  templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.scss']
+  selector: 'app-update-user-profile',
+  templateUrl: './update-user-profile.component.html',
+  styleUrls: ['./update-user-profile.component.scss']
 })
-export class UserProfileComponent implements OnInit {
+export class UpdateUserProfileComponent implements OnInit {
+
   editUserFormGroup!: FormGroup;
   isEditable = true;
   isShowMoreActive = false;
-  isUserProfile = true;
-
   constructor(
     private _formBuilder: FormBuilder,
   ) { }
@@ -25,4 +24,5 @@ export class UserProfileComponent implements OnInit {
       postcode: ['', Validators.required]
     });
   }
+
 }
