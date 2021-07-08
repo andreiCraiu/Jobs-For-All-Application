@@ -69,9 +69,9 @@ export class SetupRoleComponent implements OnInit {
         roleId: this.roleId
        }
       // console.log("steap[2");
-      this.registrationService.completeUserProfile(UserProfileCompletedForWorker).subscribe(response => {
-        this.storageService.setLoggedInUser(response);
+      this.registrationService.completeUserProfile(UserProfileCompletedForWorker).subscribe(_ => {
         this.router.navigate(['']);
+    
      
   //   }
 

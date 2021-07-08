@@ -8,19 +8,21 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class UpdateUserAccountComponent implements OnInit {
   public email: string = '';
-  public password: string = ''
-  editUserFormGroup!: FormGroup;
+  public password: string = '';
+  isActive = true;
+  isHidden = true;
+  isEditPasswordActive = false;
+  editUserAccountFormGroup!: FormGroup;
   constructor(
     private _formBuilder: FormBuilder,
   ) { }
 
   ngOnInit(): void {
-    this.editUserFormGroup = this._formBuilder.group({
-      firstName: ['gdf', Validators.required],
-      lastName: ['dddd', Validators.required],
-      phoneNumber: ['ddd', Validators.required],
-      adress: ['', Validators.required],
-      postcode: ['', Validators.required]
+    this.editUserAccountFormGroup = this._formBuilder.group({
+      userName: ['gdf', Validators.required],
+      email: ['dddd', Validators.required],
+      password: ['ddd', Validators.required],
+      confirmPassword: ['', Validators.required]
     });
   }
 

@@ -14,6 +14,7 @@ export class HttpAuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     var jwtToken = this.storageService.getLoggedInUser() ? this.storageService.getLoggedInUser().jwtToken : '';
+    console.log(jwtToken);
     request = request.clone({
       setHeaders: {
         Authorization: `Bearer ${jwtToken}`

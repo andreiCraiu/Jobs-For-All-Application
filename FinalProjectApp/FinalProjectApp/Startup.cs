@@ -27,6 +27,7 @@ using System.Reflection;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using FinalProjectApp.Helpers;
 
 namespace FinalProjectApp
 {
@@ -105,7 +106,7 @@ namespace FinalProjectApp
             }
             app.UseCors("CorsPolicy");
             app.UseHttpsRedirection();
-
+            app.UseMiddleware<JwtMiddleware>();
             app.UseRouting();
 
             app.UseAuthorization();

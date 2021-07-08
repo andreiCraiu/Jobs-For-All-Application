@@ -37,7 +37,12 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { IgxAvatarModule } from 'igniteui-angular';
 import { UpdateUserProfileComponent } from './component/update-user-profile/update-user-profile.component';
 import { UpdateUserAccountComponent } from './component/update-user-account/update-user-account.component';
-
+import { ShowHidePasswordModule } from 'ngx-show-hide-password';
+import { JobRequestsComponent } from './component/job-requests/job-requests.component';
+import { ViewJobsComponent } from './component/view-jobs/view-jobs.component';
+import { RequestJobComponent } from './component/request-job/request-job.component';
+import {TextFieldModule} from '@angular/cdk/text-field';
+import {MatTableModule} from '@angular/material/table';
 
 
 @NgModule({
@@ -51,6 +56,9 @@ import { UpdateUserAccountComponent } from './component/update-user-account/upda
     UserProfileComponent,
     UpdateUserProfileComponent,
     UpdateUserAccountComponent,
+    JobRequestsComponent,
+    ViewJobsComponent,
+    RequestJobComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,7 +86,10 @@ import { UpdateUserAccountComponent } from './component/update-user-account/upda
     IconsModule,
     MatSidenavModule,
     MatButtonToggleModule,
-    IgxAvatarModule
+    IgxAvatarModule,
+    ShowHidePasswordModule,
+    TextFieldModule,
+    MatTableModule,
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS, useClass: HttpAuthInterceptor, multi: true},

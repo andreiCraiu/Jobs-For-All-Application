@@ -14,6 +14,7 @@ namespace FinalProjectApp.Data
     public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>
     {
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<Job> Jobs { get; set; }
    
         public ApplicationDbContext(
             DbContextOptions options,

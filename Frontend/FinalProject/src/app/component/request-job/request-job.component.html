@@ -1,0 +1,44 @@
+<form id="request_job_form" [formGroup]="requestJobFormgroup" fxLayout="column"
+    fxLayoutAlign="space-between center">
+    <h5>Job Details</h5>
+    <mat-form-field appearance="fill">
+        <mat-label>Job Title</mat-label>
+        <input matInput formControlName="jobName">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label >Job Category</mat-label>
+        <mat-select  formControlName="jobType">
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let jobType of jobTypes" [value]="jobType">{{jobType}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label type="number">Price in $</mat-label>
+        <input matInput formControlName="price">
+     </mat-form-field>
+
+     <label>Is price negociable?</label>
+     <mat-radio-group id="is-negociabile-radio-btn">
+       <mat-radio-button [value]="1" (change)="getIsNegociableValue($event)">Yes</mat-radio-button>
+       <mat-radio-button [value]="2" (change)="getIsNegociableValue($event)">No</mat-radio-button>
+     </mat-radio-group>
+
+     <mat-form-field appearance="fill">
+        <mat-label>Job Description</mat-label>
+        <textarea matInput
+                  cdkTextareaAutosize
+                  #autosize="cdkTextareaAutosize"
+                  cdkAutosizeMinRows="1"
+                  cdkAutosizeMaxRows="5"
+                  formControlName="description">
+        </textarea>
+      </mat-form-field>
+     
+
+    <mat-button-toggle id="RequestJobBtn" (click)="requestJob()">
+        Request Job
+    </mat-button-toggle>
+    {{requestJobFormgroup.value | json}}
+</form>

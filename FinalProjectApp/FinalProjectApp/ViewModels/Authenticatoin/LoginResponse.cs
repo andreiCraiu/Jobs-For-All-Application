@@ -10,7 +10,7 @@ namespace FinalProjectApp.ViewModels.Authenticatoin
         public string Email { get; set; }
         public DateTime ExpirationDate { get; set; }
 
-        public string JwtcToken { get; set; }
+        public string JwtToken { get; set; }
 
     }
 }

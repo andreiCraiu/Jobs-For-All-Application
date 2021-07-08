@@ -26,8 +26,8 @@ export class RegisterComponent implements OnInit {
       confirmPassword: this.confirmPassword
     };
 
-    this.registerService.registerUser(registerRequest).subscribe(response => {
-      this.storageService.setLoggedInUser(response);
+    this.registerService.registerUser(registerRequest).subscribe(_ => {
+
     })
 
   }

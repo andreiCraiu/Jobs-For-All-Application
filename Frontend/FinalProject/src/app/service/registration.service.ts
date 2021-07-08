@@ -15,7 +15,7 @@ export class RegistrationService {
   constructor(private httpClient: HttpClient) { }
   
   public registerUser(registerRequest: ApplicationUserRegister){
-    return this.httpClient.post<ApplicationUserRegister>(`${this.baseUrl}/completeUserRegistrtation`, registerRequest, { headers: this.headers });
+    return this.httpClient.post<ApplicationUserRegister>(`${this.baseUrl}/register`, registerRequest, { headers: this.headers });
   }
 
   public completeUserProfile(completeUserProfile: any){

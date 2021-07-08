@@ -8,5 +8,9 @@ namespace FinalProjectApp.Models
 {
     public class ApplicationUser : IdentityUser
     {
+        public string Address { get; internal set; }
+        public string Postcode { get; internal set; }
+        public string Profession { get; internal set; }
+        public string Details { get; internal set; }
     }
 }

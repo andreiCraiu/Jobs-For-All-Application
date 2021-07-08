@@ -6,6 +6,7 @@ using FinalProjectApp.ViewModels.Authenticatoin;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,21 +30,27 @@ namespace FinalProjectApp.Controllers
             _signInManager = signInManager;
             _context = context;
             _httpContextAccessor = accessor;
-       
+
         }
 
         [Route("register")]
         [HttpPost]
         public async Task<ActionResult> RegisterUser(RegisterRequest registeRequest)
         {
-            try
+            var user = new ApplicationUser
             {
-                return Ok();
-            }
-            catch
+                Email = registeRequest.Email,
+                UserName = registeRequest.Email,
+                SecurityStamp = Guid.NewGuid().ToString()
+            };
+            var result = await _userManager.CreateAsync(user, registeRequest.Password);
+
+            if (result.Succeeded)
             {
-                return BadRequest();
+                return Ok(new RegisterResponse { ConfirmationToken = user.SecurityStamp });
             }
+
+            return BadRequest();
         }
 
 
@@ -52,9 +59,22 @@ namespace FinalProjectApp.Controllers
         [HttpPost]
         public async Task<ActionResult> CompleteUserProfile(CompleteUserProfile completeUserProfile)
         {
-            System.Security.Claims.ClaimsPrincipal currentUser = this.User;
-            ApplicationUser applicationUser = await _userManager.GetUserAsync(User);
-            var userId = _httpContextAccessor.HttpContext.User;
+            var user = (ApplicationUser)HttpContext.Items["User"];
+
+
+            if (user != null)
+            {
+                user.PhoneNumber = completeUserProfile.PhoneNumber;
+                user.Address = completeUserProfile.Address;
+                user.Postcode = completeUserProfile.PostCode;
+                user.Profession = completeUserProfile.MainProfession + "Secundary: " + completeUserProfile.SecundaryProfession;
+                user.Details = "Like: " + completeUserProfile.Hobby + ", " + completeUserProfile.FunFact;
+
+                _context.Entry(user).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
+                return Ok();
+            }
+            return BadRequest();
             if (completeUserProfile == null)
             {
                 return BadRequest();
