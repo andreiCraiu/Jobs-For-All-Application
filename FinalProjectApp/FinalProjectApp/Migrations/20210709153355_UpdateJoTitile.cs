@@ -2,22 +2,22 @@
 
 namespace FinalProjectApp.Migrations
 {
-    public partial class updateJobTabl : Migration
+    public partial class UpdateJoTitile : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
-                name: "JobName",
+            migrationBuilder.RenameColumn(
+                name: "job",
                 table: "Jobs",
-                type: "nvarchar(max)",
-                nullable: true);
+                newName: "JobTitle");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "JobName",
-                table: "Jobs");
+            migrationBuilder.RenameColumn(
+                name: "JobTitle",
+                table: "Jobs",
+                newName: "job");
         }
     }
 }

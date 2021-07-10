@@ -3,7 +3,7 @@
     <h5>Job Details</h5>
     <mat-form-field appearance="fill">
         <mat-label>Job Title</mat-label>
-        <input matInput formControlName="jobName">
+        <input matInput formControlName="jobTitle" required>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -16,11 +16,11 @@
 
       <mat-form-field appearance="fill">
         <mat-label type="number">Price in $</mat-label>
-        <input matInput formControlName="price">
+        <input matInput formControlName="price" required>
      </mat-form-field>
 
      <label>Is price negociable?</label>
-     <mat-radio-group id="is-negociabile-radio-btn">
+     <mat-radio-group id="is-negociabile-radio-btn" required>
        <mat-radio-button [value]="1" (change)="getIsNegociableValue($event)">Yes</mat-radio-button>
        <mat-radio-button [value]="2" (change)="getIsNegociableValue($event)">No</mat-radio-button>
      </mat-radio-group>
@@ -32,7 +32,8 @@
                   #autosize="cdkTextareaAutosize"
                   cdkAutosizeMinRows="1"
                   cdkAutosizeMaxRows="5"
-                  formControlName="description">
+                  formControlName="description"
+                  required>
         </textarea>
       </mat-form-field>
      
@@ -40,5 +41,4 @@
     <mat-button-toggle id="RequestJobBtn" (click)="requestJob()">
         Request Job
     </mat-button-toggle>
-    {{requestJobFormgroup.value | json}}
 </form>

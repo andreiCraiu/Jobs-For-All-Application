@@ -13,19 +13,18 @@
     </mat-drawer>
 
     <div class="example-sidenav-content">
-   
-            <button type="button" mat-button (click)="drawer.toggle()">
-                <span *ngIf="!isShowMoreActive" class="material-icons" (click)="isShowMoreActive=true">
-                    read_more
-                </span>
-                <span *ngIf="isShowMoreActive" #showLess class="material-icons" (click)="isShowMoreActive=false">
-                    unfold_less
-                </span>
-            </button>
-            <!-- <app-request-job></app-request-job> -->
-            <!-- <app-update-user-profile *ngIf="isUserProfile"> </app-update-user-profile> 
-            <app-update-user-account *ngIf="!isUserProfile"></app-update-user-account> -->
-            <app-view-jobs></app-view-jobs>
+
+        <button type="button" mat-button (click)="drawer.toggle()">
+            <span *ngIf="!isShowMoreActive" class="material-icons" (click)="isShowMoreActive=true">
+                read_more
+            </span>
+            <span *ngIf="isShowMoreActive" #showLess class="material-icons" (click)="isShowMoreActive=false">
+                unfold_less
+            </span>
+        </button>
+        
+        <app-request-job *ngIf="isRequestJob"></app-request-job>
+        <app-view-jobs *ngIf="!isRequestJob"></app-view-jobs>
 
     </div>
 </mat-drawer-container>

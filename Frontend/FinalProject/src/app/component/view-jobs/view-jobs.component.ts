@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Job } from 'src/app/model/job';
 import { JobsService } from 'src/app/service/jobs.service';
-import { Jobs } from 'src/app/model/job';
 
 @Component({
   selector: 'app-view-jobs',
@@ -8,14 +9,26 @@ import { Jobs } from 'src/app/model/job';
   styleUrls: ['./view-jobs.component.scss']
 })
 export class ViewJobsComponent implements OnInit {
- public jobs!: Jobs[];
+  public jobs!: Job[];
+  public displayedColumns: string[] = ['jobTitle', 'jobCategory', 'price', 'isPriceNegociable', 'delete'];
 
   constructor(
     private jobsService: JobsService,
-  ){}
+    private snackBar: MatSnackBar
+  ) 
+  {}
 
   ngOnInit(): void {
-    this.jobsService.getJobs().add((jobs: Jobs[]) => this.jobs = jobs);
+    this.jobsService.getJobs().subscribe((jobs: Job[]) => {
+      this.jobs = jobs;
+      console.log(this.jobs);
+    });
   }
 
+  removeJob(id: number) {
+    this.jobsService.removeJob(id).subscribe(_ => {
+      this.jobs = this.jobs.filter(x => x.id != id);
+      this.snackBar.open('Job deleted succesfully', '', { duration: 2000 });
+    })
+  }
 }

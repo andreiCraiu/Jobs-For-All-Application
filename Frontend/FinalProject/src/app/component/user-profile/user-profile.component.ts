@@ -14,15 +14,16 @@ export class UserProfileComponent implements OnInit {
 
   constructor(
     private _formBuilder: FormBuilder,
+   
   ) { }
 
   ngOnInit(): void {
     this.editUserFormGroup = this._formBuilder.group({
-      firstName: ['gdf', Validators.required],
-      lastName: ['dddd', Validators.required],
-      phoneNumber: ['ddd', Validators.required],
-      adress: ['', Validators.required],
-      postcode: ['', Validators.required]
+      firstName: [''],
+      lastName: [''],
+      phoneNumber: [''],
+      adress: [''],
+      postcode: ['']
     });
   }
 }

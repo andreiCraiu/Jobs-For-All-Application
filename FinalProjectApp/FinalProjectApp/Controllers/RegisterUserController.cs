@@ -69,8 +69,9 @@ namespace FinalProjectApp.Controllers
                 user.Postcode = completeUserProfile.PostCode;
                 user.Profession = completeUserProfile.MainProfession + "Secundary: " + completeUserProfile.SecundaryProfession;
                 user.Details = "Like: " + completeUserProfile.Hobby + ", " + completeUserProfile.FunFact;
-
+                user.Role = completeUserProfile.Role;
                 _context.Entry(user).State = EntityState.Modified;
+                
                 await _context.SaveChangesAsync();
                 return Ok();
             }

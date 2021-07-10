@@ -19,11 +19,11 @@
       <ng-template matStepLabel>About you</ng-template>
       <mat-form-field appearance="fill">
         <mat-label >First Name</mat-label>
-        <input  matInput  formControlName="firstName" placeholder="John" required>
+        <input  id="firstName" matInput  formControlName="firstName" placeholder="John" required>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Last Name</mat-label>
-        <input matInput formControlName="lastName" placeholder="Smith" required>
+        <input id="lastName" matInput formControlName="lastName" placeholder="Smith" required>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Phone Number</mat-label>
@@ -31,15 +31,14 @@
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Adress</mat-label>
-        <input matInput formControlName="adress" placeholder="FishHouse Avenue, 28, Watford, UK" required>
+        <input matInput formControlName="adress" placeholder="FishHouse Avenue, 28, Watford, UK" >
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Postcode</mat-label>
-        <input matInput formControlName="postcode" placeholder="WD987TU" required>
+        <input matInput formControlName="postcode" placeholder="WD987TU" >
       </mat-form-field>
       <div>
         <button mat-button matStepperNext>Next</button>
-        {{firstFormGroup.value | json}}
       </div>
     </form>
   </mat-step>
@@ -58,7 +57,7 @@
 
        <mat-form-field appearance="fill" *ngIf="isJobRequester">
         <mat-label>Secundary professions</mat-label>
-        <input matInput formControlName="secundaryProfession" placeholder="Carpenter, Electrician, etc" required>
+        <input matInput formControlName="secundaryProfession" placeholder="Carpenter, Electrician, etc">
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Hobby/ Passtion</mat-label>

@@ -3,7 +3,6 @@ using FinalProjectApp.Data;
 using FinalProjectApp.Models;
 using FinalProjectApp.ViewModels.Authentication;
 using FinalProjectApp.ViewModels.Authenticatoin;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +15,8 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using FinalProjectApp.Helpers;
+
 
 namespace FinalProjectApp.Controllers
 {
@@ -40,26 +41,55 @@ namespace FinalProjectApp.Controllers
 
         [HttpPost]
         [Route("addJob")]
+     //   [Authorize(new[] { Role.JobRequester, Role.Both })]
         public async Task<ActionResult> AddJob(Job job)
-        { 
-            if (job != null)
+        {
+            var user = (ApplicationUser)HttpContext.Items["User"];
+         
+         
+            if (job != null && user != null)
             {
+                var jobRequester = new JobRequester();
+                jobRequester.ApplicationUser = user;
+                jobRequester.Job = job;
                 await _context.Jobs.AddAsync(job);
-                await _context.SaveChangesAsync();
-                return Ok();
+                await _context.JobRequesters.AddAsync(jobRequester);
+               await _context.SaveChangesAsync();
+             return Ok();
             }
             return BadRequest();
         }
 
         [HttpGet]
         [Route("getJobs")]
-        public async Task<ActionResult<IEnumerable<Job>>> GetBooks()
+        public IActionResult GetJobs()
         {
-            var a = 3;
-            var b = _context.Jobs.ToArrayAsync();
-           
-           
-            return await b;
+            var user = (ApplicationUser)HttpContext.Items["User"];
+            if(user != null)
+            {
+                var jobRequesters = from jobRequester in _context.JobRequesters
+                                    where jobRequester.ApplicationUser.Id == user.Id
+                                    select jobRequester;
+                var jobs = jobRequesters.Select(job => job.Job);
+                return Ok(jobs.ToList());
+            }
+
+            return BadRequest();
+      
+        }
+
+        [HttpDelete]
+        [Route("deleteJob/{id}")]
+        public IActionResult DeleteJob(int id)
+        {
+            var job = _context.Jobs.FirstOrDefault(x => x.ID == id);
+
+            if (job == null)
+                return BadRequest();
+
+            _context.Remove(job);
+            _context.SaveChanges();
+            return Ok();
         }
 
     }

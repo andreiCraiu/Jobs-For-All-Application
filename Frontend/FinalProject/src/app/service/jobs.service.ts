@@ -1,13 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Jobs } from '../model/job';
+import { Job } from '../model/job';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JobsService {
-
+  private baseUrl = `${environment.baseApiUrl}/jobs`
   private baseApiUrl= `${environment.baseApiUrl}/jobs/addJob`;
   private baseApiUrlGetJobs= `${environment.baseApiUrl}/jobs/getJobs`;
 
@@ -15,11 +15,13 @@ export class JobsService {
 
   constructor(private httpClient: HttpClient) { }
   public getJobs(){
-    return  this.httpClient.get<Jobs[]>(`${this.baseApiUrlGetJobs}`).subscribe(_ => {
-      
-    }, error => console.error(error));
+    return  this.httpClient.get<Job[]>(`${this.baseApiUrlGetJobs}`);
   }
   public requestJob(jobReques: any){
     return this.httpClient.post<any>(`${this.baseApiUrl}`, jobReques, { headers: this.headers });
+  }
+
+  public removeJob(id: number){
+    return  this.httpClient.delete(`${this.baseUrl}/deleteJob/${id}`);
   }
 }

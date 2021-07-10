@@ -12,43 +12,34 @@
         
         <form id="user_profile_form" [formGroup]="editUserFormGroup" fxLayout="column"
             fxLayoutAlign="space-between center">
-            <mat-button-toggle id="enableEditButton">
+            <mat-button-toggle id="enableEditButton" (click)="readonly=false">
                 <span class="material-icons">
                     edit
                 </span>
             </mat-button-toggle>
             <mat-form-field appearance="fill">
-                <mat-label>First Name</mat-label>
-                <input matInput formControlName="firstName" ng-init="John" placeholder="John" required
-                    [readonly]="isEditable">
+                <mat-label>User Name</mat-label>
+                <input matInput formControlName="userName" ng-init="John" placeholder="John" [readonly]="readonly">
             </mat-form-field>
-            <mat-form-field appearance="fill">
-                <mat-label>Last Name</mat-label>
-                <input matInput formControlName="lastName" placeholder="Smith" required>
-            </mat-form-field>
+           
             <mat-form-field appearance="fill">
                 <mat-label>Phone Number</mat-label>
-                <input matInput formControlName="phoneNumber" placeholder="+40722558821" required>
+                <input matInput formControlName="phoneNumber" placeholder="+40722558821" [readonly]="readonly">
             </mat-form-field>
             <mat-form-field appearance="fill">
                 <mat-label>Adress</mat-label>
-                <input matInput formControlName="adress" placeholder="FishHouse Avenue, 28, Watford, UK"
-                    required>
+                <input matInput formControlName="adress" placeholder="FishHouse Avenue, 28, Watford, UK" [readonly]="readonly">
             </mat-form-field>
             <mat-form-field appearance="fill">
                 <mat-label>Postcode</mat-label>
-                <input matInput formControlName="postcode" placeholder="WD987TU" required>
+                <input matInput formControlName="postcode" placeholder="WD987TU" [readonly]="readonly">
             </mat-form-field>
-           
-            <div>
-                <!-- {{editUserFormGroup.value | json}} -->
-            </div>
         </form>
     </mat-card-content>
 
     <mat-card-actions fxLayout="column"
     fxLayoutAlign="space-between center">
-        <mat-button-toggle>
+        <mat-button-toggle (click)="updateUser()">
             Update Profile
         </mat-button-toggle>
     </mat-card-actions>

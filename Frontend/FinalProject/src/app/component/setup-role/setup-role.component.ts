@@ -43,20 +43,20 @@ export class SetupRoleComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       phoneNumber: ['', Validators.required],
-      adress: ['', Validators.required],
-      postcode: ['', Validators.required]
+      adress: [''],
+      postcode: ['']
     });
     
     this.secondFormGroup = this._formBuilder.group({
-      mainProfession: ['', Validators.required],
-      secundaryProfession: ['', Validators.required],
-      hobby: ["",],
+      mainProfession: [''],
+      secundaryProfession: [''],
+      hobby: [""],
       funFact: [""]
     });
   }
 
   finishUserConfiguation() {
-    // if (this.roleId == 2) {
+
       var UserProfileCompletedForWorker = {
         userName: this.firstFormGroup.value.firstName + " " + this.firstFormGroup.value.lastName,
         phoneNumber: this.firstFormGroup.value.phoneNumber,
@@ -66,65 +66,31 @@ export class SetupRoleComponent implements OnInit {
         secundaryProfession: this.secondFormGroup.value.secundaryProfession,
         hobby: this.secondFormGroup.value.hobby,
         funFact: this.secondFormGroup.value.funFact,
-        roleId: this.roleId
+        role: this.roleId
        }
-      // console.log("steap[2");
+       console.log(UserProfileCompletedForWorker);
       this.registrationService.completeUserProfile(UserProfileCompletedForWorker).subscribe(_ => {
-        this.router.navigate(['']);
-    
-     
-  //   }
-
-  //   if (this.roleId == 3) {
-  //     var UserProfileCompletedForJobProvider = {
-  //       userName: this.firstFormGroup.value.firstName + " " + this.firstFormGroup.value.lastName,
-  //       phoneNumber: this.firstFormGroup.value.phoneNumber,
-  //       address: this.firstFormGroup.value.adress,
-  //       postcode: this.firstFormGroup.value.postcode,
-  //       hobby: this.firstFormGroup.value.hobby,
-  //       funFact: this.firstFormGroup.value.funFact,
-  //       roleId: this.roleId
-  //     }
-  //     console.log("steap[3");
-  //     this.registrationService.completeUserProfile(UserProfileCompletedForJobProvider);
-  //   }
-
-  //   if (this.roleId == 4) {
-  //     var UserProfileCompletedForBothRoles = {
-  //       userName: this.firstFormGroup.value.firstName + " " + this.firstFormGroup.value.lastName,
-  //       phoneNumber: this.firstFormGroup.value.phoneNumber,
-  //       address: this.firstFormGroup.value.adress,
-  //       postcode: this.firstFormGroup.value.postcode,
-  //       mainProfession: this.firstFormGroup.value.mainProfession,
-  //       secundaryProfession: this.firstFormGroup.value.secundaryProfession,
-  //       hobby: this.firstFormGroup.value.hobby,
-  //       funFact: this.firstFormGroup.value.funFact,
-  //       roleId: this.roleId
-  //     }
-  //     console.log("steap[4");
-  //     this.registrationService.completeUserProfile(UserProfileCompletedForBothRoles);
-  
+        this.router.navigate(['main-page']);
       }
       )}
   setIsJobRequesterValue(event: any) {
     if (event.value === 2) {
-      console.log(2);
       this.isJobRequester = true;
       this.roleId = 2;
 
-      console.log(this.firstFormGroup.value.firstName);
+      console.log(this.isJobRequester);
     }
 
     if (event.value === 3) {
-      console.log(3);
       this.isJobRequester = false;
       this.roleId = 3;
+      console.log(this.isJobRequester);
     }
 
     if (event.value === 4) {
-      console.log(4);
       this.isJobRequester = true;
       this.roleId = 4;
+      console.log(this.isJobRequester);
     }
   }
 }

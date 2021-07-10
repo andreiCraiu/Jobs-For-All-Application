@@ -6,6 +6,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { JobsService } from 'src/app/service/jobs.service';
 import { StorageService } from 'src/app/service/storage.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-request-job',
@@ -30,8 +31,8 @@ export class RequestJobComponent implements OnInit {
     private _formBuilder: FormBuilder,
     private _ngZone: NgZone,
     private jobService: JobsService,
-    private storageService: StorageService,
     private router: Router,
+    private snackBar: MatSnackBar
   ) { }
 
   @ViewChild('autosize')
@@ -44,9 +45,9 @@ export class RequestJobComponent implements OnInit {
 
   ngOnInit(): void {
     this.requestJobFormgroup = this._formBuilder.group({
-      jobType:[""],
-      jobName:[""],
-      price:[""],
+      jobType:["",],
+      jobTitle:["", Validators.required],
+      price:["", Validators.required],
       description:[""],
     });
   }
@@ -62,14 +63,14 @@ export class RequestJobComponent implements OnInit {
   }
   requestJob() {
     var job = {
-      jobName: this.requestJobFormgroup.value.jobName,
+      jobTitle: this.requestJobFormgroup.value.jobTitle,
       jobCategory: this.requestJobFormgroup.value.jobType,
       price: this.requestJobFormgroup.value.price,
       isPriceNegociable: this.isPriceNegociable,
       description: this.requestJobFormgroup.value.description
     }
     this.jobService.requestJob(job).subscribe(_=> {
-      this.router.navigate(['setup-role']);
+      this.snackBar.open('Job created succesfully', '', { duration: 2000 });
     })
   }
 }

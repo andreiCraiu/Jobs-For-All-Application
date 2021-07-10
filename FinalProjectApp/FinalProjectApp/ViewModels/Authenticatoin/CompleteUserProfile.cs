@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalProjectApp.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -17,5 +18,6 @@ namespace FinalProjectApp.ViewModels.Authenticatoin
 
         public string Hobby{get; set;}
         public string FunFact{get; set;}
+        public Role Role { get; set; }
     }
 }

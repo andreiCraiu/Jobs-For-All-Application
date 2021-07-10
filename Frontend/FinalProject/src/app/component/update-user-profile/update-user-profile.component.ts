@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { CurrentUser } from 'src/app/model/currentUser';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-update-user-profile',
@@ -9,20 +12,45 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class UpdateUserProfileComponent implements OnInit {
 
   editUserFormGroup!: FormGroup;
-  isEditable = true;
+  readonly = true;
   isShowMoreActive = false;
+  currentUser!: CurrentUser;
   constructor(
     private _formBuilder: FormBuilder,
+    private userService: UserService,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
+    this.userService.getCurrentUser().subscribe(user => { this.currentUser = user });
+
     this.editUserFormGroup = this._formBuilder.group({
-      firstName: ['gdf', Validators.required],
-      lastName: ['dddd', Validators.required],
-      phoneNumber: ['ddd', Validators.required],
-      adress: ['', Validators.required],
-      postcode: ['', Validators.required]
+      // userName: [this.currentUser.UserName],
+      // phoneNumber: [this.currentUser.PhoneNumber],
+      // adress: [this.currentUser.Address],
+      // postcode: [this.currentUser.Postcode]
+
+      userName: ["NewValue"],
+      phoneNumber: ["NewValue"],
+      adress: ["NewValue"],
+      postcode: ["NewValue"]
     });
+  }
+
+  updateUser() {
+    if (this.readonly == false) {
+      var userToBeUpdated = {
+        UserName: this.editUserFormGroup.value.userName,
+        PhoneNumber: this.editUserFormGroup.value.phoneNumber,
+        Address: this.editUserFormGroup.value.adress,
+        Postcode: this.editUserFormGroup.value.postcode,
+      }
+      this.userService.updateUser(userToBeUpdated).subscribe(_ => {
+        this.snackBar.open('User updated succesfully', '', { duration: 2000 });
+      })
+    }else{
+      this.snackBar.open('Edit mode is disabled', '', { duration: 2000 });
+    }
   }
 
 }

@@ -15,6 +15,7 @@ namespace FinalProjectApp.Data
     {
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<Job> Jobs { get; set; }
+        public DbSet<JobRequester> JobRequesters { get; set; }
    
         public ApplicationDbContext(
             DbContextOptions options,

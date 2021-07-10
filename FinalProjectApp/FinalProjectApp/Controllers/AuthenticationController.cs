@@ -1,6 +1,7 @@
 ﻿
 using FinalProjectApp.Data;
 using FinalProjectApp.Models;
+using FinalProjectApp.ViewModels;
 using FinalProjectApp.ViewModels.Authentication;
 using FinalProjectApp.ViewModels.Authenticatoin;
 using Microsoft.AspNetCore.Authorization;
@@ -93,9 +94,8 @@ namespace FinalProjectApp.Controllers
 
             }
             return Unauthorized();
-
         }
-
-
     }
+
+
 }

@@ -12,5 +12,8 @@ namespace FinalProjectApp.Models
         public string Postcode { get; internal set; }
         public string Profession { get; internal set; }
         public string Details { get; internal set; }
+
+        public Role Role { get; set; }
     }
+
 }

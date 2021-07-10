@@ -3,6 +3,7 @@ import { AuthenticationService } from 'src/app/service/authentication/authentica
 import { ApplicationUserLogin } from 'src/app/model/loginUser';
 import { StorageService } from 'src/app/service/storage.service';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-signin',
@@ -14,10 +15,10 @@ export class SigninComponent implements OnInit {
   public email: string = '';
   public password: string = '';
 
-
   constructor(
     private authenticateService: AuthenticationService,
     private storageService: StorageService,
+    private userService: UserService,
     private router: Router,
   ) { }
 
@@ -29,7 +30,7 @@ export class SigninComponent implements OnInit {
 
     this.authenticateService.authorizeUser(user).subscribe(response => {
       this.storageService.setLoggedInUser(response);
-      this.router.navigate(['setup-role']);
+      this.router.navigate(['main-page']);
     })
   }
   

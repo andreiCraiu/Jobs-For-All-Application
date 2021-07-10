@@ -8,7 +8,7 @@ namespace FinalProjectApp.Models
     public class Job
     {
         public int ID { get; set; }
-        public string job { get; set; }
+        public string JobTitle { get; set; }
         public string JobCategory { get; set; }
         public double Price { get; set; }
         public bool IsPriceNegociable { get; set; }

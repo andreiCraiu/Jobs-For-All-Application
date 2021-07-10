@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinalProjectApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210708202921_AddExtraFields")]
-    partial class AddExtraFields
+    [Migration("20210710012007_AddJobRequesterTable")]
+    partial class AddJobRequesterTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -75,6 +75,9 @@ namespace FinalProjectApp.Migrations
                     b.Property<string>("Profession")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Role")
+                        .HasColumnType("int");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -114,7 +117,7 @@ namespace FinalProjectApp.Migrations
                     b.Property<string>("JobCategory")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("JobName")
+                    b.Property<string>("JobTitle")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Price")
@@ -123,6 +126,28 @@ namespace FinalProjectApp.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Jobs");
+                });
+
+            modelBuilder.Entity("FinalProjectApp.Models.JobRequester", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int?>("JobID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("JobID");
+
+                    b.ToTable("JobRequesters");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.DeviceFlowCodes", b =>
@@ -361,6 +386,21 @@ namespace FinalProjectApp.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("FinalProjectApp.Models.JobRequester", b =>
+                {
+                    b.HasOne("FinalProjectApp.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("FinalProjectApp.Models.Job", "Job")
+                        .WithMany()
+                        .HasForeignKey("JobID");
+
+                    b.Navigation("ApplicationUser");
+
+                    b.Navigation("Job");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
