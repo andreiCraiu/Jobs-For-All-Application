@@ -7,6 +7,7 @@ import { JobsService } from 'src/app/service/jobs.service';
 import { StorageService } from 'src/app/service/storage.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Job } from 'src/app/model/job';
 
 @Component({
   selector: 'app-request-job',
@@ -69,6 +70,7 @@ export class RequestJobComponent implements OnInit {
       isPriceNegociable: this.isPriceNegociable,
       description: this.requestJobFormgroup.value.description
     }
+
     this.jobService.requestJob(job).subscribe(_=> {
       this.snackBar.open('Job created succesfully', '', { duration: 2000 });
     })

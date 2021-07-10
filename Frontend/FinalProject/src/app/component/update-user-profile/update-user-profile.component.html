@@ -12,7 +12,7 @@
         
         <form id="user_profile_form" [formGroup]="editUserFormGroup" fxLayout="column"
             fxLayoutAlign="space-between center">
-            <mat-button-toggle id="enableEditButton" (click)="readonly=false">
+            <mat-button-toggle id="enableEditButton" (click)="populateFields()">
                 <span class="material-icons">
                     edit
                 </span>

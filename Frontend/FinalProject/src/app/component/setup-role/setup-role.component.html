@@ -46,7 +46,7 @@
   <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
     <form [formGroup]="secondFormGroup" fxLayout="column" fxLayoutAlign="center center">
       <ng-template matStepLabel>You're profession </ng-template>
-      <h4>Let's configure youre profession profile</h4>
+      <p>Let's configure you're profession profile</p>
       <mat-form-field appearance="fill" *ngIf="isJobRequester">
         <mat-label >What is your main profession</mat-label>
         <mat-select  formControlName="mainProfession" required>
@@ -70,7 +70,7 @@
    <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button matStepperNext>Next</button>
-        {{secondFormGroup.value | json}}
+      
       </div>
     </form>
   </mat-step> 

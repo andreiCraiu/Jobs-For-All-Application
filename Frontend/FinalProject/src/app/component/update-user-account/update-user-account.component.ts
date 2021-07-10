@@ -19,9 +19,9 @@ export class UpdateUserAccountComponent implements OnInit {
 
   ngOnInit(): void {
     this.editUserAccountFormGroup = this._formBuilder.group({
-      userName: ['gdf'],
-      email: ['dddd'],
-      password: ['ddd'],
+      userName: [''],
+      email: [''],
+      password: ['Password'],
       confirmPassword: ['']
     });
   }

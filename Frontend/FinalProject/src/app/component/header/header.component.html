@@ -1,13 +1,55 @@
 <mat-tab-group mat-align-tabs="end">
- <mat-tab label="Home">Home</mat-tab> 
-    <mat-tab label="My Job Requests">
+   <mat-tab label="Home">
+      <div>
+         <h1>Thank you for choosing our app. Hope you'll enjoy this experience.</h1>
+         <p>Was justice improve age article between. No projection as up preference reasonably delightful celebrated.
+            Preserved and abilities assurance tolerably breakfast use saw. And painted letters forming far village
+            elderly compact. Her rest west each spot his and you knew. Estate gay wooded depart six far her. Of we be
+            have it lose gate bred. Do separate removing or expenses in. Had covered but evident chapter matters
+            anxious.
+
+            Of friendship on inhabiting diminution discovered as. Did friendly eat breeding building few nor. Object he
+            barton no effect played valley afford. Period so to oppose we little seeing or branch. Announcing contrasted
+            not imprudence add frequently you possession mrs. Period saw his houses square and misery. Hour had held
+            lain give yet.
+
+            Mind what no by kept. Celebrated no he decisively thoroughly. Our asked sex point her she seems. New plenty
+            she horses parish design you. Stuff sight equal of my woody. Him children bringing goodness suitable she
+            entirely put far daughter.
+         </p>
+         <p>So insisted received is occasion advanced honoured. Among ready to which up. Attacks smiling and may out
+            assured moments man nothing outward. Thrown any behind afford either the set depend one temper. Instrument
+            melancholy in acceptance collecting frequently be if. Zealously now pronounce existence add you instantly
+            say offending. Merry their far had widen was. Concerns no in expenses raillery formerly.
+
+            And produce say the ten moments parties. Simple innate summer fat appear basket his desire joy. Outward
+            clothes promise at gravity do excited. Sufficient particular impossible by reasonable oh expression is. Yet
+            preference connection unpleasant yet melancholy but end appearance. And excellence partiality estimating
+            terminated day everything.
+         </p>
+
+         <p>Barton waited twenty always repair in within we do. An delighted offending curiosity my is dashwoods at. Boy
+            prosperous increasing surrounded companions her nor advantages sufficient put. John on time down give meet
+            help as of. Him waiting and correct believe now cottage she another. Vexed six shy yet along learn maids her
+            tiled. Through studied shyness evening bed him winding present. Become excuse hardly on my thirty it wanted.
+
+            Cottage out enabled was entered greatly prevent message. No procured unlocked an likewise. Dear but what she
+            been over gay felt body. Six principles advantages and use entreaties decisively. Eat met has dwelling
+            unpacked see whatever followed. Court in of leave again as am. Greater sixteen to forming colonel no on be.
+            So an advice hardly barton. He be turned sudden engage manner spirit.
+         </p>
+      </div>
+   </mat-tab>
+   <mat-tab *ngIf="!isAdminUser" label="My Job Requests">
       <app-job-requests></app-job-requests>
-    </mat-tab> 
- <mat-tab label="Notification">Content 3</mat-tab> 
+   </mat-tab>
+   <mat-tab *ngIf="!isAdminUser" label="Notification">
+      <p id="notification">You non't have notification</p>
+   </mat-tab>
 
 
-    <mat-tab label="My Profile">
-       <app-user-profile></app-user-profile>
-    </mat-tab> 
+   <mat-tab label="My Profile">
+      <app-user-profile></app-user-profile>
+   </mat-tab>
 
 </mat-tab-group>

@@ -49,6 +49,17 @@ namespace FinalProjectApp.Controllers
             return BadRequest();
         }
 
+        [HttpGet]
+        [Route("getUserByEmail/{email}")]
+        public IActionResult GetUserByEmail(string email)
+        {
+            var user = _context.ApplicationUsers.FirstOrDefault(user => user.Email == email);
+                       
+            if (user != null)
+                return Ok(user);
+            return BadRequest();
+        }
+
         [HttpDelete]
         [Route("deleteUser")]
         public IActionResult DeleteUSer()

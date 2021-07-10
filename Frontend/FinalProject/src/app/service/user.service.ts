@@ -24,4 +24,8 @@ export class UserService {
   public removeUser(){
     return  this.httpClient.delete(`${this.baseApi}/deleteUser`);
   }
+
+  public findUserByEmail(email: string){
+    return  this.httpClient.get<CurrentUser>(`${this.baseApi}/getUserByEmail/${email}`);
+  }
 }

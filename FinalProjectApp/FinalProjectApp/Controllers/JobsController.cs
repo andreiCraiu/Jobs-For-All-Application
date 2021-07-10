@@ -84,10 +84,11 @@ namespace FinalProjectApp.Controllers
         {
             var job = _context.Jobs.FirstOrDefault(x => x.ID == id);
 
+            var jobRequester = _context.JobRequesters.FirstOrDefault(jobsRequests => Object.Equals(jobsRequests.Job, job));
             if (job == null)
                 return BadRequest();
-
-            _context.Remove(job);
+            _context.JobRequesters.Remove((JobRequester)jobRequester);
+            _context.Jobs.Remove(job);
             _context.SaveChanges();
             return Ok();
         }

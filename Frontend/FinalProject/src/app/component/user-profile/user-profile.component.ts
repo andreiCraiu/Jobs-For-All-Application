@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile',
@@ -14,9 +15,12 @@ export class UserProfileComponent implements OnInit {
 
   constructor(
     private _formBuilder: FormBuilder,
+    private router: Router,
    
   ) { }
-
+  logout(){
+    this.router.navigate([""]);
+  }
   ngOnInit(): void {
     this.editUserFormGroup = this._formBuilder.group({
       firstName: [''],
