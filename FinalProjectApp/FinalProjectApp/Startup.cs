@@ -28,6 +28,9 @@ using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using FinalProjectApp.Helpers;
+using JobsForAll.Application;
+using JobsForAll.Application.Interfaces;
+using IAuthService = JobsForAll.Application.Interfaces.IAuthService;
 
 namespace FinalProjectApp
 {
@@ -54,7 +57,7 @@ namespace FinalProjectApp
  
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                    Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("JobsForAll")));
             services.AddAutoMapper(typeof(MappingProfile));
             services.AddAuthentication(options =>
             {
@@ -92,7 +95,10 @@ namespace FinalProjectApp
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "FinalProjectApp", Version = "v1" });
             });
             services.AddMvc();
-
+           
+            // services
+            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IJobsService, JobsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

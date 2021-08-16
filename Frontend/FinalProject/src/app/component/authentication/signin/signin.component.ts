@@ -31,9 +31,9 @@ export class SigninComponent implements OnInit {
       password: this.password
     };
 
-    this.userService.findUserByEmail(this.email).subscribe(user => {
-      this.currentUser = user;
-    });
+    // this.userService.findUserByEmail(this.email).subscribe(user => {
+    //   this.currentUser = user;
+    // });
     console.log(this.currentUser)
     this.authenticateService.authorizeUser(user).subscribe(response => {
       this.storageService.setLoggedInUser(response);

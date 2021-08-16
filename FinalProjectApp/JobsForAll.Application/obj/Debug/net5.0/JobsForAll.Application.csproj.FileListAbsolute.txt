@@ -1,0 +1,17 @@
+D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\JobsForAll.Application\obj\Debug\net5.0\JobsForAll.Application.csproj.AssemblyReference.cache
+D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\JobsForAll.Application\obj\Debug\net5.0\JobsForAll.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\JobsForAll.Application\obj\Debug\net5.0\JobsForAll.Application.AssemblyInfoInputs.cache
+D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\JobsForAll.Application\obj\Debug\net5.0\JobsForAll.Application.AssemblyInfo.cs
+D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\JobsForAll.Application\obj\Debug\net5.0\JobsForAll.Application.csproj.CoreCompileInputs.cache
+D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\JobsForAll.Application\bin\Debug\net5.0\JobsForAll.Application.deps.json
+D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\JobsForAll.Application\bin\Debug\net5.0\JobsForAll.Application.dll
+D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\JobsForAll.Application\bin\Debug\net5.0\ref\JobsForAll.Application.dll
+D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\JobsForAll.Application\bin\Debug\net5.0\JobsForAll.Application.pdb
+D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\JobsForAll.Application\bin\Debug\net5.0\JobsForAll.Data.dll
+D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\JobsForAll.Application\bin\Debug\net5.0\JobsForAll.Domain.dll
+D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\JobsForAll.Application\bin\Debug\net5.0\JobsForAll.Data.pdb
+D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\JobsForAll.Application\bin\Debug\net5.0\JobsForAll.Domain.pdb
+D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\JobsForAll.Application\obj\Debug\net5.0\JobsForAll.Application.csproj.CopyComplete
+D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\JobsForAll.Application\obj\Debug\net5.0\JobsForAll.Application.dll
+D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\JobsForAll.Application\obj\Debug\net5.0\ref\JobsForAll.Application.dll
+D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\JobsForAll.Application\obj\Debug\net5.0\JobsForAll.Application.pdb

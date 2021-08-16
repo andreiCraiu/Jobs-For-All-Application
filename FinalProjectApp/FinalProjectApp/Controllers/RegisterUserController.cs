@@ -3,6 +3,8 @@ using FinalProjectApp.Data;
 using FinalProjectApp.Models;
 using FinalProjectApp.ViewModels.Authentication;
 using FinalProjectApp.ViewModels.Authenticatoin;
+using JobsForAll.Application;
+using JobsForAll.Application.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -18,39 +20,24 @@ namespace FinalProjectApp.Controllers
     [ApiController]
     public class RegisterUserController : ControllerBase
     {
-        private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly ApplicationDbContext _context;
-        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IAuthService _authenticationService;
 
-        public RegisterUserController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager,
-         ApplicationDbContext context, IHttpContextAccessor accessor)
+        public RegisterUserController(IAuthService authenticationService)
         {
-            _userManager = userManager;
-            _signInManager = signInManager;
-            _context = context;
-            _httpContextAccessor = accessor;
-
+            _authenticationService = authenticationService;
         }
 
         [Route("register")]
         [HttpPost]
-        public async Task<ActionResult> RegisterUser(RegisterRequest registeRequest)
+        public async Task<ActionResult> RegisterUser(RegisterRequest registerRequest)
         {
-            var user = new ApplicationUser
+            var registerServiceResult = await _authenticationService.RegisterUser(registerRequest);
+            if (registerServiceResult.ResponseError != null)
             {
-                Email = registeRequest.Email,
-                UserName = registeRequest.Email,
-                SecurityStamp = Guid.NewGuid().ToString()
-            };
-            var result = await _userManager.CreateAsync(user, registeRequest.Password);
-
-            if (result.Succeeded)
-            {
-                return Ok(new RegisterResponse { ConfirmationToken = user.SecurityStamp });
+                return BadRequest(registerServiceResult.ResponseError);
             }
 
-            return BadRequest();
+            return Ok(registerServiceResult.ResponseOk);
         }
 
 
@@ -61,34 +48,8 @@ namespace FinalProjectApp.Controllers
         {
             var user = (ApplicationUser)HttpContext.Items["User"];
 
-
-            if (user != null)
-            {
-                user.PhoneNumber = completeUserProfile.PhoneNumber;
-                user.Address = completeUserProfile.Address;
-                user.Postcode = completeUserProfile.PostCode;
-                user.Profession = completeUserProfile.MainProfession + "Secundary: " + completeUserProfile.SecundaryProfession;
-                user.Details = "Like: " + completeUserProfile.Hobby + ", " + completeUserProfile.FunFact;
-                user.Role = completeUserProfile.Role;
-                _context.Entry(user).State = EntityState.Modified;
-                
-                await _context.SaveChangesAsync();
-                return Ok();
-            }
-            return BadRequest();
-            if (completeUserProfile == null)
-            {
-                return BadRequest();
-            }
-
-            try
-            {
-                return Ok();
-            }
-            catch
-            {
-                return BadRequest();
-            }
+            var isUserProfileCompletedResponse = _authenticationService.CompleteUserProfile(completeUserProfile, user);
+            return isUserProfileCompletedResponse.Result.ResponseOk == true ? Ok(isUserProfileCompletedResponse.Result.ResponseOk) : BadRequest();
         }
     }
 }

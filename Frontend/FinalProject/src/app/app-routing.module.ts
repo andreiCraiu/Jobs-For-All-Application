@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './component/authentication/register/register.component';
 import { SigninComponent } from './component/authentication/signin/signin.component';
+import { ExternalUserProfileComponent } from './component/external-user-profile/external-user-profile.component';
 import { HeaderComponent } from './component/header/header.component';
 import { MainPageComponent } from './component/main-page/main-page.component';
 import { SetupRoleComponent } from './component/setup-role/setup-role.component';
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path:'main-page', component: MainPageComponent},
   {path:'user-profile', component: UserProfileComponent},
   //{path:'header', component: HeaderComponent, canActivate: [AuthenticationGuard]},
-  {path:'header', component: HeaderComponent}
+  {path:'header', component: HeaderComponent},
+  {path:'search-user-profile', component: ExternalUserProfileComponent}
 ];
 
 @NgModule({

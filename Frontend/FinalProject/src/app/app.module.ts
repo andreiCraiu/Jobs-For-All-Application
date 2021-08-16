@@ -43,6 +43,8 @@ import { ViewJobsComponent } from './component/view-jobs/view-jobs.component';
 import { RequestJobComponent } from './component/request-job/request-job.component';
 import {TextFieldModule} from '@angular/cdk/text-field';
 import {MatTableModule} from '@angular/material/table';
+import { ExternalUserProfileComponent } from './component/external-user-profile/external-user-profile.component';
+import { StarRaitingComponent } from './component/star-raiting/star-raiting.component';
 
 
 @NgModule({
@@ -59,6 +61,8 @@ import {MatTableModule} from '@angular/material/table';
     JobRequestsComponent,
     ViewJobsComponent,
     RequestJobComponent,
+    ExternalUserProfileComponent,
+    StarRaitingComponent,
   ],
   imports: [
     BrowserModule,
@@ -90,12 +94,14 @@ import {MatTableModule} from '@angular/material/table';
     ShowHidePasswordModule,
     TextFieldModule,
     MatTableModule,
+ 
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS, useClass: HttpAuthInterceptor, multi: true},
     StorageService,
     MatSnackBar,
-    MatSnackBarModule
+    MatSnackBarModule,
+    
   ],
   bootstrap: [AppComponent]
 })

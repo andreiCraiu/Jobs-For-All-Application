@@ -89,6 +89,7 @@ D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\FinalProjectApp\bin\Deb
 D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\FinalProjectApp\bin\Debug\net5.0\ref\FinalProjectApp.dll
 D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\FinalProjectApp\bin\Debug\net5.0\FinalProjectApp.pdb
 D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\FinalProjectApp\bin\Debug\net5.0\AutoMapper.dll
+D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\FinalProjectApp\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\FinalProjectApp\bin\Debug\net5.0\Humanizer.dll
 D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\FinalProjectApp\bin\Debug\net5.0\IdentityModel.dll
 D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\FinalProjectApp\bin\Debug\net5.0\IdentityServer4.dll
@@ -231,5 +232,3 @@ D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\FinalProjectApp\obj\Deb
 D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\FinalProjectApp\obj\Debug\net5.0\ref\FinalProjectApp.dll
 D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\FinalProjectApp\obj\Debug\net5.0\FinalProjectApp.pdb
 D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\FinalProjectApp\obj\Debug\net5.0\FinalProjectApp.genruntimeconfig.cache
-D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\FinalProjectApp\obj\Debug\net5.0\FinalProjectApp.csprojAssemblyReference.cache
-D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\FinalProjectApp\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

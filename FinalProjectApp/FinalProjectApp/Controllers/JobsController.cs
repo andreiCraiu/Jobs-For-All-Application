@@ -16,7 +16,8 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using FinalProjectApp.Helpers;
-
+using JobsForAll.Application;
+using JobsForAll.Application.Interfaces;
 
 namespace FinalProjectApp.Controllers
 {
@@ -24,40 +25,21 @@ namespace FinalProjectApp.Controllers
     [ApiController]
     public class JobsController : ControllerBase
     {
-        private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly ApplicationDbContext _context;
-        private readonly IConfiguration _configuration;
+        private readonly IJobsService _jobsService;
 
-        public JobsController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager,
-         ApplicationDbContext context, IConfiguration configuration)
+        public JobsController(IJobsService jobsService)
         {
-            _userManager = userManager;
-            _signInManager = signInManager;
-            _context = context;
-            _configuration = configuration;
+            _jobsService = jobsService;
         }
-
 
         [HttpPost]
         [Route("addJob")]
-     //   [Authorize(new[] { Role.JobRequester, Role.Both })]
-        public async Task<ActionResult> AddJob(Job job)
+        //   [Authorize(new[] { Role.JobRequester, Role.Both })]
+        public ActionResult AddJob(Job job)
         {
             var user = (ApplicationUser)HttpContext.Items["User"];
-         
-         
-            if (job != null && user != null)
-            {
-                var jobRequester = new JobRequester();
-                jobRequester.ApplicationUser = user;
-                jobRequester.Job = job;
-                await _context.Jobs.AddAsync(job);
-                await _context.JobRequesters.AddAsync(jobRequester);
-               await _context.SaveChangesAsync();
-             return Ok();
-            }
-            return BadRequest();
+            var isJobAdded = _jobsService.AddJob(job, user).Result.ResponseOk;
+            return isJobAdded ? Ok(isJobAdded) : BadRequest();
         }
 
         [HttpGet]
@@ -65,35 +47,16 @@ namespace FinalProjectApp.Controllers
         public IActionResult GetJobs()
         {
             var user = (ApplicationUser)HttpContext.Items["User"];
-            if(user != null)
-            {
-                var jobRequesters = from jobRequester in _context.JobRequesters
-                                    where jobRequester.ApplicationUser.Id == user.Id
-                                    select jobRequester;
-                var jobs = jobRequesters.Select(job => job.Job);
-                return Ok(jobs.ToList());
-            }
-
-            return BadRequest();
-      
+            var jobs = _jobsService.GetAllTasksForUser(user);
+            return jobs.Result.ResponseOk != null ? Ok(jobs.Result.ResponseOk): BadRequest();
         }
 
         [HttpDelete]
         [Route("deleteJob/{id}")]
         public IActionResult DeleteJob(int id)
         {
-            var job = _context.Jobs.FirstOrDefault(x => x.ID == id);
-
-            var jobRequester = _context.JobRequesters.FirstOrDefault(jobsRequests => Object.Equals(jobsRequests.Job, job));
-            if (job == null)
-                return BadRequest();
-            _context.JobRequesters.Remove((JobRequester)jobRequester);
-            _context.Jobs.Remove(job);
-            _context.SaveChanges();
-            return Ok();
+            var isJobDeletedResponse = _jobsService.DeleteJob(id);
+            return isJobDeletedResponse.Result.ResponseOk == true ? Ok(isJobDeletedResponse.Result.ResponseOk) : BadRequest();
         }
-
     }
-
-
 }

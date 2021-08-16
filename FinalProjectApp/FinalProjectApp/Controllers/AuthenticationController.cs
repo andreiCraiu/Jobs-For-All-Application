@@ -4,6 +4,8 @@ using FinalProjectApp.Models;
 using FinalProjectApp.ViewModels;
 using FinalProjectApp.ViewModels.Authentication;
 using FinalProjectApp.ViewModels.Authenticatoin;
+using JobsForAll.Application;
+using JobsForAll.Application.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -24,18 +26,11 @@ namespace FinalProjectApp.Controllers
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
-        private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly ApplicationDbContext _context;
-        private readonly IConfiguration _configuration;
+        private readonly IAuthService _authenticationService;
 
-        public AuthenticationController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager,
-         ApplicationDbContext context, IConfiguration configuration)
+        public AuthenticationController(IAuthService authenticationService)
         {
-            _userManager = userManager;
-            _signInManager = signInManager;
-            _context = context;
-            _configuration = configuration;
+            _authenticationService = authenticationService;
         }
 
 
@@ -43,16 +38,12 @@ namespace FinalProjectApp.Controllers
         [Route("confirm")]
         public async Task<ActionResult> ConfirmUser(ConfirmUserRequest confirmUserRequest)
         {
-            var toConfirm = _context.ApplicationUsers.Where(u => u.Email == confirmUserRequest.Email
-                                && u.SecurityStamp == confirmUserRequest.ConfirmationToken).FirstOrDefault();
-
-            if (toConfirm != null)
+            var serviceResult = await _authenticationService.ConfirmUser(confirmUserRequest);
+            if (serviceResult)
             {
-                toConfirm.EmailConfirmed = true;
-                _context.Entry(toConfirm).State = EntityState.Modified;
-                await _context.SaveChangesAsync();
                 return Ok();
             }
+
             return BadRequest();
         }
 
@@ -60,42 +51,13 @@ namespace FinalProjectApp.Controllers
         [Route("login")]
         public async Task<ActionResult> Login(LoginRequest loginRequest)
         {
-            var user = await _userManager.FindByEmailAsync(loginRequest.Email);
-
-            if (user != null && await _userManager.CheckPasswordAsync(user, loginRequest.Password))
+            var serviceResult = await _authenticationService.Login(loginRequest);
+            if (serviceResult.ResponseOk != null)
             {
-                var claims = new[]
-                {
-                    new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
-                    new Claim(ClaimTypes.Name, user.UserName),
-                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
-            };
-
-                var signinKey = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(_configuration["Jwt:SigningKey"]));
-
-                int expirationInMinutes = Convert.ToInt32(_configuration["Jwt:ExpiriyMinutes"]);
-                var token = new JwtSecurityToken(
-                 issuer: _configuration["Jwt:Site"],
-                 audience: _configuration["Jwt:Site"],
-                 expires: DateTime.UtcNow.AddMinutes(expirationInMinutes),
-                 signingCredentials: new SigningCredentials(signinKey, SecurityAlgorithms.HmacSha256),
-                 claims: claims
-            );
-
-
-                return Ok(
-                    new LoginResponse
-                    {
-                        Email = user.Email,
-                        ExpirationDate = token.ValidTo,
-                        JwtToken = new JwtSecurityTokenHandler().WriteToken(token)
-                    });
-
+                return Ok(serviceResult.ResponseOk);
             }
+
             return Unauthorized();
         }
     }
-
-
 }
