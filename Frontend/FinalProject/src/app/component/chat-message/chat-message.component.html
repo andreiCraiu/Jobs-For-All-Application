@@ -1,0 +1,28 @@
+<mat-drawer-container class="example-container" autosize>
+<!-- chat list -->
+  <mat-drawer #drawer class="example-sidenav" mode="side" opened>
+
+        <!-- <mat-card class="chat-item" fxLayout="row" fxLayoutAlign="space-between center" name="fontStyle"
+            aria-label="Font Style">
+
+            <igx-avatar src="https://randomuser.me/api/portraits/men/1.jpg" [roundShape]="true">
+
+            </igx-avatar>
+            <p id="chat-user-name">UserName</p>
+            <p>21:21</p>
+        </mat-card> -->
+       
+    </mat-drawer>
+
+    <!-- chat content-->
+    <div fxLayout="row" fxLayoutAlign="center center" id="send-message-content">
+        <div id="chat"></div>
+        <mat-form-field id="send-message-input">
+            <input matInput type="text">
+
+        </mat-form-field>
+        <mat-icon id="send-message-icon">send</mat-icon>
+    </div>
+
+
+</mat-drawer-container>

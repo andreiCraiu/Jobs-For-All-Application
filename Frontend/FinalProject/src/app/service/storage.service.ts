@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ApplicationUserLogin } from '../model/loginUser';
+import { User} from '../model/User';
 
 @Injectable()
 export class StorageService {
@@ -25,6 +25,6 @@ export class StorageService {
 
   getLoggedInUser() {
     var loginUser = this.getItem('loggedInUser');
-    return <ApplicationUserLogin>JSON.parse(<string>loginUser);
+    return <User>JSON.parse(<string>loginUser);
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit, TRANSLATIONS } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { RegistrationService } from 'src/app/service/registration.service';
 import { StorageService } from 'src/app/service/storage.service';
 
@@ -20,13 +20,15 @@ export class SetupRoleComponent implements OnInit {
   isJobRequester = false;
   fileAttr = null;
   roleId: number = 0;
+  emial! : any;
   outherProfessions = new FormControl();
 
   constructor(
     private _formBuilder: FormBuilder,
     private registrationService: RegistrationService,
     private storageService: StorageService,
-    private router: Router,) { }
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   states: string[] = [
     'Electrician', 'Labourer', 'Mechanic', 'Jointer', 'Glaizer', 'Plumber', 'Architect', 'Roofer',
@@ -53,6 +55,11 @@ export class SetupRoleComponent implements OnInit {
       hobby: [""],
       funFact: [""]
     });
+
+    this.route.paramMap.subscribe(param => {
+      this.emial = param.get("userMail");
+      console.log(this.emial);
+    })
   }
 
   finishUserConfiguation() {
@@ -69,8 +76,8 @@ export class SetupRoleComponent implements OnInit {
         role: this.roleId
        }
        console.log(UserProfileCompletedForWorker);
-      this.registrationService.completeUserProfile(UserProfileCompletedForWorker).subscribe(_ => {
-        this.router.navigate(['main-page']);
+      this.registrationService.completeUserProfile(UserProfileCompletedForWorker, this.emial).subscribe(_ => {
+        this.router.navigate(['']);
       }
       )}
   setIsJobRequesterValue(event: any) {

@@ -30,7 +30,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using FinalProjectApp.Helpers;
 using JobsForAll.Application;
 using JobsForAll.Application.Interfaces;
-using IAuthService = JobsForAll.Application.Interfaces.IAuthService;
+using JobsForAll.Domain.ViewModels;
 
 namespace FinalProjectApp
 {
@@ -99,6 +99,10 @@ namespace FinalProjectApp
             // services
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IJobsService, JobsService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ICommentService, CommentService>();
+
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -121,6 +125,7 @@ namespace FinalProjectApp
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<MessageHub>("/chatsocket");
             });
         }
     }

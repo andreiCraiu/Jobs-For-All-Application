@@ -1,23 +1,5 @@
 <p *ngIf="!jobs"><em>Loading...</em></p>
 
-<!-- <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="jobs">
-  <thead>
-    <tr>
-      <th>JobTitle</th>
-      <th>JobCategory</th>
-      <th>Price</th>
-      <th>Negociable</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let job of jobs">
-      <td>{{ job.jobTitle }}</td>
-      <td>{{ job.jobCategory }}</td>
-      <td>{{ job.price }}</td>
-      <td>{{ job.isPriceNegociable }}</td>
-    </tr>
-  </tbody>
-</table>  -->
 
 <table mat-table [dataSource]="jobs" class="mat-elevation-z8"> -->
 

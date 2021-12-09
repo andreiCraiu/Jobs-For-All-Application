@@ -18,8 +18,8 @@ export class RegistrationService {
     return this.httpClient.post<ApplicationUserRegister>(`${this.baseUrl}/register`, registerRequest, { headers: this.headers });
   }
 
-  public completeUserProfile(completeUserProfile: any){
+  public completeUserProfile(completeUserProfile: any, email: string){
     console.log(completeUserProfile);
-    return this.httpClient.post<any>(`${this.baseUrl}/completeUserProfile`, completeUserProfile, { headers: this.headers });
+    return this.httpClient.post<any>(`${this.baseUrl}/completeUserProfile/${email}`, completeUserProfile, { headers: this.headers });
   }
 }

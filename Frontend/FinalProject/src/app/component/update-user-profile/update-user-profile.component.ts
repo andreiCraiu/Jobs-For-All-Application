@@ -46,10 +46,10 @@ export class UpdateUserProfileComponent implements OnInit {
     console.log(this.currentUser);
     this.readonly = false;
     this.editUserFormGroup = this._formBuilder.group({
-      userName: [this.currentUser.Email],
-      phoneNumber: [this.currentUser.PhoneNumber],
-      adress: [this.currentUser.Address],
-      postcode: [this.currentUser.Postcode]
+      userName: [this.currentUser.email],
+      phoneNumber: [this.currentUser.phoneNumber],
+      adress: [this.currentUser.address],
+      postcode: [this.currentUser.postcode]
     });
   }
   updateUser() {

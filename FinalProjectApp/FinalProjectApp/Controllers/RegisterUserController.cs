@@ -21,10 +21,11 @@ namespace FinalProjectApp.Controllers
     public class RegisterUserController : ControllerBase
     {
         private readonly IAuthService _authenticationService;
-
-        public RegisterUserController(IAuthService authenticationService)
+        private readonly IUserService _userService;
+        public RegisterUserController(IAuthService authenticationService, IUserService userService)
         {
             _authenticationService = authenticationService;
+            _userService = userService;
         }
 
         [Route("register")]
@@ -42,11 +43,11 @@ namespace FinalProjectApp.Controllers
 
 
 
-        [Route("completeUserProfile")]
+        [Route("completeUserProfile/{email}")]
         [HttpPost]
-        public async Task<ActionResult> CompleteUserProfile(CompleteUserProfile completeUserProfile)
+        public async Task<ActionResult> CompleteUserProfile(CompleteUserProfile completeUserProfile, string email)
         {
-            var user = (ApplicationUser)HttpContext.Items["User"];
+            var user = _userService.GetUserByEmail(email).Result.ResponseOk;
 
             var isUserProfileCompletedResponse = _authenticationService.CompleteUserProfile(completeUserProfile, user);
             return isUserProfileCompletedResponse.Result.ResponseOk == true ? Ok(isUserProfileCompletedResponse.Result.ResponseOk) : BadRequest();

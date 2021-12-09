@@ -1,30 +1,30 @@
-<mat-drawer-container class="example-container" autosize>
-    <mat-drawer #drawer class="example-sidenav" mode="side">
-        <div id="user-jobs-menu" fxLayout="column" fxLayoutAlign="space-between center" name="fontStyle"
-            aria-label="Font Style">
-            <mat-button-toggle (click)="isRequestJob=true">
-                Request Job
-            </mat-button-toggle>
-            <mat-button-toggle (click)="isRequestJob=false">
-                View Jobs
-            </mat-button-toggle>
+    <mat-drawer-container class="example-container" autosize>
+        <mat-drawer #drawer class="example-sidenav" mode="side">
+            <div id="user-jobs-menu" fxLayout="column" fxLayoutAlign="space-between center" name="fontStyle"
+                aria-label="Font Style">
+                <mat-button-toggle (click)="isRequestJob=true">
+                    Request Job
+                </mat-button-toggle>
+                <mat-button-toggle (click)="isRequestJob=false">
+                    View Jobs
+                </mat-button-toggle>
+            </div>
+
+        </mat-drawer>
+
+        <div class="example-sidenav-content">
+
+            <button type="button" mat-button (click)="drawer.toggle()">
+                <span *ngIf="!isShowMoreActive" class="material-icons" (click)="isShowMoreActive=true">
+                    read_more
+                </span>
+                <span *ngIf="isShowMoreActive" #showLess class="material-icons" (click)="isShowMoreActive=false">
+                    unfold_less
+                </span>
+            </button>
+            
+            <app-request-job *ngIf="isRequestJob"></app-request-job>
+            <app-view-jobs *ngIf="!isRequestJob"></app-view-jobs>
+
         </div>
-
-    </mat-drawer>
-
-    <div class="example-sidenav-content">
-
-        <button type="button" mat-button (click)="drawer.toggle()">
-            <span *ngIf="!isShowMoreActive" class="material-icons" (click)="isShowMoreActive=true">
-                read_more
-            </span>
-            <span *ngIf="isShowMoreActive" #showLess class="material-icons" (click)="isShowMoreActive=false">
-                unfold_less
-            </span>
-        </button>
-        
-        <app-request-job *ngIf="isRequestJob"></app-request-job>
-        <app-view-jobs *ngIf="!isRequestJob"></app-view-jobs>
-
-    </div>
-</mat-drawer-container>
+    </mat-drawer-container>

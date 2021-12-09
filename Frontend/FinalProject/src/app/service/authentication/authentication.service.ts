@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ApplicationUserLogin } from 'src/app/model/loginUser';
+import { User } from 'src/app/model/User';
 import { ApplicationUserRegister } from 'src/app/model/registerUser';
 
 @Injectable({
@@ -16,7 +16,7 @@ export class AuthenticationService {
   constructor(private httpClient: HttpClient) { }
 
   public authorizeUser(authRequest: any){
-    return this.httpClient.post<ApplicationUserLogin>(`${this.baseApiUrlLogin}`, authRequest, { headers: this.headers });
+    return this.httpClient.post<User>(`${this.baseApiUrlLogin}`, authRequest, { headers: this.headers });
   }
 
 }

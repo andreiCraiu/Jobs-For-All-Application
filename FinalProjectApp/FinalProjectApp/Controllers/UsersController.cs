@@ -4,6 +4,7 @@ using FinalProjectApp.Models;
 using FinalProjectApp.ViewModels;
 using FinalProjectApp.ViewModels.Authentication;
 using FinalProjectApp.ViewModels.Authenticatoin;
+using JobsForAll.Application.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -28,33 +29,64 @@ namespace FinalProjectApp.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ApplicationDbContext _context;
         private readonly IConfiguration _configuration;
+        private readonly IUserService _userService;
 
         public UsersController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager,
-         ApplicationDbContext context, IConfiguration configuration)
+         ApplicationDbContext context, IConfiguration configuration, IUserService userService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _context = context;
             _configuration = configuration;
+            _userService = userService;
         }
 
+        [HttpGet]
+        [Route("getUser/{id}")]
+        public IActionResult GetUser(string id)
+        {
+            var user = _context.ApplicationUsers.FirstOrDefault(user => user.Id == id);
+            if (user != null)
+                return Ok(user);
+            return BadRequest();
+        }
 
         [HttpGet]
         [Route("getCurrentUser")]
         public IActionResult GetCurrentUser()
         {
             var user = (ApplicationUser)HttpContext.Items["User"];
-            if(user != null)
+            if (user != null)
                 return Ok(user);
             return BadRequest();
         }
 
         [HttpGet]
+        [Route("getFilteredUsers/{filterString}")]
+        public IActionResult FilterUsesr(string filterString)
+        {
+            var users = _userService.FilterUsers(filterString).Result.ResponseOk;
+            if (users != null)
+                return Ok(users);
+            return BadRequest();
+        }
+
+        [HttpGet]
+        [Route("getAllUsers")]
+        public IActionResult GetAllUsers()
+        {
+            var users = _userService.GetAllUsers().Result.ResponseOk;
+            if (users != null)
+                return Ok(users);
+            return BadRequest();
+        }
+
+        [HttpGet]
         [Route("getUserByEmail/{email}")]
-        public IActionResult GetUserByEmail(string email)
+        public async Task<ActionResult> GetUserByEmail(string email)
         {
             var user = _context.ApplicationUsers.FirstOrDefault(user => user.Email == email);
-                       
+
             if (user != null)
                 return Ok(user);
             return BadRequest();

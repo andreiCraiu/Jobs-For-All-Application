@@ -48,8 +48,8 @@ namespace JobsForAll.Application
                     user.PhoneNumber = completeUserProfile.PhoneNumber;
                     user.Address = completeUserProfile.Address;
                     user.Postcode = completeUserProfile.PostCode;
-                    user.Profession = completeUserProfile.MainProfession + "Secundary: " + completeUserProfile.SecundaryProfession;
-                    user.Details = completeUserProfile.Hobby + ", " + completeUserProfile.FunFact;
+                    user.Profession = completeUserProfile.MainProfession + ", " + completeUserProfile.SecundaryProfession + "(Secundary)";
+                    user.Details = "Hobby: " + completeUserProfile.Hobby + ", Fun fact: " + completeUserProfile.FunFact;
                     user.Role = completeUserProfile.Role;
                     _context.Entry(user).State = EntityState.Modified;
 
@@ -91,7 +91,7 @@ namespace JobsForAll.Application
         public async Task<ServiceResponse<LoginResponse, string>> Login(LoginRequest loginRequest)
         {
             var serviceResponse = new ServiceResponse<LoginResponse, string>();
-            ApplicationUser user = await _userManager.FindByEmailAsync(loginRequest.Email);
+            var user = _context.ApplicationUsers.FirstOrDefault(x => x.Email == loginRequest.Email);
 
             if (user != null && await _userManager.CheckPasswordAsync(user, loginRequest.Password))
             {

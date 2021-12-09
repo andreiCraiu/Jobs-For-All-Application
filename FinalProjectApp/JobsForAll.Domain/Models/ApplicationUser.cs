@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using JobsForAll.Domain.Models;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,8 @@ namespace FinalProjectApp.Models
         public string Postcode { get; set; }
         public string Profession { get; set; }
         public string Details { get; set; }
+        public int Rating { get; set; }
+        public int JobsFinished { get; set; }
 
         public Role Role { get; set; }
     }

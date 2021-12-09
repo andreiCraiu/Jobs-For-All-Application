@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './job-requests.component.html',
   styleUrls: ['./job-requests.component.scss']
 })
+
 export class JobRequestsComponent implements OnInit {
   isShowMoreActive = true;
   isRequestJob = true;

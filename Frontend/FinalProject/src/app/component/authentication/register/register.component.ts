@@ -31,8 +31,8 @@ export class RegisterComponent implements OnInit {
     };
 
     this.registerService.registerUser(registerRequest).subscribe(_ => {
+      this.router.navigate(["setup-role",{userMail: this.email}]);
       this.snackBar.open('User Registered succesfully', '', { duration: 2000 });
-      this.router.navigate(["setup-role"]);
     })
 
   }

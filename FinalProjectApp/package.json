@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "angular-input-stars": "^1.5.5",
+    "ngx-input-star-rating": "^0.0.3"
+  }
+}

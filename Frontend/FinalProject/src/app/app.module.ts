@@ -30,22 +30,21 @@ import {MatIconModule} from '@angular/material/icon';
 import { UserProfileComponent } from './component/user-profile/user-profile.component';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { NavbarModule, WavesModule, ButtonsModule } from 'angular-bootstrap-md';
-import { IconsModule } from 'angular-bootstrap-md';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { IgxAvatarModule } from 'igniteui-angular';
 import { UpdateUserProfileComponent } from './component/update-user-profile/update-user-profile.component';
 import { UpdateUserAccountComponent } from './component/update-user-account/update-user-account.component';
-import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 import { JobRequestsComponent } from './component/job-requests/job-requests.component';
 import { ViewJobsComponent } from './component/view-jobs/view-jobs.component';
 import { RequestJobComponent } from './component/request-job/request-job.component';
 import {TextFieldModule} from '@angular/cdk/text-field';
 import {MatTableModule} from '@angular/material/table';
 import { ExternalUserProfileComponent } from './component/external-user-profile/external-user-profile.component';
-import { StarRaitingComponent } from './component/star-raiting/star-raiting.component';
-
+import { RatingStarComponent } from './component/rating-star/rating-star.component';
+import { ChatMessageComponent } from './component/chat-message/chat-message.component';
+import { SearchUserComponent } from './component/search-user/search-user.component';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -62,7 +61,10 @@ import { StarRaitingComponent } from './component/star-raiting/star-raiting.comp
     ViewJobsComponent,
     RequestJobComponent,
     ExternalUserProfileComponent,
-    StarRaitingComponent,
+    RatingStarComponent,
+    ChatMessageComponent,
+    SearchUserComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -84,14 +86,9 @@ import { StarRaitingComponent } from './component/star-raiting/star-raiting.comp
     MatIconModule,
     CommonModule,
     MatFormFieldModule,
-    NavbarModule,
-    WavesModule,
-    ButtonsModule,
-    IconsModule,
     MatSidenavModule,
     MatButtonToggleModule,
     IgxAvatarModule,
-    ShowHidePasswordModule,
     TextFieldModule,
     MatTableModule,
  
@@ -99,6 +96,7 @@ import { StarRaitingComponent } from './component/star-raiting/star-raiting.comp
   providers: [
     {provide:HTTP_INTERCEPTORS, useClass: HttpAuthInterceptor, multi: true},
     StorageService,
+    SearchUserComponent,
     MatSnackBar,
     MatSnackBarModule,
     
@@ -107,4 +105,5 @@ import { StarRaitingComponent } from './component/star-raiting/star-raiting.comp
 })
 export class AppModule { }
  {
+   
 }

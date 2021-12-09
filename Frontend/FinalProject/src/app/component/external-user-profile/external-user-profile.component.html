@@ -1,7 +1,8 @@
 <mat-card class="user-profile">
     <mat-card-header>
-        <mat-card-title>UserName</mat-card-title>
-        <mat-card-subtitle>Role</mat-card-subtitle>
+        <mat-card-title>{{userName}}</mat-card-title>
+        <mat-card-subtitle>{{role}}</mat-card-subtitle>
+        <mat-icon id="chat-icon" (click)="isChatVisible=true"> chat</mat-icon>
     </mat-card-header>
 
     <mat-card-content fxLayout="column">
@@ -9,23 +10,39 @@
             <igx-avatar id="avatar" src="https://randomuser.me/api/portraits/men/1.jpg" [roundShape]="true"
                 size="large">
             </igx-avatar>
+
         </div>
 
+
         <div id="description-content">
-            <p>Email: </p>
-            <p>Address: </p>
-            <p>Profession: </p>
-            <p>Description: </p>
+            <p>Email: {{email}} </p>
+            <p>Address: {{address}} </p>
+            <p>Profession: {{profession}}</p>
+            <p>{{description}} </p>
         </div>
 
         <div id="review-content">
-          <p>Nubmer of jobs finished: </p>
-          <app-star-raiting></app-star-raiting>
+            <p>Nubmer of jobs finished: {{jobsFinished}}</p>
 
+            <app-rating-star></app-rating-star>
         </div>
 
-        <div id="comments-content">
-
+        <div>
+            <p>Comments</p>
+            <mat-card class="coments-content">
+                <p>Add comment: </p>
+                <mat-form-field id="leave-comment-input" class="example-full-width" appearance="fill">
+                    <mat-label>Leave a comment</mat-label>
+                    <textarea  matInput [(ngModel)]="contentForCommentToBeSent" ></textarea>
+                  </mat-form-field>
+                  <mat-button-toggle id="add-comment-btn"(click)="addComment()">
+                    Add Comment
+                </mat-button-toggle>
+            </mat-card>
+            <mat-card id="comment" class="coments-content" *ngFor="let comment of comments">
+                <p id=comment_content>{{comment.author}}</p>
+                <p id="comment_user_name">{{comment.body}}</p>
+            </mat-card>
         </div>
     </mat-card-content>
 </mat-card>

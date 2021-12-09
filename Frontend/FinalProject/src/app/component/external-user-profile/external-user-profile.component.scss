@@ -1,5 +1,15 @@
 .user-profile{
-    height: 95%;
-    width: 60%;
+    width: 50%;
     margin: auto;
+}
+#chat-icon:hover{
+    cursor:pointer;
+} 
+
+#leave-comment-input{
+    width: 100%;
+}
+
+.coments-content{
+    margin-bottom: 5%;
 }
