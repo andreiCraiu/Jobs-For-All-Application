@@ -1,32 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Repos\\Code\\Final Project\\.NET-Project\\FinalProjectApp\\JobsForAll.Data\\JobsForAll.Data.csproj": {}
+    "C:\\Code\\FindJobApp\\FinalProjectApp\\JobsForAll.Data\\JobsForAll.Data.csproj": {}
   },
   "projects": {
-    "D:\\Repos\\Code\\Final Project\\.NET-Project\\FinalProjectApp\\JobsForAll.Data\\JobsForAll.Data.csproj": {
+    "C:\\Code\\FindJobApp\\FinalProjectApp\\JobsForAll.Data\\JobsForAll.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Repos\\Code\\Final Project\\.NET-Project\\FinalProjectApp\\JobsForAll.Data\\JobsForAll.Data.csproj",
+        "projectUniqueName": "C:\\Code\\FindJobApp\\FinalProjectApp\\JobsForAll.Data\\JobsForAll.Data.csproj",
         "projectName": "JobsForAll.Data",
-        "projectPath": "D:\\Repos\\Code\\Final Project\\.NET-Project\\FinalProjectApp\\JobsForAll.Data\\JobsForAll.Data.csproj",
-        "packagesPath": "C:\\Users\\craiua\\.nuget\\packages\\",
-        "outputPath": "D:\\Repos\\Code\\Final Project\\.NET-Project\\FinalProjectApp\\JobsForAll.Data\\obj\\",
+        "projectPath": "C:\\Code\\FindJobApp\\FinalProjectApp\\JobsForAll.Data\\JobsForAll.Data.csproj",
+        "packagesPath": "C:\\Users\\craiu\\.nuget\\packages\\",
+        "outputPath": "C:\\Code\\FindJobApp\\FinalProjectApp\\JobsForAll.Data\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\craiua\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.1.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\craiu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\DevExpress 19.1\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -34,8 +28,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\Repos\\Code\\Final Project\\.NET-Project\\FinalProjectApp\\JobsForAll.Domain\\JobsForAll.Domain.csproj": {
-                "projectPath": "D:\\Repos\\Code\\Final Project\\.NET-Project\\FinalProjectApp\\JobsForAll.Domain\\JobsForAll.Domain.csproj"
+              "C:\\Code\\FindJobApp\\FinalProjectApp\\JobsForAll.Domain\\JobsForAll.Domain.csproj": {
+                "projectPath": "C:\\Code\\FindJobApp\\FinalProjectApp\\JobsForAll.Domain\\JobsForAll.Domain.csproj"
               }
             }
           }
@@ -69,38 +63,46 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Repos\\Code\\Final Project\\.NET-Project\\FinalProjectApp\\JobsForAll.Domain\\JobsForAll.Domain.csproj": {
+    "C:\\Code\\FindJobApp\\FinalProjectApp\\JobsForAll.Domain\\JobsForAll.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Repos\\Code\\Final Project\\.NET-Project\\FinalProjectApp\\JobsForAll.Domain\\JobsForAll.Domain.csproj",
+        "projectUniqueName": "C:\\Code\\FindJobApp\\FinalProjectApp\\JobsForAll.Domain\\JobsForAll.Domain.csproj",
         "projectName": "JobsForAll.Domain",
-        "projectPath": "D:\\Repos\\Code\\Final Project\\.NET-Project\\FinalProjectApp\\JobsForAll.Domain\\JobsForAll.Domain.csproj",
-        "packagesPath": "C:\\Users\\craiua\\.nuget\\packages\\",
-        "outputPath": "D:\\Repos\\Code\\Final Project\\.NET-Project\\FinalProjectApp\\JobsForAll.Domain\\obj\\",
+        "projectPath": "C:\\Code\\FindJobApp\\FinalProjectApp\\JobsForAll.Domain\\JobsForAll.Domain.csproj",
+        "packagesPath": "C:\\Users\\craiu\\.nuget\\packages\\",
+        "outputPath": "C:\\Code\\FindJobApp\\FinalProjectApp\\JobsForAll.Domain\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\craiua\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.1.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\craiu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\DevExpress 19.1\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -143,12 +145,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

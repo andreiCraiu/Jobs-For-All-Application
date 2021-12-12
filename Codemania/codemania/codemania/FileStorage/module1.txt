@@ -1,8 +1,0 @@
-﻿Se citește de la tastatură un numar natural n. Dacă n este mai mare decat 100 afișati textul "> 100".
-În caz contrar afișați textul "< 100".
-
-Date de intrare: n de tip int
-
-Exemplu: n = 50           Exemplu: n = 150
-Output: < 100             Output: > 100
-

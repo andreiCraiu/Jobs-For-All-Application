@@ -15,3 +15,20 @@ D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\JobsForAll.Application\
 D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\JobsForAll.Application\obj\Debug\net5.0\JobsForAll.Application.dll
 D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\JobsForAll.Application\obj\Debug\net5.0\ref\JobsForAll.Application.dll
 D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\JobsForAll.Application\obj\Debug\net5.0\JobsForAll.Application.pdb
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Application\bin\Debug\net5.0\JobsForAll.Application.deps.json
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Application\bin\Debug\net5.0\JobsForAll.Application.dll
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Application\bin\Debug\net5.0\ref\JobsForAll.Application.dll
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Application\bin\Debug\net5.0\JobsForAll.Application.pdb
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Application\bin\Debug\net5.0\JobsForAll.Data.dll
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Application\bin\Debug\net5.0\JobsForAll.Domain.dll
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Application\bin\Debug\net5.0\JobsForAll.Data.pdb
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Application\bin\Debug\net5.0\JobsForAll.Domain.pdb
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Application\obj\Debug\net5.0\JobsForAll.Application.csproj.AssemblyReference.cache
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Application\obj\Debug\net5.0\JobsForAll.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Application\obj\Debug\net5.0\JobsForAll.Application.AssemblyInfoInputs.cache
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Application\obj\Debug\net5.0\JobsForAll.Application.AssemblyInfo.cs
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Application\obj\Debug\net5.0\JobsForAll.Application.csproj.CoreCompileInputs.cache
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Application\obj\Debug\net5.0\JobsForAll.Application.csproj.CopyComplete
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Application\obj\Debug\net5.0\JobsForAll.Application.dll
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Application\obj\Debug\net5.0\ref\JobsForAll.Application.dll
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Application\obj\Debug\net5.0\JobsForAll.Application.pdb

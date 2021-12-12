@@ -13,3 +13,18 @@ D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\JobsForAll.Data\obj\Deb
 D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\JobsForAll.Data\bin\Debug\net5.0\JobsForAll.Domain.dll
 D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\JobsForAll.Data\bin\Debug\net5.0\JobsForAll.Domain.pdb
 D:\Repos\Code\Final Project\.NET-Project\FinalProjectApp\JobsForAll.Data\obj\Debug\net5.0\JobsForAll.Data.csproj.CopyComplete
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Data\bin\Debug\net5.0\JobsForAll.Data.deps.json
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Data\bin\Debug\net5.0\JobsForAll.Data.dll
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Data\bin\Debug\net5.0\ref\JobsForAll.Data.dll
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Data\bin\Debug\net5.0\JobsForAll.Data.pdb
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Data\bin\Debug\net5.0\JobsForAll.Domain.dll
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Data\bin\Debug\net5.0\JobsForAll.Domain.pdb
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Data\obj\Debug\net5.0\JobsForAll.Data.csproj.AssemblyReference.cache
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Data\obj\Debug\net5.0\JobsForAll.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Data\obj\Debug\net5.0\JobsForAll.Data.AssemblyInfoInputs.cache
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Data\obj\Debug\net5.0\JobsForAll.Data.AssemblyInfo.cs
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Data\obj\Debug\net5.0\JobsForAll.Data.csproj.CoreCompileInputs.cache
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Data\obj\Debug\net5.0\JobsForAll.Data.csproj.CopyComplete
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Data\obj\Debug\net5.0\JobsForAll.Data.dll
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Data\obj\Debug\net5.0\ref\JobsForAll.Data.dll
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Data\obj\Debug\net5.0\JobsForAll.Data.pdb
