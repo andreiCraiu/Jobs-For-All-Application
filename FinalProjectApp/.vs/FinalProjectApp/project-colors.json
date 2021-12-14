@@ -5,7 +5,22 @@
       "ProjectGuid": "834e3b7d-c691-4a8a-9447-f248cd046dbf",
       "DisplayName": "JobsForAll",
       "ColorIndex": 0
+    },
+    "5740d92b-cb1a-4942-b511-bfd75a4beb4e": {
+      "ProjectGuid": "5740d92b-cb1a-4942-b511-bfd75a4beb4e",
+      "DisplayName": "JobsForAll.Domain",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "54c50675-9752-4cfd-a07f-875c85b07c39": {
+      "ProjectGuid": "54c50675-9752-4cfd-a07f-875c85b07c39",
+      "DisplayName": "JobsForAll.Data",
+      "ColorIndex": 2
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 3
 }

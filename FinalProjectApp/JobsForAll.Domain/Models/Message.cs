@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JobsForAll.Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -15,5 +16,7 @@ namespace FinalProjectApp.Models
 
         public ApplicationUser Receiver { get; set; }
         public string ReceiverId { get; set; }
+        public Chat Chat { get; set; }
+        public int ChatId { get; set; }
     }
 }

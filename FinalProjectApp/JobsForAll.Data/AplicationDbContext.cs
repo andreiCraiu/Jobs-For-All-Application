@@ -17,9 +17,11 @@ namespace FinalProjectApp.Data
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<Job> Jobs { get; set; }
         public DbSet<JobRequester> JobRequesters { get; set; }
-        public DbSet<Message> Messages { get; set; }
         public DbSet<UserComment> UserComments { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<Chat> Chat { get; set; }   
+        public DbSet<Message> Messages { get; set; }
+        public DbSet<Participants> Participants { get; set; }
 
 
         public ApplicationDbContext(

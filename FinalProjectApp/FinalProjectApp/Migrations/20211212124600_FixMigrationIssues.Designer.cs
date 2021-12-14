@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JobsForAll.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210825074014_AddRatingProperty")]
-    partial class AddRatingProperty
+    [Migration("20211212124600_FixMigrationIssues")]
+    partial class FixMigrationIssues
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -45,6 +45,9 @@ namespace JobsForAll.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<int>("JobsFinished")
+                        .HasColumnType("int");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -160,6 +163,9 @@ namespace JobsForAll.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("ChatId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
 
@@ -173,6 +179,8 @@ namespace JobsForAll.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("ChatId");
 
                     b.HasIndex("ReceiverId");
 
@@ -284,6 +292,21 @@ namespace JobsForAll.Migrations
                     b.ToTable("PersistedGrants");
                 });
 
+            modelBuilder.Entity("JobsForAll.Domain.Models.Chat", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Chat");
+                });
+
             modelBuilder.Entity("JobsForAll.Domain.Models.Comment", b =>
                 {
                     b.Property<int>("Id")
@@ -291,10 +314,13 @@ namespace JobsForAll.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Author")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Body")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Dislik")
+                    b.Property<int>("Dislike")
                         .HasColumnType("int");
 
                     b.Property<int>("Like")
@@ -302,7 +328,29 @@ namespace JobsForAll.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Comment");
+                    b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("JobsForAll.Domain.Models.Participants", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("ChatID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ChatID");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Participants");
                 });
 
             modelBuilder.Entity("JobsForAll.Domain.Models.UserComment", b =>
@@ -479,6 +527,12 @@ namespace JobsForAll.Migrations
 
             modelBuilder.Entity("FinalProjectApp.Models.Message", b =>
                 {
+                    b.HasOne("JobsForAll.Domain.Models.Chat", "Chat")
+                        .WithMany()
+                        .HasForeignKey("ChatId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("FinalProjectApp.Models.ApplicationUser", "Receiver")
                         .WithMany()
                         .HasForeignKey("ReceiverId");
@@ -487,9 +541,26 @@ namespace JobsForAll.Migrations
                         .WithMany()
                         .HasForeignKey("SenderId");
 
+                    b.Navigation("Chat");
+
                     b.Navigation("Receiver");
 
                     b.Navigation("Sender");
+                });
+
+            modelBuilder.Entity("JobsForAll.Domain.Models.Participants", b =>
+                {
+                    b.HasOne("JobsForAll.Domain.Models.Chat", "Chat")
+                        .WithMany()
+                        .HasForeignKey("ChatID");
+
+                    b.HasOne("FinalProjectApp.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Chat");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("JobsForAll.Domain.Models.UserComment", b =>

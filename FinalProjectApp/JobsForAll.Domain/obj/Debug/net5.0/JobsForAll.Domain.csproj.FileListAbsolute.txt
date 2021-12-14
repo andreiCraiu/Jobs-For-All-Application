@@ -14,7 +14,6 @@ C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Domain\bin\Debug\net5.0\JobsForAll
 C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Domain\bin\Debug\net5.0\JobsForAll.Domain.dll
 C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Domain\bin\Debug\net5.0\ref\JobsForAll.Domain.dll
 C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Domain\bin\Debug\net5.0\JobsForAll.Domain.pdb
-C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Domain\obj\Debug\net5.0\JobsForAll.Domain.csproj.AssemblyReference.cache
 C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Domain\obj\Debug\net5.0\JobsForAll.Domain.GeneratedMSBuildEditorConfig.editorconfig
 C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Domain\obj\Debug\net5.0\JobsForAll.Domain.AssemblyInfoInputs.cache
 C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Domain\obj\Debug\net5.0\JobsForAll.Domain.AssemblyInfo.cs

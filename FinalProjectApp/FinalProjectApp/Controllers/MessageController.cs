@@ -1,5 +1,6 @@
 ﻿using FinalProjectApp.Data;
 using FinalProjectApp.Models;
+using JobsForAll.Domain.Models;
 using JobsForAll.Domain.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
@@ -27,15 +28,24 @@ namespace JobsForAll.Controllers
         public IActionResult Insert(MessageViewModel message)
         {
             var user = (ApplicationUser)HttpContext.Items["User"];
-
+            var receiver = _context.Users.FirstOrDefault(user => user.Id == message.ReceiverId);
+            var chat = new Chat();
+            if (receiver != null)
+            {
+                chat.Name = receiver.UserName;
+                _context.Chat.Add(chat);
+                _context.SaveChanges();
+            }
+            
             var databaseMessage = new Message
             {
                 Content = message.Content,
                 ReceiverId = message.ReceiverId,
                 SenderId = user.Id,
-                SendTime = DateTime.Now
+                SendTime = DateTime.Now,
+                ChatId = chat.ID
             };
-
+           
             _context.Messages.Add(databaseMessage);
             _context.SaveChanges();
 

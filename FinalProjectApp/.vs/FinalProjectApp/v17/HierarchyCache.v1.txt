@@ -1,0 +1,251 @@
+﻿++Solution 'FinalProjectApp' ‎(4 of 4 projects)
+i:{00000000-0000-0000-0000-000000000000}:FinalProjectApp.sln
+++JobsForAll
+i:{00000000-0000-0000-0000-000000000000}:JobsForAll
+++Connected Services 
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:>875
+++Dependencies
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:>874
+i:{54c50675-9752-4cfd-a07f-875c85b07c39}:>595
+i:{9d8856f0-7be8-4a1a-ac1c-eb22f445bf6a}:>593
+i:{5740d92b-cb1a-4942-b511-bfd75a4beb4e}:>594
+++Properties
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:c:\code\findjobapp\finalprojectapp\finalprojectapp\properties\
+++Controllers
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:c:\code\findjobapp\finalprojectapp\finalprojectapp\controllers\
+++AuthenticationController.cs
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:c:\code\findjobapp\finalprojectapp\finalprojectapp\controllers\authenticationcontroller.cs
+++CommentController.cs
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:c:\code\findjobapp\finalprojectapp\finalprojectapp\controllers\commentcontroller.cs
+++JobsController.cs
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:c:\code\findjobapp\finalprojectapp\finalprojectapp\controllers\jobscontroller.cs
+++MessageController.cs
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:c:\code\findjobapp\finalprojectapp\finalprojectapp\controllers\messagecontroller.cs
+++RegisterUserController.cs
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:c:\code\findjobapp\finalprojectapp\finalprojectapp\controllers\registerusercontroller.cs
+++UsersController.cs
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:c:\code\findjobapp\finalprojectapp\finalprojectapp\controllers\userscontroller.cs
+++WeatherForecastController.cs
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:c:\code\findjobapp\finalprojectapp\finalprojectapp\controllers\weatherforecastcontroller.cs
+++Helpers
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:c:\code\findjobapp\finalprojectapp\finalprojectapp\helpers\
+++Migrations
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:c:\code\findjobapp\finalprojectapp\finalprojectapp\migrations\
+++20210818151247_FixMigrations.cs
+++20210825073903_AddCommentTable.cs
+++20210825074014_AddRatingProperty.cs
+++20210825074247_AddJobsFinishedColumn.cs
+++20210825120758_RenameColumn.cs
+++20210825131128_AddAuthor.cs
+++ApplicationDbContextModelSnapshot.cs
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:c:\code\findjobapp\finalprojectapp\finalprojectapp\migrations\applicationdbcontextmodelsnapshot.cs
+++appsettings.json
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:c:\code\findjobapp\finalprojectapp\finalprojectapp\appsettings.json
+++appsettings.Development.json
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:c:\code\findjobapp\finalprojectapp\finalprojectapp\appsettings.development.json
+++MappingProfile.cs
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:c:\code\findjobapp\finalprojectapp\finalprojectapp\mappingprofile.cs
+++Program.cs
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:c:\code\findjobapp\finalprojectapp\finalprojectapp\program.cs
+++Startup.cs
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:c:\code\findjobapp\finalprojectapp\finalprojectapp\startup.cs
+++tempkey.jwk
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:c:\code\findjobapp\finalprojectapp\finalprojectapp\tempkey.jwk
+++WeatherForecast.cs
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:c:\code\findjobapp\finalprojectapp\finalprojectapp\weatherforecast.cs
+++No service dependencies discovered
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:>876
+++Analyzers
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:analyzers
+i:{54c50675-9752-4cfd-a07f-875c85b07c39}:analyzers
+i:{9d8856f0-7be8-4a1a-ac1c-eb22f445bf6a}:analyzers
+i:{5740d92b-cb1a-4942-b511-bfd75a4beb4e}:analyzers
+++Frameworks
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:frameworks
+i:{54c50675-9752-4cfd-a07f-875c85b07c39}:frameworks
+i:{9d8856f0-7be8-4a1a-ac1c-eb22f445bf6a}:frameworks
+i:{5740d92b-cb1a-4942-b511-bfd75a4beb4e}:frameworks
+++Packages
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:packages
+i:{54c50675-9752-4cfd-a07f-875c85b07c39}:packages
+i:{9d8856f0-7be8-4a1a-ac1c-eb22f445bf6a}:packages
+i:{5740d92b-cb1a-4942-b511-bfd75a4beb4e}:packages
+++Projects
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:projects
+i:{54c50675-9752-4cfd-a07f-875c85b07c39}:projects
+i:{9d8856f0-7be8-4a1a-ac1c-eb22f445bf6a}:projects
+++launchSettings.json
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:c:\code\findjobapp\finalprojectapp\finalprojectapp\properties\launchsettings.json
+++AuthorizeAttribute.cs
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:c:\code\findjobapp\finalprojectapp\finalprojectapp\helpers\authorizeattribute.cs
+++JwtMiddleware.cs
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:c:\code\findjobapp\finalprojectapp\finalprojectapp\helpers\jwtmiddleware.cs
+++20210818151247_FixMigrations.Designer.cs
+++20210825073903_AddCommentTable.Designer.cs
+++20210825074014_AddRatingProperty.Designer.cs
+++20210825074247_AddJobsFinishedColumn.Designer.cs
+++20210825120758_RenameColumn.Designer.cs
+++20210825131128_AddAuthor.Designer.cs
+++Microsoft.AspNetCore.Analyzers
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.analyzers.dll
+++Microsoft.AspNetCore.Components.Analyzers
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.components.analyzers.dll
+++Microsoft.AspNetCore.Mvc.Analyzers
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.mvc.analyzers.dll
+++Microsoft.CodeAnalysis.Analyzers
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:c:\users\craiu\.nuget\packages\microsoft.codeanalysis.analyzers\3.0.0\analyzers\dotnet\cs\microsoft.codeanalysis.analyzers.dll
+++Microsoft.CodeAnalysis.CSharp.Analyzers
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:c:\users\craiu\.nuget\packages\microsoft.codeanalysis.analyzers\3.0.0\analyzers\dotnet\cs\microsoft.codeanalysis.csharp.analyzers.dll
+++Microsoft.CodeAnalysis.CSharp.NetAnalyzers
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
+i:{54c50675-9752-4cfd-a07f-875c85b07c39}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
+i:{9d8856f0-7be8-4a1a-ac1c-eb22f445bf6a}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
+i:{5740d92b-cb1a-4942-b511-bfd75a4beb4e}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
+++Microsoft.CodeAnalysis.NetAnalyzers
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
+i:{54c50675-9752-4cfd-a07f-875c85b07c39}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
+i:{9d8856f0-7be8-4a1a-ac1c-eb22f445bf6a}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
+i:{5740d92b-cb1a-4942-b511-bfd75a4beb4e}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
+++Microsoft.EntityFrameworkCore.Analyzers
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:c:\users\craiu\.nuget\packages\microsoft.entityframeworkcore.analyzers\5.0.9\analyzers\dotnet\cs\microsoft.entityframeworkcore.analyzers.dll
+i:{54c50675-9752-4cfd-a07f-875c85b07c39}:c:\users\craiu\.nuget\packages\microsoft.entityframeworkcore.analyzers\5.0.9\analyzers\dotnet\cs\microsoft.entityframeworkcore.analyzers.dll
+i:{9d8856f0-7be8-4a1a-ac1c-eb22f445bf6a}:c:\users\craiu\.nuget\packages\microsoft.entityframeworkcore.analyzers\5.0.9\analyzers\dotnet\cs\microsoft.entityframeworkcore.analyzers.dll
+i:{5740d92b-cb1a-4942-b511-bfd75a4beb4e}:c:\users\craiu\.nuget\packages\microsoft.entityframeworkcore.analyzers\3.1.0\analyzers\dotnet\cs\microsoft.entityframeworkcore.analyzers.dll
+++Microsoft.AspNetCore.App
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:c:\code\findjobapp\finalprojectapp\finalprojectapp\microsoft.aspnetcore.app
+++Microsoft.NETCore.App
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:c:\code\findjobapp\finalprojectapp\finalprojectapp\microsoft.netcore.app
+i:{54c50675-9752-4cfd-a07f-875c85b07c39}:c:\code\findjobapp\finalprojectapp\jobsforall.data\microsoft.netcore.app
+i:{9d8856f0-7be8-4a1a-ac1c-eb22f445bf6a}:c:\code\findjobapp\finalprojectapp\jobsforall.application\microsoft.netcore.app
+i:{5740d92b-cb1a-4942-b511-bfd75a4beb4e}:c:\code\findjobapp\finalprojectapp\jobsforall.domain\microsoft.netcore.app
+++AutoMapper.Extensions.Microsoft.DependencyInjection (8.1.1)
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:>927
+++IdentityServer4.EntityFramework.Storage (4.1.2)
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:>924
+i:{5740d92b-cb1a-4942-b511-bfd75a4beb4e}:>896
+++Microsoft.AspNetCore.ApiAuthorization.IdentityServer (5.0.9)
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:>933
+i:{54c50675-9752-4cfd-a07f-875c85b07c39}:>903
+++Microsoft.AspNetCore.Authentication (2.2.0)
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:>929
+++Microsoft.AspNetCore.Authentication.JwtBearer (5.0.9)
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:>930
+i:{9d8856f0-7be8-4a1a-ac1c-eb22f445bf6a}:>905
+++Microsoft.EntityFrameworkCore (5.0.9)
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:>925
+++Microsoft.EntityFrameworkCore.SqlServer (5.0.9)
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:>926
+i:{54c50675-9752-4cfd-a07f-875c85b07c39}:>901
+++Microsoft.EntityFrameworkCore.Tools (5.0.9)
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:>931
+++Microsoft.VisualStudio.Web.CodeGeneration.Design (5.0.2)
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:>932
+++Swashbuckle.AspNetCore (5.6.3)
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:>928
+++JobsForAll.Application
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:c:\code\findjobapp\finalprojectapp\jobsforall.application\bin\debug\net5.0\jobsforall.application.dll
+i:{00000000-0000-0000-0000-000000000000}:JobsForAll.Application
+++JobsForAll.Data
+i:{00000000-0000-0000-0000-000000000000}:JobsForAll.Data
+i:{9d8856f0-7be8-4a1a-ac1c-eb22f445bf6a}:c:\code\findjobapp\finalprojectapp\jobsforall.data\bin\debug\net5.0\jobsforall.data.dll
+++Interfaces
+i:{54c50675-9752-4cfd-a07f-875c85b07c39}:c:\code\findjobapp\finalprojectapp\jobsforall.data\interfaces\
+i:{9d8856f0-7be8-4a1a-ac1c-eb22f445bf6a}:c:\code\findjobapp\finalprojectapp\jobsforall.application\interfaces\
+++AplicationDbContext.cs
+i:{54c50675-9752-4cfd-a07f-875c85b07c39}:c:\code\findjobapp\finalprojectapp\jobsforall.data\aplicationdbcontext.cs
+++JobsForAll.Domain
+i:{54c50675-9752-4cfd-a07f-875c85b07c39}:c:\code\findjobapp\finalprojectapp\jobsforall.domain\bin\debug\net5.0\jobsforall.domain.dll
+i:{9d8856f0-7be8-4a1a-ac1c-eb22f445bf6a}:c:\code\findjobapp\finalprojectapp\jobsforall.domain\bin\debug\net5.0\jobsforall.domain.dll
+i:{00000000-0000-0000-0000-000000000000}:JobsForAll.Domain
+++AuthService.cs
+i:{9d8856f0-7be8-4a1a-ac1c-eb22f445bf6a}:c:\code\findjobapp\finalprojectapp\jobsforall.application\authservice.cs
+++CommentService.cs
+i:{9d8856f0-7be8-4a1a-ac1c-eb22f445bf6a}:c:\code\findjobapp\finalprojectapp\jobsforall.application\commentservice.cs
+++Exception.cs
+i:{9d8856f0-7be8-4a1a-ac1c-eb22f445bf6a}:c:\code\findjobapp\finalprojectapp\jobsforall.application\exception.cs
+++JobsService.cs
+i:{9d8856f0-7be8-4a1a-ac1c-eb22f445bf6a}:c:\code\findjobapp\finalprojectapp\jobsforall.application\jobsservice.cs
+++ServiceResponse.cs
+i:{9d8856f0-7be8-4a1a-ac1c-eb22f445bf6a}:c:\code\findjobapp\finalprojectapp\jobsforall.application\serviceresponse.cs
+++UserService.cs
+i:{9d8856f0-7be8-4a1a-ac1c-eb22f445bf6a}:c:\code\findjobapp\finalprojectapp\jobsforall.application\userservice.cs
+++IAuthService.cs
+i:{9d8856f0-7be8-4a1a-ac1c-eb22f445bf6a}:c:\code\findjobapp\finalprojectapp\jobsforall.application\interfaces\iauthservice.cs
+++ICommentService.cs
+i:{9d8856f0-7be8-4a1a-ac1c-eb22f445bf6a}:c:\code\findjobapp\finalprojectapp\jobsforall.application\interfaces\icommentservice.cs
+++IJobsService.cs
+i:{9d8856f0-7be8-4a1a-ac1c-eb22f445bf6a}:c:\code\findjobapp\finalprojectapp\jobsforall.application\interfaces\ijobsservice.cs
+++IUserService.cs
+i:{9d8856f0-7be8-4a1a-ac1c-eb22f445bf6a}:c:\code\findjobapp\finalprojectapp\jobsforall.application\interfaces\iuserservice.cs
+++Microsoft.AspNetCore.Identity (2.2.0)
+i:{9d8856f0-7be8-4a1a-ac1c-eb22f445bf6a}:>904
+++System.IdentityModel.Tokens.Jwt (6.12.0)
+i:{9d8856f0-7be8-4a1a-ac1c-eb22f445bf6a}:>902
+++Models
+i:{5740d92b-cb1a-4942-b511-bfd75a4beb4e}:c:\code\findjobapp\finalprojectapp\jobsforall.domain\models\
+++ViewModels
+i:{5740d92b-cb1a-4942-b511-bfd75a4beb4e}:c:\code\findjobapp\finalprojectapp\jobsforall.domain\viewmodels\
+++ApplicationUser.cs
+i:{5740d92b-cb1a-4942-b511-bfd75a4beb4e}:c:\code\findjobapp\finalprojectapp\jobsforall.domain\models\applicationuser.cs
+++Comment.cs
+i:{5740d92b-cb1a-4942-b511-bfd75a4beb4e}:c:\code\findjobapp\finalprojectapp\jobsforall.domain\models\comment.cs
+++Job.cs
+i:{5740d92b-cb1a-4942-b511-bfd75a4beb4e}:c:\code\findjobapp\finalprojectapp\jobsforall.domain\models\job.cs
+++JobRequester.cs
+i:{5740d92b-cb1a-4942-b511-bfd75a4beb4e}:c:\code\findjobapp\finalprojectapp\jobsforall.domain\models\jobrequester.cs
+++Message.cs
+i:{5740d92b-cb1a-4942-b511-bfd75a4beb4e}:c:\code\findjobapp\finalprojectapp\jobsforall.domain\models\message.cs
+++Role.cs
+i:{5740d92b-cb1a-4942-b511-bfd75a4beb4e}:c:\code\findjobapp\finalprojectapp\jobsforall.domain\models\role.cs
+++UserComment.cs
+i:{5740d92b-cb1a-4942-b511-bfd75a4beb4e}:c:\code\findjobapp\finalprojectapp\jobsforall.domain\models\usercomment.cs
+++Authenticatoin
+i:{5740d92b-cb1a-4942-b511-bfd75a4beb4e}:c:\code\findjobapp\finalprojectapp\jobsforall.domain\viewmodels\authenticatoin\
+++MessageHub.cs
+i:{5740d92b-cb1a-4942-b511-bfd75a4beb4e}:c:\code\findjobapp\finalprojectapp\jobsforall.domain\viewmodels\messagehub.cs
+++MessageViewModel.cs
+i:{5740d92b-cb1a-4942-b511-bfd75a4beb4e}:c:\code\findjobapp\finalprojectapp\jobsforall.domain\viewmodels\messageviewmodel.cs
+++UpdateUser.cs
+i:{5740d92b-cb1a-4942-b511-bfd75a4beb4e}:c:\code\findjobapp\finalprojectapp\jobsforall.domain\viewmodels\updateuser.cs
+++Microsoft.AspNetCore.SignalR.Core (1.1.0)
+i:{5740d92b-cb1a-4942-b511-bfd75a4beb4e}:>897
+++Microsoft.Extensions.Identity.Stores (5.0.9)
+i:{5740d92b-cb1a-4942-b511-bfd75a4beb4e}:>899
+++CompleteUserProfile.cs
+i:{5740d92b-cb1a-4942-b511-bfd75a4beb4e}:c:\code\findjobapp\finalprojectapp\jobsforall.domain\viewmodels\authenticatoin\completeuserprofile.cs
+++ConfirmUserRequest.cs
+i:{5740d92b-cb1a-4942-b511-bfd75a4beb4e}:c:\code\findjobapp\finalprojectapp\jobsforall.domain\viewmodels\authenticatoin\confirmuserrequest.cs
+++LoginRequest.cs
+i:{5740d92b-cb1a-4942-b511-bfd75a4beb4e}:c:\code\findjobapp\finalprojectapp\jobsforall.domain\viewmodels\authenticatoin\loginrequest.cs
+++LoginResponse.cs
+i:{5740d92b-cb1a-4942-b511-bfd75a4beb4e}:c:\code\findjobapp\finalprojectapp\jobsforall.domain\viewmodels\authenticatoin\loginresponse.cs
+++RegisterRequest.cs
+i:{5740d92b-cb1a-4942-b511-bfd75a4beb4e}:c:\code\findjobapp\finalprojectapp\jobsforall.domain\viewmodels\authenticatoin\registerrequest.cs
+++RegisterResponse.cs
+i:{5740d92b-cb1a-4942-b511-bfd75a4beb4e}:c:\code\findjobapp\finalprojectapp\jobsforall.domain\viewmodels\authenticatoin\registerresponse.cs
+++Chat.cs
+i:{5740d92b-cb1a-4942-b511-bfd75a4beb4e}:c:\code\findjobapp\finalprojectapp\jobsforall.domain\models\chat.cs
+++Participants.cs
+i:{5740d92b-cb1a-4942-b511-bfd75a4beb4e}:c:\code\findjobapp\finalprojectapp\jobsforall.domain\models\participants.cs
+++20211212120634_CreateChatAndParticipantsTables.cs
+++20211212120634_CreateChatAndParticipantsTables.Designer.cs
+++20211212121635_UpdateParticipantsTable.cs
+++20211212121635_UpdateParticipantsTable.Designer.cs
+++20211212122039_UpateMessageTable.cs
+++20211212122039_UpateMessageTable.Designer.cs
+++20211212122315_AddFKToParticipantsTable.cs
+++20211212122315_AddFKToParticipantsTable.Designer.cs
+++20211212123021_CreateChatDBStructure.cs
+++20211212123021_CreateChatDBStructure.Designer.cs
+++20211212123358_CreateChatDBStructure.cs
+++20211212123358_CreateChatDBStructure.Designer.cs
+++20211212123728_AddMessageTable.cs
+++20211212123728_AddMessageTable.Designer.cs
+++20211212124052_FixMigrationIssues.cs
+++20211212124052_FixMigrationIssues.Designer.cs
+++20211212124426_FixMigrationIssues.cs
+++20211212124426_FixMigrationIssues.Designer.cs
+++20211212124600_FixMigrationIssues.cs
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:c:\code\findjobapp\finalprojectapp\finalprojectapp\migrations\20211212124600_fixmigrationissues.cs
+++20211212124600_FixMigrationIssues.Designer.cs
+i:{834e3b7d-c691-4a8a-9447-f248cd046dbf}:c:\code\findjobapp\finalprojectapp\finalprojectapp\migrations\20211212124600_fixmigrationissues.designer.cs

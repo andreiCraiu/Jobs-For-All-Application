@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "buPW2QgiwBakBpuBFi0utuQR9uDpGJnZM1LaWC1IEbBHdtEQC07tQP/eRCgApt56/k5xgTmhAPKxRoTAhG6CaQ==",
+  "dgSpecHash": "ExXpg3bhiPUs85fpY4BBQWbWSRiDHFofwaRcmV8QQV8N3cxbjo7eCd2RCWJNI6J1oLZMqA53diDUsViMqiEmgQ==",
   "success": true,
   "projectFilePath": "C:\\Code\\FindJobApp\\FinalProjectApp\\JobsForAll.Domain\\JobsForAll.Domain.csproj",
   "expectedPackageFiles": [
@@ -41,10 +41,7 @@
     "C:\\Users\\craiu\\.nuget\\packages\\system.io.pipelines\\4.5.2\\system.io.pipelines.4.5.2.nupkg.sha512",
     "C:\\Users\\craiu\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",
     "C:\\Users\\craiu\\.nuget\\packages\\system.text.encodings.web\\4.7.0\\system.text.encodings.web.4.7.0.nupkg.sha512",
-    "C:\\Users\\craiu\\.nuget\\packages\\system.threading.channels\\4.5.0\\system.threading.channels.4.5.0.nupkg.sha512",
-    "C:\\Users\\craiu\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
-    "C:\\Users\\craiu\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
-    "C:\\Users\\craiu\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512"
+    "C:\\Users\\craiu\\.nuget\\packages\\system.threading.channels\\4.5.0\\system.threading.channels.4.5.0.nupkg.sha512"
   ],
   "logs": []
 }

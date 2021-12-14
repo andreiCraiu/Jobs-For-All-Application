@@ -6,4 +6,5 @@ export class Message {
     sendTime!: Date;
     senderId!: number;
     receiverId!: number;
+    chatId!: number;
 }

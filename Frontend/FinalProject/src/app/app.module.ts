@@ -45,6 +45,7 @@ import { RatingStarComponent } from './component/rating-star/rating-star.compone
 import { ChatMessageComponent } from './component/chat-message/chat-message.component';
 import { SearchUserComponent } from './component/search-user/search-user.component';
 import {MatListModule} from '@angular/material/list';
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import {MatListModule} from '@angular/material/list';
     IgxAvatarModule,
     TextFieldModule,
     MatTableModule,
+    PickerModule,
  
   ],
   providers: [

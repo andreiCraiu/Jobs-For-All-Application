@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "0H6ZtokPIzPJVnnn9UWVheag0Q+BlyTFjBn1dDPWOkQdzvyYfhbhY7f+vkN/qSPGjevzzj+zMCyZSa7KbCvAPQ==",
+  "dgSpecHash": "qj1mz3hECHC98dQvzka2dcoXJatkLG1lu737J656s855ELCV0HOeWG8eq3oP/HIxlwwV7YDsuw5f5l+uOHMoLQ==",
   "success": true,
   "projectFilePath": "C:\\Code\\FindJobApp\\FinalProjectApp\\FinalProjectApp\\JobsForAll.csproj",
   "expectedPackageFiles": [
@@ -181,11 +181,7 @@
     "C:\\Users\\craiu\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\craiu\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\craiu\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\craiu\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
-    "C:\\Users\\craiu\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.12\\microsoft.netcore.app.host.win-x64.5.0.12.nupkg.sha512",
-    "C:\\Users\\craiu\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
-    "C:\\Users\\craiu\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
-    "C:\\Users\\craiu\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512"
+    "C:\\Users\\craiu\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }
