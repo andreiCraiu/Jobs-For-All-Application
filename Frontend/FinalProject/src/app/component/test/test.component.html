@@ -1,4 +1,4 @@
-<div id="top-bar" class="d-flex justify-content-between p-2">
+<div id="top-bar" class="d-flex justify-content-between p-3">
     <div>
         <mat-icon (click)="drawer.toggle()" class="mr-4" id="menu-icon">menu</mat-icon>
         <span id="brand">JobsForAll</span>
@@ -31,7 +31,9 @@
     </mat-drawer>
 
     <div class="slide-nav-content">
-        <app-job-requests></app-job-requests>
+        <app-job-requests *ngIf="indexSelected == 2"></app-job-requests>
+        <app-search-user *ngIf="indexSelected == 1"></app-search-user>
+        <app-chat-message *ngIf="indexSelected == 4"></app-chat-message>
     </div>
 
 </mat-drawer-container>

@@ -120,7 +120,7 @@ namespace JobsForAll.Controllers
                
             }
     
-            ""return chatViwModelList != null? Ok(chatViwModelList) : BadRequest();
+            return chatViwModelList != null? Ok(chatViwModelList) : BadRequest();
      
         }
     }

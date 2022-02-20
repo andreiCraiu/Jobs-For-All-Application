@@ -9,7 +9,7 @@ export class TestComponent implements OnInit {
   public itemActive = false;
   public indexSelected = null;
   public icons = [
-    'home', 'account_circle', 'work', 'settings'
+    'home', 'search', 'work', 'settings', 'email'
   ]
   constructor() { }
   
@@ -19,6 +19,7 @@ export class TestComponent implements OnInit {
   activeItem(test: any, index: any){
       this.itemActive = true;
       this.indexSelected = index
+      console.log('is',this.indexSelected)
   }
 
 }
