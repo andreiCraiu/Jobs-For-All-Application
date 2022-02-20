@@ -45,7 +45,7 @@ namespace FinalProjectApp.Controllers
 
         [Route("completeUserProfile/{email}")]
         [HttpPost]
-        public async Task<ActionResult> CompleteUserProfile(CompleteUserProfile completeUserProfile, string email)
+        public ActionResult CompleteUserProfile(CompleteUserProfile completeUserProfile, string email)
         {
             var user = _userService.GetUserByEmail(email).Result.ResponseOk;
 

@@ -11,6 +11,7 @@ namespace JobsForAll.Domain.Models
     {
         public int ID { get; set; }
         public ApplicationUser User { get; set; }
+        public int ChatId { get; set; }
         public Chat Chat { get; set; }
  
     }

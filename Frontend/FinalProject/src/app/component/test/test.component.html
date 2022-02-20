@@ -1,0 +1,37 @@
+<div id="top-bar" class="d-flex justify-content-between p-2">
+    <div>
+        <mat-icon (click)="drawer.toggle()" class="mr-4" id="menu-icon">menu</mat-icon>
+        <span id="brand">JobsForAll</span>
+    </div>
+
+    <div>
+        <mat-icon class="ml-4" (click)="drawer.toggle()">notifications</mat-icon>
+        <mat-icon class="ml-4" (click)="drawer.toggle()">account_circle</mat-icon>
+    </div>
+
+
+</div>
+<mat-drawer-container class="page" autosize>
+    <mat-drawer #drawer class="slide-nav-menu" mode="side" >
+         <div (click)="activeItem(this, i)" *ngFor="let icon of icons; index as i" class="item"  [ngClass]="{'active':itemActive && indexSelected == i}">
+            <mat-icon  class="menu-icon">{{icon}}</mat-icon>
+        </div> 
+       <!-- <div (click)="activeItem(this)" class="item" [ngClass]="{'active':itemActive && indexSelected}">
+            <mat-icon class="menu-icon">home</mat-icon>
+        </div>
+        <div (click)="activeItem(this)" class="item" [ngClass]="{'active':itemActive}">
+            <mat-icon  class="menu-icon">account_circle</mat-icon>
+        </div>
+        <div (click)="activeItem(this)" class="item" [ngClass]="{'active':itemActive}">
+            <mat-icon  class="menu-icon">work</mat-icon>
+        </div>
+        <div (click)="activeItem(this)" class="item" [ngClass]="{'active':itemActive}">
+            <mat-icon  class="menu-icon">settings</mat-icon>
+        </div> -->
+    </mat-drawer>
+
+    <div class="slide-nav-content">
+        <app-job-requests></app-job-requests>
+    </div>
+
+</mat-drawer-container>

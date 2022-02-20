@@ -13,5 +13,6 @@ namespace JobsForAll.Domain.ViewModels
         public DateTime SendTime { get; set; }
         public string SenderId { get; set; }
         public string ReceiverId { get; set; }
+        public int ChatId { get; set; } 
     }
 }

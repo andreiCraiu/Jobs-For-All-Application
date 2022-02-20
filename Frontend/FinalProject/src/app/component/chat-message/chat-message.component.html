@@ -1,133 +1,29 @@
 <div id="chat" fxLayout="row" fxLayoutAlign="none">
+    <!-- Chat list side -->
     <div id="chat-list">
         <ul>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
+            <li class="chat-item" *ngFor="let chat of chatList">
+                <mat-card (click)="activeChat(chat.id)"> {{chat.chatTitle}} </mat-card>
             </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
-            <li>
-                <mat-card class="chat-item"> 1 </mat-card>
-            </li>
+             
         </ul>
     </div>
 
-    <div id="chat-messages" fxLayout="row" fxLayoutAlign="center end">
-        <mat-form-field id="send-message-input" class="example-full-width">
-            <input matInput placeholder="Type a message" type="text" [(ngModel)]="textArea">
-        </mat-form-field>
-        <mat-icon (click)="call22()" id="send-icon">send</mat-icon>
+    <!-- Messages side -->
+    <div id="message-side">
+        <div id="message-list">
+            <ul>
+                <li class="{{messageClass}}" *ngFor="let message of messageList">
+                    {{message.content}} 
+                </li>
+            </ul>
+        </div>
+        <div id="send-message-side">
+            <mat-form-field id="send-message-input" class="example-full-width">
+                <input matInput placeholder="Type a message" type="text" [(ngModel)]="messageText">
+            </mat-form-field>
+            <mat-icon (click)="saveMessage()" id="send-icon">send</mat-icon>
+        </div>
     </div>
+
 </div>

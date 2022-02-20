@@ -309,6 +309,7 @@ C:\Code\FindJobApp\FinalProjectApp\FinalProjectApp\obj\Debug\net5.0\JobsForAll.G
 C:\Code\FindJobApp\FinalProjectApp\FinalProjectApp\obj\Debug\net5.0\JobsForAll.AssemblyInfoInputs.cache
 C:\Code\FindJobApp\FinalProjectApp\FinalProjectApp\obj\Debug\net5.0\JobsForAll.AssemblyInfo.cs
 C:\Code\FindJobApp\FinalProjectApp\FinalProjectApp\obj\Debug\net5.0\JobsForAll.csproj.CoreCompileInputs.cache
+C:\Code\FindJobApp\FinalProjectApp\FinalProjectApp\obj\Debug\net5.0\JobsForAll.MvcApplicationPartsAssemblyInfo.cs
 C:\Code\FindJobApp\FinalProjectApp\FinalProjectApp\obj\Debug\net5.0\JobsForAll.MvcApplicationPartsAssemblyInfo.cache
 C:\Code\FindJobApp\FinalProjectApp\FinalProjectApp\obj\Debug\net5.0\scopedcss\bundle\JobsForAll.styles.css
 C:\Code\FindJobApp\FinalProjectApp\FinalProjectApp\obj\Debug\net5.0\staticwebassets\JobsForAll.StaticWebAssets.Manifest.cache

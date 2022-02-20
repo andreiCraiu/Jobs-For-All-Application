@@ -9,6 +9,7 @@ import { MainPageComponent } from './component/main-page/main-page.component';
 import { SetupRoleComponent } from './component/setup-role/setup-role.component';
 import { UserProfileComponent } from './component/user-profile/user-profile.component';
 import { AuthenticationGuard } from './guards/authentication.guard';
+import {TestComponent} from "./component/test/test.component"
 
 const routes: Routes = [
   {path: 'register', component: RegisterComponent},
@@ -19,7 +20,8 @@ const routes: Routes = [
   //{path:'header', component: HeaderComponent, canActivate: [AuthenticationGuard]},
   {path:'header', component: HeaderComponent},
   {path:'chat', component: ChatMessageComponent},
-  {path:'search-user-profile', component: ExternalUserProfileComponent}
+  {path:'search-user-profile', component: ExternalUserProfileComponent},
+  {path:'test', component: TestComponent}
 ];
 
 @NgModule({

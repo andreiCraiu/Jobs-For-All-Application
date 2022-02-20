@@ -1,14 +1,12 @@
-igx-avatar{
-    width: 3.5rem;
-    height: 3.5rem;
-}
 
-mat-drawer{
-    width: 22%;
-}
+/*#region Chat List*/
 
-#send-message-icon:hover{
-    cursor: pointer;
+#chat-list{
+    height: 100%;
+    position: fixed;
+    width: 25%;
+    overflow-y: auto; 
+    background-color: #c6d1ca;
 }
 
 .chat-item{
@@ -22,20 +20,39 @@ mat-drawer{
 .chat-item:active{
     background-color: #c1d7d7;
 }
+/*#endregion */
 
-#chat{
-    height: 100%;
+
+/*#region Messages Side*/
+
+#message-side{
+margin-left: 26%;
+width: 75%;
+display:inline-block;
 }
 
-#chat-list{
-    background-color: #e1eeee;
-    width: 25%;
-    overflow-y: scroll; 
-    height:100%;
+#message-list{
+ margin-bottom: 8%;
+ background-color: #c6d1ca;
+}
+#send-message-side {
+    position: fixed;
+    width: 100%;
+    left: 26%;
+    bottom: 0px;
+    background-color: #c6d1ca; 
 }
 
-#chat-messages{
- width: 75%;
+#send-icon{
+    margin: 2%;
+}
+
+#send-message-input{
+    width: 50%;
+}
+
+#send-message-icon:hover{
+    cursor: pointer;
 }
 
 #send-icon:hover{
@@ -46,9 +63,28 @@ mat-drawer{
     font-size: 20px;
 }
 
-#send-icon{
-    margin: 2%;
+.message-sent{
+  border-radius: 10px;
+  width: 50%;
+  height: auto;
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin:1%;
+  margin-left: 48%;
+
 }
-#send-message-input{
-    width: 40%;
-}
+
+.message-received{
+    border-radius: 10px;
+    height: auto;
+    width: 50%;
+    border: 2px solid  #ccc;
+    background-color: #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin:1%;
+  }
+
+/*#endregion */

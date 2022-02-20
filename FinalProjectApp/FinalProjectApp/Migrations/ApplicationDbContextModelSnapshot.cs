@@ -297,7 +297,19 @@ namespace JobsForAll.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Name")
+                    b.Property<string>("ChatTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReceiverChatId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReceiverChatName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SenderChatId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SenderChatName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
@@ -336,7 +348,7 @@ namespace JobsForAll.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ChatID")
+                    b.Property<int>("ChatId")
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
@@ -344,7 +356,7 @@ namespace JobsForAll.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("ChatID");
+                    b.HasIndex("ChatId");
 
                     b.HasIndex("UserId");
 
@@ -550,7 +562,9 @@ namespace JobsForAll.Migrations
                 {
                     b.HasOne("JobsForAll.Domain.Models.Chat", "Chat")
                         .WithMany()
-                        .HasForeignKey("ChatID");
+                        .HasForeignKey("ChatId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("FinalProjectApp.Models.ApplicationUser", "User")
                         .WithMany()

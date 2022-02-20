@@ -46,6 +46,7 @@ import { ChatMessageComponent } from './component/chat-message/chat-message.comp
 import { SearchUserComponent } from './component/search-user/search-user.component';
 import {MatListModule} from '@angular/material/list';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
+import { TestComponent } from './component/test/test.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
     RatingStarComponent,
     ChatMessageComponent,
     SearchUserComponent,
+    TestComponent,
 
   ],
   imports: [

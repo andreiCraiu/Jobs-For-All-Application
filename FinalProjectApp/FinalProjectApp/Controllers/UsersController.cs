@@ -83,7 +83,7 @@ namespace FinalProjectApp.Controllers
 
         [HttpGet]
         [Route("getUserByEmail/{email}")]
-        public async Task<ActionResult> GetUserByEmail(string email)
+        public ActionResult GetUserByEmail(string email)
         {
             var user = _context.ApplicationUsers.FirstOrDefault(user => user.Email == email);
 

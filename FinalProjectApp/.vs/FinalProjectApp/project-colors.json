@@ -20,7 +20,12 @@
       "ProjectGuid": "54c50675-9752-4cfd-a07f-875c85b07c39",
       "DisplayName": "JobsForAll.Data",
       "ColorIndex": 2
+    },
+    "9d8856f0-7be8-4a1a-ac1c-eb22f445bf6a": {
+      "ProjectGuid": "9d8856f0-7be8-4a1a-ac1c-eb22f445bf6a",
+      "DisplayName": "JobsForAll.Application",
+      "ColorIndex": 3
     }
   },
-  "NextColorIndex": 3
+  "NextColorIndex": 4
 }

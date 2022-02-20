@@ -4,7 +4,7 @@ export class Message {
     id!: number;
     content!: string;
     sendTime!: Date;
-    senderId!: number;
+    senderId!: any;
     receiverId!: number;
     chatId!: number;
 }

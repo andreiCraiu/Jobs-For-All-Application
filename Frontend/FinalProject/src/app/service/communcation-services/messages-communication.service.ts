@@ -3,6 +3,8 @@ import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { User } from 'src/app/model/User';
+import { Message } from 'src/app/model/message';
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,7 @@ export class MessageCommunicationService {
 
   constructor() { }
 
-  openChat(user: User) {
-    this.messageSubject.next(user);
+  sendMessage(message: Message) {
+    this.messageSubject.next(message);
   }
 }
