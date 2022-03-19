@@ -24,12 +24,13 @@ export class ChatMessageComponent implements OnInit {
   private userId: any;
   public messageText: string = '';
   public messageList!: Message[];
-  public messageClass: string = 'message-sent';
+  public messageClass: string = '';
   private chat!: Chat;
   public chatList: Chat[] = new Array();
   private currentChatID!: number;
   private dataReceived: Message = new Message();
   private sender!: CurrentUser;
+
   constructor(
     private messageService: MessagesService,
     private route: ActivatedRoute,
@@ -44,12 +45,10 @@ export class ChatMessageComponent implements OnInit {
       this.userId = params['userId'];
     });
 
-    console.log("class", this.messageClass);
     this.messageService.startSignalRConnection();
 
     this.userService.getCurrentUser().subscribe(user => {
       this.sender = user;
-      console.log("currentUser!!!!!!!!", this.sender);
       this.messageService.getChatList(user.id).subscribe(list => {
         this.chatList = list;
         this.setCurrentChatId(list);
@@ -59,12 +58,20 @@ export class ChatMessageComponent implements OnInit {
     });
      this.messageCommunicationService.messageObservable$.subscribe(data => {
       this.dataReceived = <Message>data;
+      // dataReceived.receiverID == currentUserId
+      if(this.dataReceived.receiverId == this.sender.id){
+        this.messageList.push(this.dataReceived)
+        this.messageClass = 'chat-log__item'
+      }else{
+        this.messageClass = 'chat-log__item chat-log__item--own'
+      }
+  
       console.log("Data Rec:", this.dataReceived);
+      console.log('data test', data)
      })
   }
 
   setCurrentChatId(chatList: any) {
-    debugger
     if(chatList){
       this.currentChatID = this.chatList[0].id;
     }else{

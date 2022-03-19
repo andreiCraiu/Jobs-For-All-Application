@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TestComponent implements OnInit {
   public itemActive = false;
-  public indexSelected = null;
+  // forced to be 4. Default null
+  public indexSelected = 4;
   public icons = [
     'home', 'search', 'work', 'settings', 'email'
   ]

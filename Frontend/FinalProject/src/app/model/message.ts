@@ -5,6 +5,6 @@ export class Message {
     content!: string;
     sendTime!: Date;
     senderId!: any;
-    receiverId!: number;
+    receiverId!: string;
     chatId!: number;
 }
