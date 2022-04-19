@@ -63,7 +63,6 @@ export class SetupRoleComponent implements OnInit {
   }
 
   finishUserConfiguation() {
-
       var UserProfileCompletedForWorker = {
         userName: this.firstFormGroup.value.firstName + " " + this.firstFormGroup.value.lastName,
         phoneNumber: this.firstFormGroup.value.phoneNumber,

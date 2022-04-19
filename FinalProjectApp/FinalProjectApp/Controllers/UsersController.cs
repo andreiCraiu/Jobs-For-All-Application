@@ -55,6 +55,7 @@ namespace FinalProjectApp.Controllers
         [Route("getCurrentUser")]
         public IActionResult GetCurrentUser()
         {
+            // get user from db, not context!!!!
             var user = (ApplicationUser)HttpContext.Items["User"];
             if (user != null)
                 return Ok(user);

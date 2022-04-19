@@ -47,7 +47,9 @@ import { SearchUserComponent } from './component/search-user/search-user.compone
 import {MatListModule} from '@angular/material/list';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { TestComponent } from './component/test/test.component';
-
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
+import {MatPaginatorModule} from '@angular/material/paginator';
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,8 +68,8 @@ import { TestComponent } from './component/test/test.component';
     RatingStarComponent,
     ChatMessageComponent,
     SearchUserComponent,
-    TestComponent,
-
+    TestComponent
+  
   ],
   imports: [
     BrowserModule,
@@ -95,7 +97,9 @@ import { TestComponent } from './component/test/test.component';
     TextFieldModule,
     MatTableModule,
     PickerModule,
- 
+    MatToolbarModule,
+    MatButtonModule,
+    MatPaginatorModule
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS, useClass: HttpAuthInterceptor, multi: true},

@@ -47,6 +47,7 @@
     "@angular-devkit/build-angular": "^12.2.16",
     "@angular/cli": "^12.2.1",
     "@angular/compiler-cli": "~12.0.3",
+    "@angular/localize": "^12.0.5",
     "@igniteui/angular-schematics": "~12.0.800",
     "@types/hammerjs": "^2.0.36",
     "@types/jasmine": "~3.6.0",

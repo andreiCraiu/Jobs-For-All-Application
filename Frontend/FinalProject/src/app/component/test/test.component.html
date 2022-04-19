@@ -1,22 +1,49 @@
-<div id="top-bar" class="d-flex justify-content-between p-3">
-    <div>
-        <mat-icon (click)="drawer.toggle()" class="mr-4" id="menu-icon">menu</mat-icon>
-        <span id="brand">JobsForAll</span>
-    </div>
+<!-- <div id="top-bar" class="d-flex justify-content-between p-3">
+  <div>
+    <mat-icon (click)="drawer.toggle()" class="mr-4" id="menu-icon"
+      >menu</mat-icon
+    >
+    <span id="brand">JobsForAll</span>
+  </div>
 
-    <div>
-        <mat-icon class="ml-4" (click)="drawer.toggle()">notifications</mat-icon>
-        <mat-icon class="ml-4" (click)="drawer.toggle()">account_circle</mat-icon>
-    </div>
+  <div>
+    <mat-icon class="ml-4" (click)="drawer.toggle()">notifications</mat-icon>
+    <mat-icon class="ml-4" (click)="drawer.toggle()">account_circle</mat-icon>
+  </div>
+</div> -->
+<mat-toolbar id="top-bar">
+  <button
+    mat-icon-button
+    (click)="drawer.toggle()"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span id="brand">JobsForAll</span>
 
+  <span class="example-spacer"></span>
 
-</div>
+  <button
+    mat-icon-button
+    aria-label="Example icon-button with heart icon"
+  >
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button mat-icon-button color="primary">
+    <mat-icon>share</mat-icon>
+  </button>
+</mat-toolbar>
+
 <mat-drawer-container class="page container-flex" autosize>
-    <mat-drawer #drawer class="slide-nav-menu" mode="side" >
-         <div (click)="activeItem(this, i)" *ngFor="let icon of icons; index as i" class="item"  [ngClass]="{'active':itemActive && indexSelected == i}">
-            <mat-icon  class="menu-icon">{{icon}}</mat-icon>
-        </div> 
-       <!-- <div (click)="activeItem(this)" class="item" [ngClass]="{'active':itemActive && indexSelected}">
+  <mat-drawer #drawer class="slide-nav-menu" mode="side">
+    <div
+      (click)="activeItem(this, i)"
+      *ngFor="let icon of icons; index as i"
+      class="item"
+      [ngClass]="{ active: itemActive && indexSelected == i }"
+    >
+      <mat-icon class="menu-icon">{{ icon }}</mat-icon>
+    </div>
+    <!-- <div (click)="activeItem(this)" class="item" [ngClass]="{'active':itemActive && indexSelected}">
             <mat-icon class="menu-icon">home</mat-icon>
         </div>
         <div (click)="activeItem(this)" class="item" [ngClass]="{'active':itemActive}">
@@ -28,12 +55,11 @@
         <div (click)="activeItem(this)" class="item" [ngClass]="{'active':itemActive}">
             <mat-icon  class="menu-icon">settings</mat-icon>
         </div> -->
-    </mat-drawer>
+  </mat-drawer>
 
-    <div class="slide-nav-content">
-        <app-job-requests *ngIf="indexSelected == 2"></app-job-requests>
-        <app-search-user *ngIf="indexSelected == 1"></app-search-user>
-        <app-chat-message *ngIf="indexSelected == 4"></app-chat-message>
-    </div>
-
+  <div class="slide-nav-content">
+    <app-job-requests *ngIf="indexSelected == 2"></app-job-requests>
+    <app-search-user *ngIf="indexSelected == 1"></app-search-user>
+    <app-chat-message *ngIf="indexSelected == 4"></app-chat-message>
+  </div>
 </mat-drawer-container>

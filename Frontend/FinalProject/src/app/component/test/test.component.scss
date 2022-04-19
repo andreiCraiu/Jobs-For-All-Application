@@ -10,6 +10,7 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    padding: 20px;
   }
   
 .slide-nav-menu {
@@ -25,10 +26,6 @@
     height: 6%;
   } 
 
-#menu-icon{
-      cursor: pointer;
-  }
-
 #menu-icon:hover{
    color: white;
   }
@@ -37,6 +34,7 @@
     font-family: 'Cairo', sans-serif;
     font-size: 2rem;
     font-weight: bold;
+    margin-left: 10px;
 }
 .item{
 margin: 20%;
