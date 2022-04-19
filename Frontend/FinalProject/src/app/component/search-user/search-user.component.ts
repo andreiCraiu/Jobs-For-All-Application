@@ -22,7 +22,7 @@ export class SearchUserComponent implements OnInit {
   ];
   public length = 20;
   pageSize: any = 10;
-  pageSizeOptions: number[] = [1, 2, 5, 10, 25, 100];
+  pageSizeOptions: number[] = [5, 10, 25, 100];
 
   // MatPaginator Output
   pageEvent: PageEvent;

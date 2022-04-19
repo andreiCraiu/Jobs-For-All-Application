@@ -18,6 +18,7 @@ using System.Threading.Tasks;
 using FinalProjectApp.Helpers;
 using JobsForAll.Application;
 using JobsForAll.Application.Interfaces;
+using System.Threading;
 
 namespace FinalProjectApp.Controllers
 {
@@ -48,7 +49,7 @@ namespace FinalProjectApp.Controllers
         {
             var user = (ApplicationUser)HttpContext.Items["User"];
             var jobs = _jobsService.GetAllTasksForUser(user);
-            return jobs.Result.ResponseOk != null ? Ok(jobs.Result.ResponseOk): BadRequest();
+            return jobs.Result.ResponseOk != null ? Ok(jobs.Result.ResponseOk) : BadRequest();
         }
 
         [HttpDelete]

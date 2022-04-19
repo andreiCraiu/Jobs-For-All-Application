@@ -1,43 +1,53 @@
 <form id="request_job_form" [formGroup]="requestJobFormgroup">
-    <h5 class="d-flex">Job Details</h5>
+  <div fxLayout="row" fxLayoutAlign="space-evenly center">
     <mat-form-field appearance="fill">
-        <mat-label>Job Title</mat-label>
-        <input matInput formControlName="jobTitle" required>
+      <mat-label>Job Title</mat-label>
+      <input matInput formControlName="jobTitle" required />
     </mat-form-field>
 
+    <mat-form-field appearance="fill" class="ml-5">
+      <mat-label>Job Category</mat-label>
+      <mat-select formControlName="jobType">
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let jobType of jobTypes" [value]="jobType">{{
+          jobType
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-around center">
     <mat-form-field appearance="fill">
-        <mat-label >Job Category</mat-label>
-        <mat-select  formControlName="jobType">
-          <mat-option>None</mat-option>
-          <mat-option *ngFor="let jobType of jobTypes" [value]="jobType">{{jobType}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field appearance="fill">
-        <mat-label type="number">Price in $</mat-label>
-        <input matInput formControlName="price" required>
-     </mat-form-field>
-
-     <label>Is price negociable?</label>
-     <mat-radio-group id="is-negociabile-radio-btn" required>
-       <mat-radio-button [value]="1" (change)="getIsNegociableValue($event)">Yes</mat-radio-button>
-       <mat-radio-button [value]="2" (change)="getIsNegociableValue($event)">No</mat-radio-button>
-     </mat-radio-group>
-
-     <mat-form-field appearance="fill">
-        <mat-label>Job Description</mat-label>
-        <textarea matInput
-                  cdkTextareaAutosize
-                  #autosize="cdkTextareaAutosize"
-                  cdkAutosizeMinRows="1"
-                  cdkAutosizeMaxRows="5"
-                  formControlName="description"
-                  required>
-        </textarea>
-      </mat-form-field>
-     
-
-    <mat-button-toggle class="d-flex" (click)="requestJob()">
-        Request Job
-    </mat-button-toggle>
+      <mat-label type="number">Price in $</mat-label>
+      <input matInput formControlName="price" required />
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="ml-5">
+      <mat-label>Job Description</mat-label>
+      <textarea
+        matInput
+        cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize"
+        cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="5"
+        formControlName="description"
+        required
+      >
+      </textarea>
+    </mat-form-field>
+  </div>
+  <div fxLayoutAlign="center center">
+    <label >Is price negociable?</label>
+    <mat-radio-group id="is-negociabile-radio-btn" required>
+      <mat-radio-button [value]="1" (change)="getIsNegociableValue($event)"
+        >Yes</mat-radio-button
+      >
+      <mat-radio-button [value]="2" (change)="getIsNegociableValue($event)"
+        >No</mat-radio-button
+      >
+    </mat-radio-group>
+  </div>
 </form>
+<div  fxLayoutAlign="center center" class="m-5">
+  <mat-button-toggle class="w-25" (click)="requestJob()">
+    Request Job
+  </mat-button-toggle>
+</div>

@@ -50,6 +50,10 @@ import { TestComponent } from './component/test/test.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import {CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { TableSkeletonComponent } from './component/table-skeleton/table-skeleton.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,8 +72,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     RatingStarComponent,
     ChatMessageComponent,
     SearchUserComponent,
-    TestComponent
-  
+    TestComponent,
+    TableSkeletonComponent
   ],
   imports: [
     BrowserModule,
@@ -99,7 +103,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     PickerModule,
     MatToolbarModule,
     MatButtonModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    NgxSkeletonLoaderModule
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS, useClass: HttpAuthInterceptor, multi: true},
@@ -108,6 +113,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatSnackBar,
     MatSnackBarModule,
     
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
   ],
   bootstrap: [AppComponent]
 })

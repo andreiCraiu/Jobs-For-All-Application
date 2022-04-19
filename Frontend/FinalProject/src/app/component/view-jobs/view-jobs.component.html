@@ -1,7 +1,7 @@
-<p *ngIf="!jobs"><em>Loading...</em></p>
-
-
-<table mat-table [dataSource]="jobs" class="mat-elevation-z8"> -->
+<app-table-skeleton *ngIf="load">
+  [line-count]="10"
+</app-table-skeleton>
+<table *ngIf="!load && jobs" mat-table [dataSource]="jobs" class="mat-elevation-z8"> -->
 
   <!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
@@ -41,3 +41,4 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
 </table>
+<label fxLayoutAlign="space-evenly center" class="m-5" *ngIf="!jobs.length">No item to display</label>
