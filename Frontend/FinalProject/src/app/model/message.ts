@@ -7,4 +7,5 @@ export class Message {
     senderId!: any;
     receiverId!: string;
     chatId!: number;
+    messageAuthor: string;
 }

@@ -29,10 +29,8 @@ export class UpdateUserProfileComponent implements OnInit {
     private snackBar: MatSnackBar
   ) { }
 
-  ngOnInit(): void {
-    this.userService.getCurrentUser().subscribe(user => {
-      this.currentUser = user;
-    });
+ async ngOnInit(): Promise<void> {
+    this.currentUser =await this.userService.getCurrentUser();
 
     this.editUserFormGroup = this._formBuilder.group({
       userName: [this.userName],

@@ -1,8 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { C, p, t } from '@angular/core/src/render3';
-import { SELECT_PANEL_INDENT_PADDING_X } from '@angular/material/select/select';
 import { ActivatedRoute, Params } from '@angular/router';
-import { ChatView } from 'src/app/enums/chat-view';
 import { Chat } from 'src/app/model/chat';
 import { CurrentUser } from 'src/app/model/currentUser';
 import { Message } from 'src/app/model/message';
@@ -11,108 +8,137 @@ import { MessageCommunicationService } from 'src/app/service/communcation-servic
 import { MessagesService } from 'src/app/service/messages.service';
 import { StorageService } from 'src/app/service/storage.service';
 import { UserService } from 'src/app/service/user.service';
-import { threadId } from 'worker_threads';
 
 @Component({
   selector: 'app-chat-message',
   templateUrl: './chat-message.component.html',
-  styleUrls: ['./chat-message.component.scss']
+  styleUrls: ['./chat-message.component.scss'],
 })
-
 export class ChatMessageComponent implements OnInit {
   private message!: Message;
-  private userId: any;
+  private receiverId: any; // receiver
   public messageText: string = '';
-  public messageList!: Message[];
+  public messageList: Message[];
   public messageClass: string = '';
-  private chat!: Chat;
-  public chatList: Chat[] = new Array();
+  public chatList: Chat[];
   private currentChatID!: number;
   private dataReceived: Message = new Message();
   private sender!: CurrentUser;
+  public chatTitle: string;
+  public senderName: string;
+  public receiverName: string;
+  users: any;
+  isSearchingAnction = false;
 
   constructor(
     private messageService: MessagesService,
     private route: ActivatedRoute,
     private messageCommunicationService: MessageCommunicationService,
     private userService: UserService
-  ) {
-  }
-
+  ) {}
 
   async ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      this.userId = params['userId'];
+      this.receiverId = params['userId']; // from users tab
     });
-
+    this.sender = await this.userService.getCurrentUser();
+    await this.loadChatList();
+    this.setDefaultChatId(this.chatList);
+    console.log(this.chatList, 'chatList in init');
+    this.loadMessages();
     this.messageService.startSignalRConnection();
 
-    this.userService.getCurrentUser().subscribe(user => {
-      this.sender = user;
-      this.messageService.getChatList(user.id).subscribe(list => {
-        this.chatList = list;
-        this.setCurrentChatId(list);
-        this.loadMessages();
-      
-      });
-    });
-     this.messageCommunicationService.messageObservable$.subscribe(data => {
-      this.dataReceived = <Message>data;
-      // dataReceived.receiverID == currentUserId
-      if(this.dataReceived.receiverId == this.sender.id){
-        this.messageList.push(this.dataReceived)
-        this.messageClass = 'chat-log__item'
-      }else{
-        this.messageClass = 'chat-log__item chat-log__item--own'
+    this.messageCommunicationService.messageObservable$.subscribe(
+      async (data) => {
+        this.dataReceived = <Message>data;
+        console.log('Data Rec:', this.dataReceived);
+        console.log('data test', data);
+        console.log(this.messageList?.length, 'this.messageList.length');
+        if (this.dataReceived.senderId != this.sender.id) {
+          console.log('insissss here mess');
+          await this.loadChatList();
+          await this.setDefaultChatId(this.chatList);
+          this.messageList.push(this.dataReceived);
+        }
       }
-  
-      console.log("Data Rec:", this.dataReceived);
-      console.log('data test', data)
-     })
+    );
+  }
+  async loadChatList() {
+    console.log(this.sender.id, 'this.sender.id');
+    this.chatList = await this.messageService.getChatList(this.sender.id);
   }
 
-  setCurrentChatId(chatList: any) {
-    if(chatList){
+  async setDefaultChatId(chatList: any) {
+    if (chatList.length && chatList != null) {
       this.currentChatID = this.chatList[0].id;
-    }else{
+      this.chatTitle =  this.chatList[0].chatTitle
+    } else {
       this.currentChatID = 0;
     }
+    console.log(this.currentChatID, 'def ch id after set curr ch id');
   }
-
-  activeChat(chatId: number) {
-    this.currentChatID = chatId;
-    this.loadMessages()
+ async getMessageAuthor(userId: any){
+    console.log(userId,'user entire')
+    var messageAuthor = ''
+  await  this.userService.getUser(userId).subscribe((user)=> {
+      messageAuthor = user.email
+    })
+  console.log(messageAuthor,'messAuth')
+    return messageAuthor
   }
-
-  async setMessageClass(){
-    if(this.sender.id == this.dataReceived.senderId){
-      this.messageClass = "message-sent";
-    }else{
-      this.messageClass = "message-received"
+  activeChat(chat: any) {
+    console.log('ctaID', chat);
+    this.currentChatID = chat.id;
+    this.chatTitle = chat.chatTitle
+    this.loadMessages();
+  }
+  createChat(user: any) {
+    console.log(user, 'user');
+    this.currentChatID = 0;
+    this.messageList = [];
+    console.log(this.sender.id, 'senderId');
+    this.receiverId = user.id;
+    console.log(this.receiverId == user.id, 'qula????');
+    this.chatTitle = user.userName;
+  }
+  searchUser(event: any) {
+    if (event.target.value != '') {
+      this.isSearchingAnction = true;
+    } else {
+      this.isSearchingAnction = false;
     }
-    console.log("class", this.messageClass)
+    this.userService.getFilteredUsers(event.target.value).subscribe((users) => {
+      this.users = users;
+      console.log('len', this.users);
+    });
   }
+
   async loadMessages() {
-    this.messageList = await this.messageService.getMessageList(this.currentChatID);
-    console.log("ML", this.messageList)
+    console.log('load mess started');
+    this.messageList = await this.messageService.getMessageList(
+      this.currentChatID
+    );
+    console.log(this.currentChatID, 'this.currentChatID ');
+    console.log('message list', this.messageList);
   }
-
-  saveMessage() {
+  composeMessage() {
     this.message = new Message();
-    this.chat = new Chat();
-
-    this.messageList = new Array();
     this.message.content = this.messageText;
-    this.message.receiverId = this.userId;
+    this.message.receiverId = this.receiverId;
     this.message.senderId = this.sender.id;
     this.message.chatId = this.currentChatID;
+  }
+  async saveMessage() {
+    this.composeMessage();
 
-    this.messageService.saveMessage(this.message).subscribe(x => {
-      console.log("this is mid", x)
+    await this.messageService.saveMessage(this.message).subscribe(async (x) => {
+      console.log('this is mid', x);
+      this.currentChatID = x.chatId;
+      this.loadChatList();
+      this.activeChat(x.chatId);
     });
 
-   this.setMessageClass();
+    console.log(this.currentChatID, 'returned chatID');
+    this.isSearchingAnction = false;
   }
-
-
 }

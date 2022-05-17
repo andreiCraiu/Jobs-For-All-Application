@@ -22,3 +22,6 @@ C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Domain\obj\Debug\net5.0\JobsForAll
 C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Domain\obj\Debug\net5.0\JobsForAll.Domain.dll
 C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Domain\obj\Debug\net5.0\ref\JobsForAll.Domain.dll
 C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Domain\obj\Debug\net5.0\JobsForAll.Domain.pdb
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Domain\bin\Debug\net5.0\JobsForAll.Domain.runtimeconfig.json
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Domain\bin\Debug\net5.0\JobsForAll.Domain.runtimeconfig.dev.json
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Domain\obj\Debug\net5.0\JobsForAll.Domain.genruntimeconfig.cache

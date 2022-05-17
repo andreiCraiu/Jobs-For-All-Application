@@ -19,8 +19,8 @@ export class MessagesService {
     private httpClient: HttpClient,
     private messageService: MessageCommunicationService) { }
 
-  public getChatList(senderId:string): Observable<Chat[]>{
-    return this.httpClient.get<Chat[]>(`${this.baseApiUrl}/loadChats/${senderId}`);
+  public getChatList(senderId:string): Promise<Chat[]>{
+    return this.httpClient.get<Chat[]>(`${this.baseApiUrl}/loadChats/${senderId}`).toPromise();
   }
   public getMessageList(chatId:number): Promise<Message[]> {
     return this.httpClient.get<Message[]>(`${this.baseApiUrl}/loadMessages/${chatId}`).toPromise();

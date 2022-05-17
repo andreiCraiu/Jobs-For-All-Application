@@ -32,3 +32,6 @@ C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Application\obj\Debug\net5.0\JobsF
 C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Application\obj\Debug\net5.0\JobsForAll.Application.dll
 C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Application\obj\Debug\net5.0\ref\JobsForAll.Application.dll
 C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Application\obj\Debug\net5.0\JobsForAll.Application.pdb
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Application\bin\Debug\net5.0\JobsForAll.Application.runtimeconfig.json
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Application\bin\Debug\net5.0\JobsForAll.Application.runtimeconfig.dev.json
+C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Application\obj\Debug\net5.0\JobsForAll.Application.genruntimeconfig.cache

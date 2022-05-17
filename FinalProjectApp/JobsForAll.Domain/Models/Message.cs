@@ -18,5 +18,6 @@ namespace FinalProjectApp.Models
         public string ReceiverId { get; set; }
         public Chat Chat { get; set; }
         public int ChatId { get; set; }
+        public string MessageAuthor { get; set; }
     }
 }

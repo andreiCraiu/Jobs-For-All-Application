@@ -19,7 +19,7 @@ export class UserService {
   }
 
   public getCurrentUser(){
-    return  this.httpClient.get<CurrentUser>(`${this.baseApi}/getCurrentUser`);
+    return  this.httpClient.get<CurrentUser>(`${this.baseApi}/getCurrentUser`).toPromise();
   }
 
   public removeUser(){

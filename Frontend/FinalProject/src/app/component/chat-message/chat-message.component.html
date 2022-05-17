@@ -1,86 +1,60 @@
-<!-- <div id="chat" fxLayout="row" fxLayoutAlign="none">
-    
-    <div id="chat-list">
-        <ul>
-            <li class="chat-item" *ngFor="let chat of chatList">
-                <mat-card (click)="activeChat(chat.id)"> {{chat.chatTitle}} </mat-card>
-            </li>
-             
-        </ul>
-    </div>
-
-    
-    <div id="message-side">
-        <div id="message-list">
-            <ul>
-                <li class="{{messageClass}}" *ngFor="let message of messageList">
-                    {{message.content}} 
-                </li>
-            </ul>
-        </div>
-        <div id="send-message-side">
-            <mat-form-field id="send-message-input" class="example-full-width">
-                <input matInput placeholder="Type a message" type="text" [(ngModel)]="messageText">
-            </mat-form-field>
-            <mat-icon (click)="saveMessage()" id="send-icon">send</mat-icon>
-        </div>
-    </div>
-
-</div> -->
 <mat-drawer-container class="container-flex h-100" id="messages-page">
-    <mat-drawer class="w-25" mode="side" opened id="chat-list">
-        <ul>
-            <li class="p-2" *ngFor="let chat of chatList">
-                <mat-card (click)="activeChat(chat.id)"> {{chat.chatTitle}} </mat-card>
-            </li>
-
-        </ul>
-    </mat-drawer>
-    <mat-drawer-content id="drower-content"class="w-75 row">
-        <header class="page-header">
-            <div class="container-flex">
-                <p id="chat-title">Felipe</p>
+  <mat-drawer class="w-25" mode="side" opened id="chat-list">
+    <div id="search-bar" fxLayoutAlign="center center">
+      <mat-form-field id="search-input">
+        <input (keyup)="searchUser($event)" matInput type="text" />
+      </mat-form-field>
+      <span class="material-icons search"> search </span>
+    </div>
+    <ul *ngIf="!isSearchingAnction">
+      <li class="p-2 chat-item m-4" *ngFor="let chat of chatList">
+        <mat-card (click)="activeChat(chat)">
+          {{ chat.chatTitle }}
+        </mat-card>
+      </li>
+    </ul>
+    <ul *ngIf="isSearchingAnction">
+      <li class="p-2 chat-item m-4" *ngFor="let user of users">
+        <mat-card class="search-item" (click)="createChat(user)">
+          {{ user.userName }}
+        </mat-card>
+      </li>
+    </ul>
+  </mat-drawer>
+  <mat-drawer-content id="drower-content" class="w-75 row">
+    <div class="page-header">
+      <div class="container-flex">
+        <p id="chat-title">{{chatTitle}}</p>
+      </div>
+    </div>
+    <div class="p-3 m-5" id="messages-main" *ngFor="let message of messageList">
+      <div class="{{ messageClass }}">
+        <h3 class="chat-log__author">
+          {{message.messageAuthor}} <small>{{ message.sendTime | date: "shortTime" }}</small>
+        </h3>
+        <div>{{ message.content }}</div>
+      </div>
+    </div>
+    <div class="chat-form white" >
+      <div class="container-flex">
+        <form class="form-horizontal">
+          <div class="row">
+            <div class="col-sm-10 col-xs-8">
+              <input
+                type="text"
+                class="form-control w-100"
+                id=""
+                placeholder="Type a message"
+                [(ngModel)]="messageText"
+                name="message"
+              />
             </div>
-        </header>
-        <div class="container-flex p-3 m-5" id="messages-main" *ngFor="let message of messageList">
-            <div class="{{messageClass}}">
-                <h3 class="chat-log__author">Felipe <small>{{message.sendTime | date:'shortTime'}}</small></h3>
-                <div >{{message.content}} </div>
-              </div>
-              <!-- <div class="chat-log__item">
-                <h3 class="chat-log__author">Felipe <small>14:30</small></h3>
-                <div>Yo man</div>
-              </div>
-              <div class="chat-log__item">
-                <h3 class="chat-log__author">Felipe <small>14:30</small></h3>
-                <div>Yo man</div>
-              </div>
-              <div class="chat-log__item">
-                <h3 class="chat-log__author">Felipe <small>14:30</small></h3>
-                <div>Yo man</div>
-              </div>
-              <div class="chat-log__item">
-                <h3 class="chat-log__author">Felipe <small>14:30</small></h3>
-                <div>Yo man</div>
-              </div>
-              <div class="chat-log__item chat-log__item--own">
-                <h3 class="chat-log__author">Fabrício <small>14:30</small></h3>
-                <div class="chat-log__message">BRB</div>
-              </div> -->
-        </div>
-        <div class="chat-form">
-            <div class="container-flex">
-              <form class="form-horizontal">
-                <div class="row">
-                  <div class="col-sm-10 col-xs-8">
-                    <input type="text" class="form-control" id="" placeholder="Type a message" [(ngModel)]="messageText" name="message"/>
-                  </div>
-                  <div class="col-sm-2 col-xs-4">
-                    <button type="submit" class="btn btn-success btn-block" (click)="saveMessage()" > Send</button>
-                  </div>
-                </div>
-              </form>
+            <div class="col-sm-2 col-xs-4 send-button" fxFlex>
+              <button mat-raised-button color="primary"  (click)="saveMessage()">Send message</button>
             </div>
           </div>
-    </mat-drawer-content>
+        </form>
+      </div>
+    </div>
+  </mat-drawer-content>
 </mat-drawer-container>

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FinalProjectApp.Data;
 using FinalProjectApp.Models;
+using JobsForAll.Application.Interfaces;
 using JobsForAll.Domain.Models;
 using JobsForAll.Domain.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -19,12 +20,14 @@ namespace JobsForAll.Controllers
         private readonly ApplicationDbContext _context;
         private readonly IHubContext<MessageHub> _hubContext;
         private readonly IMapper _mapper;
+        private readonly IUserService _userService;
 
-        public MessageController(ApplicationDbContext context, IHubContext<MessageHub> hubContext, IMapper mapper)
+        public MessageController(ApplicationDbContext context, IHubContext<MessageHub> hubContext, IMapper mapper, IUserService userService)
         {
             _context = context;
             _hubContext = hubContext;
             _mapper = mapper;
+            _userService = userService;
         }
 
         [HttpPost]
@@ -35,50 +38,47 @@ namespace JobsForAll.Controllers
 
             var chat = _context.Chat.FirstOrDefault(chat => chat.ID == message.ChatId);
 
-            if (receiver != null && sender != null)
+            var senderParticipant = new Participants();
+            var receiverParticipant = new Participants();
+
+            if (chat == null && sender != null && receiver != null)
             {
-                var senderParticipant = new Participants();
-                var receiverParticipant = new Participants();
-
-                if (chat == null)
-                {
-                    chat = new Chat();
-                    chat.ReceiverChatName = receiver.UserName;
-                    chat.SenderChatName = sender.UserName;
-                    chat.ChatTitle = receiver.UserName;
-                    chat.SenderChatId = sender.Id;
-                    chat.ReceiverChatId = receiver.Id;
-                    _context.Chat.Add(chat);
-                    _context.SaveChanges();
-
-                    senderParticipant.Chat = chat;
-                    receiverParticipant.Chat = chat;
-
-                    senderParticipant.User = sender;
-                    receiverParticipant.User = receiver;
-
-                    _context.Participants.Add(senderParticipant);
-                    _context.Participants.Add(receiverParticipant);
-                    _context.SaveChanges();
-                }
-
-                var databaseMessage = new Message
-                {
-                    Content = message.Content,
-                    ReceiverId = message.ReceiverId,
-                    SenderId = sender.Id,
-                    SendTime = DateTime.Now,
-                    ChatId = chat.ID
-                };
-                _context.Messages.Add(databaseMessage);
+                chat = new Chat();
+                chat.ReceiverChatName = receiver.UserName;
+                chat.SenderChatName = sender.UserName;
+                chat.ChatTitle = receiver.UserName;
+                chat.SenderChatId = sender.Id;
+                chat.ReceiverChatId = receiver.Id;
+                _context.Chat.Add(chat);
                 _context.SaveChanges();
 
-                _hubContext.Clients.All.SendAsync("MessageReceived", message);
+                senderParticipant.Chat = chat;
+                receiverParticipant.Chat = chat;
 
-                return Ok(databaseMessage.ChatId);
+                senderParticipant.User = sender;
+                receiverParticipant.User = receiver;
+
+                _context.Participants.Add(senderParticipant);
+                _context.Participants.Add(receiverParticipant);
+                _context.SaveChanges();
             }
 
-            return BadRequest();
+            var databaseMessage = new Message
+            {
+                Content = message.Content,
+                ReceiverId = chat.ReceiverChatId,
+                SenderId = chat.SenderChatId,
+                SendTime = DateTime.Now,
+                ChatId = chat.ID,
+                MessageAuthor = _userService.GetUserById(chat.SenderChatId).Result.ResponseOk.Email
+            };
+            _context.Messages.Add(databaseMessage);
+            _context.SaveChanges();
+
+            _hubContext.Clients.All.SendAsync("MessageReceived", message);
+
+            return Ok(databaseMessage);
+
         }
 
         [HttpGet]
@@ -86,7 +86,7 @@ namespace JobsForAll.Controllers
         public IActionResult GetMessages(int chatID)
         {
             var messages = _context.Messages.Where(m => m.ChatId == chatID).ToList();
-            if(messages != null)
+            if (messages != null)
             {
                 return Ok(messages);
             }
@@ -101,12 +101,12 @@ namespace JobsForAll.Controllers
             var participants = _context.Participants.Where(x => x.User.Id == senderID).ToList();
             var chatViwModelList = new List<ChatViewModel>();
 
-            if(participants != null)
+            if (participants != null)
             {
-                foreach(var participant in participants)
+                foreach (var participant in participants)
                 {
                     var chat = _context.Chat.FirstOrDefault(chat => chat.ID == participant.ChatId);
-                    if(currentUser.Id == chat.SenderChatId)
+                    if (currentUser.Id == chat.SenderChatId)
                     {
                         chat.ChatTitle = chat.ReceiverChatName;
                     }
@@ -117,11 +117,11 @@ namespace JobsForAll.Controllers
                     var chatViewModel = _mapper.Map<Chat, ChatViewModel>(chat);
                     chatViwModelList.Add(chatViewModel);
                 }
-               
+
             }
-    
-            return chatViwModelList != null? Ok(chatViwModelList) : BadRequest();
-     
+
+            return chatViwModelList != null ? Ok(chatViwModelList) : BadRequest();
+
         }
     }
 }
