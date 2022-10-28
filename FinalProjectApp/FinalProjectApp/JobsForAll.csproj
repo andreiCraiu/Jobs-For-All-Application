@@ -22,7 +22,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\JobsForAll.Application\JobsForAll.Application.csproj" />
+    <ProjectReference Include="..\JobsForAll.Library\JobsForAll.Library.csproj" />
+    <ProjectReference Include="..\JobsForAll.SqlDatabase\JobsForAll.SqlDatabase.csproj" />
   </ItemGroup>
 
 </Project>

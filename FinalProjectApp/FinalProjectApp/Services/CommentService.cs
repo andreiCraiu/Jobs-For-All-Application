@@ -1,21 +1,18 @@
-﻿using JobsForAll.Application.Interfaces;
-using JobsForAll.Data.Context;
-using JobsForAll.Domain.Models;
-using System;
+﻿using JobsForAll.Contracts;
+using JobsForAll.Library.Contracts;
+using JobsForAll.Library.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace JobsForAll.Application
+namespace JobsForAll.Services
 {
     public class CommentService : ICommentService
     {
-        private readonly ApplicationDbContext _context ;
-        public CommentService(ApplicationDbContext context)
+        public CommentService(IRepository repository)
         {
-            _context = context;
+            this.repository = repository;
         }
 
         public async Task<ServiceResponse<bool, string>> AddComment(Comment comment, ApplicationUser user, ApplicationUser commentedUser)
@@ -31,9 +28,8 @@ namespace JobsForAll.Application
                     userComment.ApplicationUser = commentedUser;
                     userComment.Comment = comment;
 
-                    await _context.Comments.AddAsync(comment);
-                    await _context.UserComments.AddAsync(userComment);
-                    await _context.SaveChangesAsync();
+                    await repository.SaveComents(comment, userComment);
+
                     serviceResponse.ResponseOk = true;
                     return serviceResponse;
 
@@ -52,15 +48,11 @@ namespace JobsForAll.Application
         public async Task<ServiceResponse<List<Comment>, string>> GetComments(string id)
         {
             var serviceResponse = new ServiceResponse<List<Comment>, string>();
-            var comentsList = new List<Comment>();
 
-            var userComments = from comment in _context.UserComments
-                               where comment.ApplicationUser.Id == id
-                               select comment.Comment;
-            
+            var userComments = repository.GetUserCommentsById(id);
             if (userComments != null)
             {
-                serviceResponse.ResponseOk = userComments.ToList();
+                serviceResponse.ResponseOk = Enumerable.ToList<Comment>(userComments);
                 return serviceResponse;
             }
             else
@@ -69,5 +61,8 @@ namespace JobsForAll.Application
             }
             return serviceResponse;
         }
+
+        //
+        private readonly IRepository repository;
     }
-    }
+}

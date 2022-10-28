@@ -1,27 +1,25 @@
-﻿using JobsForAll.Application.Interfaces;
-using JobsForAll.Data.Context;
-using System;
+﻿using JobsForAll.Contracts;
+using JobsForAll.Library.Contracts;
+using JobsForAll.Library.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using JobsForAll.Domain.Models;
 
-namespace JobsForAll.Application
+namespace JobsForAll.Services
 {
     public class UserService : IUserService
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IRepository repository;
 
-        public UserService(ApplicationDbContext context)
+        public UserService(IRepository repository)
         {
-            _context = context;
+            this.repository = repository;
         }
 
         public async Task<ServiceResponse<List<ApplicationUser>, string>> FilterUsers(string filterString)
         {
             var serviceResponse = new ServiceResponse<List<ApplicationUser>, string>();
-            var users = _context.ApplicationUsers.Where(user => user.UserName.Contains(filterString)).ToList();
+            var users = repository.GetUsersByUserName(filterString).ToList();
             if (users != null)
             {
                 serviceResponse.ResponseOk = users;
@@ -37,10 +35,10 @@ namespace JobsForAll.Application
         public async Task<ServiceResponse<List<ApplicationUser>, string>> GetAllUsers()
         {
             var serviceResponse = new ServiceResponse<List<ApplicationUser>, string>();
-            var users = _context.ApplicationUsers.ToList();
-            if(users!= null)
+            var users = repository.GetAllUsers();
+            if (users != null)
             {
-                serviceResponse.ResponseOk = users;
+                serviceResponse.ResponseOk = users.ToList();
                 return serviceResponse;
             }
             else
@@ -53,7 +51,7 @@ namespace JobsForAll.Application
         public async Task<ServiceResponse<ApplicationUser, string>> GetUserByEmail(string email)
         {
             var serviceResponse = new ServiceResponse<ApplicationUser, string>();
-            var user = _context.ApplicationUsers.FirstOrDefault(user => user.Email == email);
+            var user = repository.GetUserByEmail(email);
             if (user != null)
             {
                 serviceResponse.ResponseOk = user;
@@ -66,11 +64,10 @@ namespace JobsForAll.Application
             return serviceResponse;
         }
 
-
         public async Task<ServiceResponse<ApplicationUser, string>> GetUserById(string id)
         {
             var serviceResponse = new ServiceResponse<ApplicationUser, string>();
-            var user = _context.ApplicationUsers.FirstOrDefault(user => user.Id == id);
+            var user = repository.GetUserById(id);
             if (user != null)
             {
                 serviceResponse.ResponseOk = user;

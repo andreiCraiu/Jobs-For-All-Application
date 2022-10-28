@@ -1,11 +1,9 @@
-﻿using JobsForAll.Domain.Models;
-using System;
+﻿using JobsForAll.Library.Models;
+using JobsForAll.Services;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace JobsForAll.Application.Interfaces
+namespace JobsForAll.Contracts
 {
     public interface ICommentService
     {

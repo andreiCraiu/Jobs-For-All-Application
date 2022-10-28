@@ -1,12 +1,10 @@
-﻿using JobsForAll.Application.Interfaces;
-using JobsForAll.Data.Context;
-using JobsForAll.Domain.Models;
-using JobsForAll.Domain.ViewModels;
+﻿using JobsForAll.Contracts;
+using JobsForAll.Library.Contracts;
+using JobsForAll.Library.Models;
+using JobsForAll.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace JobsForAll.Controllers
@@ -15,19 +13,19 @@ namespace JobsForAll.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly ApplicationDbContext _context;
-        private readonly IConfiguration _configuration;
+        private readonly SignInManager<ApplicationUser> signInManager;
+        private readonly UserManager<ApplicationUser> userManager;
+        private readonly IRepository repository;
+        private readonly IConfiguration configuration;
         private readonly IUserService _userService;
 
         public UsersController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager,
-         ApplicationDbContext context, IConfiguration configuration, IUserService userService)
+                               IRepository repository, IConfiguration configuration, IUserService userService)
         {
-            _userManager = userManager;
-            _signInManager = signInManager;
-            _context = context;
-            _configuration = configuration;
+            this.userManager = userManager;
+            this.signInManager = signInManager;
+            repository = repository;
+            this.configuration = configuration;
             _userService = userService;
         }
 
@@ -35,7 +33,7 @@ namespace JobsForAll.Controllers
         [Route("getUser/{id}")]
         public IActionResult GetUser(string id)
         {
-            var user = _context.ApplicationUsers.FirstOrDefault(user => user.Id == id);
+            var user = repository.GetApplicationUsers(id);
             if (user != null)
                 return Ok(user);
             return BadRequest();
@@ -75,8 +73,7 @@ namespace JobsForAll.Controllers
         [Route("getUserByEmail/{email}")]
         public async Task<ActionResult> GetUserByEmail(string email)
         {
-            var user = _context.ApplicationUsers.FirstOrDefault(user => user.Email == email);
-
+            var user = repository.GetUserByEmail(email);
             if (user != null)
                 return Ok(user);
             return BadRequest();
@@ -91,9 +88,9 @@ namespace JobsForAll.Controllers
                 return Ok(user);
             return BadRequest();
 
-            _context.Remove(user);
-            _context.SaveChanges();
-            return Ok();
+            // repository.Remove(user);
+            // repository.SaveChanges();
+            // return Ok();
         }
 
         [Route("updateUserProfile")]
@@ -111,16 +108,12 @@ namespace JobsForAll.Controllers
                 user.Address = updateUser.Address;
                 user.Postcode = updateUser.Postcode;
 
-                _context.Entry(user).State = EntityState.Modified;
+                //todo: repository.Entry(user).State = EntityState.Modified;
 
-                await _context.SaveChangesAsync();
+                await repository.SaveUserChangesAsync(user);
                 return Ok();
             }
             return BadRequest();
-            if (updateUser == null)
-            {
-                return BadRequest();
-            }
         }
     }
 

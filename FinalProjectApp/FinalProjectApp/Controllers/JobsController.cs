@@ -1,5 +1,5 @@
-﻿using JobsForAll.Application.Interfaces;
-using JobsForAll.Domain.Models;
+﻿using JobsForAll.Contracts;
+using JobsForAll.Library.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JobsForAll.Controllers

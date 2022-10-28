@@ -1,22 +1,19 @@
-﻿using JobsForAll.Application.Interfaces;
-using JobsForAll.Data.Context;
-using Microsoft.AspNetCore.Identity;
-using System;
+﻿using JobsForAll.Contracts;
+using JobsForAll.Library.Contracts;
+using JobsForAll.Library.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using JobsForAll.Domain.Models;
 
-namespace JobsForAll.Application
+namespace JobsForAll.Services
 {
     public class JobsService : IJobsService
     {
-        private readonly ApplicationDbContext _context;
-        public JobsService(ApplicationDbContext context)
+        private readonly IRepository repository;
+        public JobsService(IRepository repository)
         {
-            _context = context;
+            this.repository = repository;
         }
 
         public async Task<ServiceResponse<bool, string>> AddJob(Job job, ApplicationUser user)
@@ -29,9 +26,8 @@ namespace JobsForAll.Application
                     var jobRequester = new JobRequester();
                     jobRequester.ApplicationUser = user;
                     jobRequester.Job = job;
-                    await _context.Jobs.AddAsync(job);
-                    await _context.JobRequesters.AddAsync(jobRequester);
-                    await _context.SaveChangesAsync();
+
+                    await repository.AddJobs(job, jobRequester);
                     serviceResponse.ResponseOk = true;
                     return serviceResponse;
 
@@ -50,15 +46,12 @@ namespace JobsForAll.Application
         public async Task<ServiceResponse<bool, string>> DeleteJob(int id)
         {
             var serviceResponse = new ServiceResponse<bool, string>();
-            var job = _context.Jobs.FirstOrDefault(x => x.ID == id);
+            var job = repository.GetJobById(id);
             if (job != null)
             {
                 try
                 {
-                    var jobRequester = _context.JobRequesters.FirstOrDefault(jobsRequests => Object.Equals(jobsRequests.Job, job));
-                    _context.JobRequesters.Remove((JobRequester)jobRequester);
-                    _context.Jobs.Remove(job);
-                    _context.SaveChanges();
+                    repository.RemoveJobRequestsAndJob(job);
                     serviceResponse.ResponseOk = true;
                     return serviceResponse;
                 }
@@ -78,22 +71,19 @@ namespace JobsForAll.Application
 
         public async Task<ServiceResponse<List<Job>, string>> GetAllTasksForUser(ApplicationUser user)
         {
-           
+
             var serviceResponse = new ServiceResponse<List<Job>, string>();
 
             if (user != null)
             {
                 try
                 {
-                    var jobRequesters = from jobRequester in _context.JobRequesters
-                                        where jobRequester.ApplicationUser.Id == user.Id
-                                        select jobRequester;
-                    var jobs = jobRequesters.Select(job => job.Job);
+                    var jobs = repository.GetJobsByUserId(user.Id);
                     serviceResponse.ResponseOk = jobs.ToList();
                     return serviceResponse;
 
                 }
-                 catch (IOException exception)
+                catch (IOException exception)
                 {
                     serviceResponse.ResponseError = exception.Message;
                 }

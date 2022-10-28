@@ -1,44 +1,41 @@
-﻿using JobsForAll.Application.Interfaces;
-using JobsForAll.Data.Context;
+﻿using JobsForAll.Contracts;
+using JobsForAll.Library.Contracts;
+using JobsForAll.Library.Models;
+using JobsForAll.Library.Models.Authentication;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.IO;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using JobsForAll.Domain.Models;
-using JobsForAll.Domain.ViewModels.Authenticatoin;
 
-namespace JobsForAll.Application
+namespace JobsForAll.Services
 {
     public class AuthService : IAuthService
     {
-        private readonly ApplicationDbContext _context;
-        private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly IConfiguration _configuration;
+        private readonly IRepository repository;
+        private readonly SignInManager<ApplicationUser> signInManager;
+        private readonly UserManager<ApplicationUser> userManager;
+        private readonly IConfiguration configuration;
 
         public AuthService(
-            ApplicationDbContext context,
+            IRepository repository,
             SignInManager<ApplicationUser> signInManager,
             UserManager<ApplicationUser> userManager,
             IConfiguration configuration)
         {
-            _context = context;
-            _userManager = userManager;
-            _signInManager = signInManager;
-            _configuration = configuration;
+            this.repository = repository;
+            this.userManager = userManager;
+            this.signInManager = signInManager;
+            this.configuration = configuration;
         }
 
         public async Task<ServiceResponse<bool, string>> CompleteUserProfile(CompleteUserProfile completeUserProfile, ApplicationUser user)
         {
-            // var user2 = await _userManager.FindByEmailAsync(loginRequest.Email);
             var serviceResponse = new ServiceResponse<bool, string>();
             if (user != null)
             {
@@ -50,9 +47,9 @@ namespace JobsForAll.Application
                     user.Profession = completeUserProfile.MainProfession + ", " + completeUserProfile.SecundaryProfession + "(Secundary)";
                     user.Details = "Hobby: " + completeUserProfile.Hobby + ", Fun fact: " + completeUserProfile.FunFact;
                     user.Role = completeUserProfile.Role;
-                    _context.Entry(user).State = EntityState.Modified;
+                    //todo: repository.Entry(user).State = EntityState.Modified;
 
-                    await _context.SaveChangesAsync();
+                    await repository.SaveUserChangesAsync(user);
                     serviceResponse.ResponseOk = true;
                 }
                 catch (IOException exception)
@@ -71,42 +68,28 @@ namespace JobsForAll.Application
 
         public async Task<bool> ConfirmUser(ConfirmUserRequest confirmUserRequest)
         {
-            var toConfirm = _context.ApplicationUsers
-                .Where(u => u.Email == confirmUserRequest.Email && u.SecurityStamp == confirmUserRequest.ConfirmationToken)
-                .FirstOrDefault();
-            if (toConfirm != null)
-            {
-                toConfirm.EmailConfirmed = true;
-                _context.Entry(toConfirm).State = EntityState.Modified;
-                await _context.SaveChangesAsync();
-
-                return true;
-            }
-
-            return false;
+            return await repository.ConfirmUser(confirmUserRequest.Email, confirmUserRequest.ConfirmationToken);
         }
-
 
         public async Task<ServiceResponse<LoginResponse, string>> Login(LoginRequest loginRequest)
         {
             var serviceResponse = new ServiceResponse<LoginResponse, string>();
-            var user = _context.ApplicationUsers.FirstOrDefault(x => x.Email == loginRequest.Email);
-
-            if (user != null && await _userManager.CheckPasswordAsync(user, loginRequest.Password))
+            var user = repository.GetUserByEmail(loginRequest.Email);
+            if (user != null && await userManager.CheckPasswordAsync(user, loginRequest.Password))
             {
                 var claims = new[] {
                     new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
                     new Claim(ClaimTypes.Name, user.UserName),
-                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
+                    new Claim(ClaimTypes.NameIdentifier, user.Id),
                 };
                 var signinKey = new SymmetricSecurityKey(
-                  Encoding.UTF8.GetBytes(_configuration["Jwt:SigningKey"]));
+                  Encoding.UTF8.GetBytes(configuration["Jwt:SigningKey"]));
 
-                int expiryInMinutes = Convert.ToInt32(_configuration["Jwt:ExpiryInMinutes"]);
+                int expiryInMinutes = Convert.ToInt32(configuration["Jwt:ExpiryInMinutes"]);
 
                 var token = new JwtSecurityToken(
-                  issuer: _configuration["Jwt:Site"],
-                  audience: _configuration["Jwt:Site"],
+                  issuer: configuration["Jwt:Site"],
+                  audience: configuration["Jwt:Site"],
                   expires: DateTime.UtcNow.AddMinutes(expiryInMinutes),
                   signingCredentials: new SigningCredentials(signinKey, SecurityAlgorithms.HmacSha256),
                   claims: claims
@@ -132,7 +115,7 @@ namespace JobsForAll.Application
             };
 
             var serviceResponse = new ServiceResponse<RegisterResponse, IEnumerable<IdentityError>>();
-            var result = await _userManager.CreateAsync(user, registerRequest.Password);
+            var result = await userManager.CreateAsync(user, registerRequest.Password);
             if (result.Succeeded)
             {
                 serviceResponse.ResponseOk = new RegisterResponse { ConfirmationToken = user.SecurityStamp };

@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.SignalR;
+using System;
 
 namespace JobsForAll.Library.Models
 {
-    public class MessageViewModel
+    public class MessageViewModel : Hub
     {
         public int Id { get; set; }
         public string Content { get; set; }

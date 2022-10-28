@@ -1,13 +1,11 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System;
+﻿using JobsForAll.Library.Models;
+using JobsForAll.Library.Models.Authentication;
+using JobsForAll.Services;
+using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using JobsForAll.Domain.Models;
-using JobsForAll.Domain.ViewModels.Authenticatoin;
 
-namespace JobsForAll.Application.Interfaces
+namespace JobsForAll.Contracts
 {
     public interface IAuthService
     {

@@ -11,7 +11,6 @@ namespace JobsForAll.SqlDatabase.Contracts
         public DbSet<DbMessage> Messages { get; }
         public DbSet<DbUserComment> UserComments { get; }
         public DbSet<DbComment> Comments { get; }
-
         int SaveChanges();
     }
 }

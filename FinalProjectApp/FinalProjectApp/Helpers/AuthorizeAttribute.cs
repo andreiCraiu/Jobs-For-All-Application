@@ -1,35 +1,20 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using JobsForAll.Library.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 using System.Collections.Generic;
-using JobsForAll.Domain.Models;
 
 namespace JobsForAll.Helpers
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class AuthorizeAttribute : Attribute, IAuthorizationFilter
     {
-        private readonly List<Role> _roles;
-
-
-
         public AuthorizeAttribute(Role[] roles)
         {
             _roles = new List<Role>();
             _roles.AddRange(roles);
         }
-
-
-
-        public AuthorizeAttribute()
-        {
-
-
-
-        }
-
-
 
         public void OnAuthorization(AuthorizationFilterContext context)
         {
@@ -40,5 +25,7 @@ namespace JobsForAll.Helpers
                 context.Result = new JsonResult(new { message = "Unauthorized" }) { StatusCode = StatusCodes.Status401Unauthorized };
             }
         }
+
+        private readonly List<Role> _roles;
     }
 }

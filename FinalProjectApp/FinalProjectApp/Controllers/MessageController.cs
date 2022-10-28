@@ -1,12 +1,8 @@
-﻿using JobsForAll.Data.Context;
-using JobsForAll.Domain.ViewModels;
+﻿using JobsForAll.Library.Contracts;
+using JobsForAll.Library.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using JobsForAll.Domain.Models;
 
 namespace JobsForAll.Controllers
 {
@@ -14,13 +10,10 @@ namespace JobsForAll.Controllers
     [ApiController]
     public class MessageController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
-        private readonly IHubContext<MessageHub> _hubContext;
-
-        public MessageController(ApplicationDbContext context, IHubContext<MessageHub> hubContext)
+        public MessageController(IRepository repository, IHubContext<MessageHub> hubContext)
         {
-            _context = context;
-            _hubContext = hubContext;
+            this.repository = repository;
+            this.hubContext = hubContext;
         }
 
         [HttpPost]
@@ -33,14 +26,11 @@ namespace JobsForAll.Controllers
                 Content = message.Content,
                 ReceiverId = message.ReceiverId,
                 SenderId = user.Id,
-                SendTime = DateTime.Now
+                SendTime = DateTime.Now,
             };
 
-            _context.Messages.Add(databaseMessage);
-            _context.SaveChanges();
-
-
-            _hubContext.Clients.All.SendAsync("MessageReceived", message);
+            repository.AddMessages(databaseMessage);
+            hubContext.Clients.All.SendAsync("MessageReceived", message);
 
             return Ok(databaseMessage.ID);
         }
@@ -49,15 +39,13 @@ namespace JobsForAll.Controllers
         public IActionResult GetAll()
         {
             var user = (ApplicationUser)HttpContext.Items["User"];
-            var messages = _context.Messages.Select(m => new MessageViewModel
-            {
-                Content = m.Content,
-                Id = m.ID,
-                ReceiverId = m.ReceiverId,
-                SenderId = m.SenderId,
-                SendTime = m.SendTime
-            });
+            var messages = repository.GetMessages();
             return Ok(messages);
         }
+
+        //
+
+        private readonly IRepository repository;
+        private readonly IHubContext<MessageHub> hubContext;
     }
 }

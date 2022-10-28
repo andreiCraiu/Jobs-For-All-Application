@@ -1,16 +1,13 @@
-using JobsForAll.Application;
-using JobsForAll.Application.Interfaces;
-using JobsForAll.Data.Context;
-using JobsForAll.Domain.Models;
-using JobsForAll.Domain.ViewModels;
+using JobsForAll.Contracts;
 using JobsForAll.Helpers;
+using JobsForAll.Library.Models;
+using JobsForAll.Services;
+using JobsForAll.SqlDatabase;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -28,9 +25,6 @@ namespace JobsForAll
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors(options =>
@@ -39,12 +33,9 @@ namespace JobsForAll
                     .AllowAnyHeader()
                     .AllowAnyMethod()
                     .AllowCredentials()
-                    .SetIsOriginAllowed((host) => true));
+                    .SetIsOriginAllowed(_ => true));
             });
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("JobsForAll")));
             services.AddAutoMapper(typeof(MappingProfile));
             services.AddAuthentication(options =>
             {
@@ -66,14 +57,10 @@ namespace JobsForAll
               });
 
             services.AddIdentityServerBuilder();
-            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-               .AddEntityFrameworkStores<ApplicationDbContext>()
-               .AddDefaultTokenProviders();
-
-
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            Bootstrapper.SetUp(services, connectionString);
 
             services.AddRazorPages();
-
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddControllers();
 
@@ -83,7 +70,6 @@ namespace JobsForAll
             });
             services.AddMvc();
 
-            // services
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IJobsService, JobsService>();
             services.AddScoped<IUserService, UserService>();
@@ -92,7 +78,6 @@ namespace JobsForAll
             services.AddSignalR();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -115,5 +100,9 @@ namespace JobsForAll
                 endpoints.MapHub<MessageHub>("/chatsocket");
             });
         }
+
+        //
+
+        private IConfiguration Configuration { get; }
     }
 }

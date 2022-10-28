@@ -1,4 +1,4 @@
-﻿using JobsForAll.Data.Context;
+﻿using JobsForAll.Library.Contracts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -13,33 +13,30 @@ namespace JobsForAll.Helpers
 {
     public class JwtMiddleware
     {
-        private readonly RequestDelegate _next;
-        private readonly IConfiguration _configuration;
-        private readonly ApplicationDbContext _context;
-
-
-
-        public JwtMiddleware(RequestDelegate next, IConfiguration configuration)
+        public JwtMiddleware(RequestDelegate next, IConfiguration configuration, IRepository repository)
         {
             _next = next;
             _configuration = configuration;
+            this.repository = repository;
         }
 
-
-
-        public async Task Invoke(HttpContext context, ApplicationDbContext _context)
+        public async Task Invoke(HttpContext context)
         {
             var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
 
             if (token != null)
-                AttachUserToContext(context, _context, token);
+                AttachUserToContext(context, token);
 
             await _next(context);
         }
 
+        //
 
+        private readonly RequestDelegate _next;
+        private readonly IConfiguration _configuration;
+        private readonly IRepository repository;
 
-        private void AttachUserToContext(HttpContext context, ApplicationDbContext _context, string token)
+        private void AttachUserToContext(HttpContext context, string token)
         {
             try
             {
@@ -64,7 +61,7 @@ namespace JobsForAll.Helpers
 
                 // attach user to context on successful jwt validation
                 // To DO: Get user from service
-                context.Items["User"] = _context.ApplicationUsers.FirstOrDefault(user => user.Id == userId);
+                context.Items["User"] = repository.GetUserById(userId);
             }
             catch (Exception e)
             {

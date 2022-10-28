@@ -6,7 +6,7 @@ using Microsoft.Extensions.Options;
 
 namespace JobsForAll.Data.Context
 {
-    public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>
+    internal class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>
     {
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<Job> Jobs { get; set; }

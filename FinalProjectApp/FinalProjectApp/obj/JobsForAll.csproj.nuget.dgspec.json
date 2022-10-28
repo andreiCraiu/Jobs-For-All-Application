@@ -34,8 +34,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\.NET-Project\\FinalProjectApp\\JobsForAll.Application\\JobsForAll.Application.csproj": {
-                "projectPath": "D:\\.NET-Project\\FinalProjectApp\\JobsForAll.Application\\JobsForAll.Application.csproj"
+              "D:\\.NET-Project\\FinalProjectApp\\JobsForAll.Library\\JobsForAll.Library.csproj": {
+                "projectPath": "D:\\.NET-Project\\FinalProjectApp\\JobsForAll.Library\\JobsForAll.Library.csproj"
+              },
+              "D:\\.NET-Project\\FinalProjectApp\\JobsForAll.SqlDatabase\\JobsForAll.SqlDatabase.csproj": {
+                "projectPath": "D:\\.NET-Project\\FinalProjectApp\\JobsForAll.SqlDatabase\\JobsForAll.SqlDatabase.csproj"
               }
             }
           }
@@ -116,171 +119,14 @@
         }
       }
     },
-    "D:\\.NET-Project\\FinalProjectApp\\JobsForAll.Application\\JobsForAll.Application.csproj": {
+    "D:\\.NET-Project\\FinalProjectApp\\JobsForAll.Library\\JobsForAll.Library.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\.NET-Project\\FinalProjectApp\\JobsForAll.Application\\JobsForAll.Application.csproj",
-        "projectName": "JobsForAll.Application",
-        "projectPath": "D:\\.NET-Project\\FinalProjectApp\\JobsForAll.Application\\JobsForAll.Application.csproj",
+        "projectUniqueName": "D:\\.NET-Project\\FinalProjectApp\\JobsForAll.Library\\JobsForAll.Library.csproj",
+        "projectName": "JobsForAll.Library",
+        "projectPath": "D:\\.NET-Project\\FinalProjectApp\\JobsForAll.Library\\JobsForAll.Library.csproj",
         "packagesPath": "C:\\Users\\BogdanRenfield\\.nuget\\packages\\",
-        "outputPath": "D:\\.NET-Project\\FinalProjectApp\\JobsForAll.Application\\obj\\",
-        "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Progress\\ToolboxNuGetPackages"
-        ],
-        "configFilePaths": [
-          "C:\\Users\\BogdanRenfield\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Telerik UI for WinForms.config"
-        ],
-        "originalTargetFrameworks": [
-          "net5.0"
-        ],
-        "sources": {
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.telerik.com/v3/index.json": {}
-        },
-        "frameworks": {
-          "net5.0": {
-            "targetAlias": "net5.0",
-            "projectReferences": {
-              "D:\\.NET-Project\\FinalProjectApp\\JobsForAll.Data\\JobsForAll.Data.csproj": {
-                "projectPath": "D:\\.NET-Project\\FinalProjectApp\\JobsForAll.Data\\JobsForAll.Data.csproj"
-              },
-              "D:\\.NET-Project\\FinalProjectApp\\JobsForAll.Domain\\JobsForAll.Domain.csproj": {
-                "projectPath": "D:\\.NET-Project\\FinalProjectApp\\JobsForAll.Domain\\JobsForAll.Domain.csproj"
-              }
-            }
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
-          "dependencies": {
-            "Microsoft.AspNetCore.Authentication.JwtBearer": {
-              "target": "Package",
-              "version": "[5.0.9, )"
-            },
-            "Microsoft.AspNetCore.Identity": {
-              "target": "Package",
-              "version": "[2.2.0, )"
-            },
-            "System.IdentityModel.Tokens.Jwt": {
-              "target": "Package",
-              "version": "[6.12.0, )"
-            }
-          },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48",
-            "net481"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "D:\\.NET-Project\\FinalProjectApp\\JobsForAll.Data\\JobsForAll.Data.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "D:\\.NET-Project\\FinalProjectApp\\JobsForAll.Data\\JobsForAll.Data.csproj",
-        "projectName": "JobsForAll.Data",
-        "projectPath": "D:\\.NET-Project\\FinalProjectApp\\JobsForAll.Data\\JobsForAll.Data.csproj",
-        "packagesPath": "C:\\Users\\BogdanRenfield\\.nuget\\packages\\",
-        "outputPath": "D:\\.NET-Project\\FinalProjectApp\\JobsForAll.Data\\obj\\",
-        "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Progress\\ToolboxNuGetPackages"
-        ],
-        "configFilePaths": [
-          "C:\\Users\\BogdanRenfield\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Telerik UI for WinForms.config"
-        ],
-        "originalTargetFrameworks": [
-          "net5.0"
-        ],
-        "sources": {
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.telerik.com/v3/index.json": {}
-        },
-        "frameworks": {
-          "net5.0": {
-            "targetAlias": "net5.0",
-            "projectReferences": {
-              "D:\\.NET-Project\\FinalProjectApp\\JobsForAll.Domain\\JobsForAll.Domain.csproj": {
-                "projectPath": "D:\\.NET-Project\\FinalProjectApp\\JobsForAll.Domain\\JobsForAll.Domain.csproj"
-              }
-            }
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
-          "dependencies": {
-            "Microsoft.AspNetCore.ApiAuthorization.IdentityServer": {
-              "target": "Package",
-              "version": "[5.0.9, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[5.0.9, )"
-            }
-          },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48",
-            "net481"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "D:\\.NET-Project\\FinalProjectApp\\JobsForAll.Domain\\JobsForAll.Domain.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "D:\\.NET-Project\\FinalProjectApp\\JobsForAll.Domain\\JobsForAll.Domain.csproj",
-        "projectName": "JobsForAll.Domain",
-        "projectPath": "D:\\.NET-Project\\FinalProjectApp\\JobsForAll.Domain\\JobsForAll.Domain.csproj",
-        "packagesPath": "C:\\Users\\BogdanRenfield\\.nuget\\packages\\",
-        "outputPath": "D:\\.NET-Project\\FinalProjectApp\\JobsForAll.Domain\\obj\\",
+        "outputPath": "D:\\.NET-Project\\FinalProjectApp\\JobsForAll.Library\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -323,7 +169,90 @@
               "target": "Package",
               "version": "[1.1.0, )"
             },
+            "Microsoft.Extensions.Identity.Core": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
             "Microsoft.Extensions.Identity.Stores": {
+              "target": "Package",
+              "version": "[5.0.9, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\.NET-Project\\FinalProjectApp\\JobsForAll.SqlDatabase\\JobsForAll.SqlDatabase.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\.NET-Project\\FinalProjectApp\\JobsForAll.SqlDatabase\\JobsForAll.SqlDatabase.csproj",
+        "projectName": "JobsForAll.SqlDatabase",
+        "projectPath": "D:\\.NET-Project\\FinalProjectApp\\JobsForAll.SqlDatabase\\JobsForAll.SqlDatabase.csproj",
+        "packagesPath": "C:\\Users\\BogdanRenfield\\.nuget\\packages\\",
+        "outputPath": "D:\\.NET-Project\\FinalProjectApp\\JobsForAll.SqlDatabase\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Progress\\ToolboxNuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\BogdanRenfield\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Telerik UI for WinForms.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.telerik.com/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "D:\\.NET-Project\\FinalProjectApp\\JobsForAll.Library\\JobsForAll.Library.csproj": {
+                "projectPath": "D:\\.NET-Project\\FinalProjectApp\\JobsForAll.Library\\JobsForAll.Library.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.ApiAuthorization.IdentityServer": {
+              "target": "Package",
+              "version": "[5.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[5.0.9, )"
             }
