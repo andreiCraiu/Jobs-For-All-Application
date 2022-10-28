@@ -1,11 +1,6 @@
-﻿using FinalProjectApp.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using JobsForAll.Domain.Models;
 
-namespace FinalProjectApp.ViewModels.Authenticatoin
+namespace JobsForAll.Domain.ViewModels.Authenticatoin
 {
     public class CompleteUserProfile
     {

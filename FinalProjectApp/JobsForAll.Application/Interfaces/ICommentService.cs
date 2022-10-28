@@ -1,5 +1,4 @@
-﻿using FinalProjectApp.Models;
-using JobsForAll.Domain.Models;
+﻿using JobsForAll.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,5 +1,5 @@
-﻿using FinalProjectApp.Models;
-using JobsForAll.Application.Interfaces;
+﻿using JobsForAll.Application.Interfaces;
+using JobsForAll.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JobsForAll.Controllers

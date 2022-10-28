@@ -1,7 +1,7 @@
-﻿using FinalProjectApp.ViewModels.Authentication;
-using JobsForAll.Application.Interfaces;
+﻿using JobsForAll.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using JobsForAll.Domain.ViewModels.Authenticatoin;
 
 namespace JobsForAll.Controllers
 {

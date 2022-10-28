@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace FinalProjectApp.ViewModels.Authentication
+﻿namespace JobsForAll.Domain.ViewModels.Authenticatoin
 {
     public class ConfirmUserRequest
     {

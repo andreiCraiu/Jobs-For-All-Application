@@ -1,8 +1,5 @@
-﻿using FinalProjectApp.Data;
-using FinalProjectApp.Models;
-using FinalProjectApp.ViewModels.Authentication;
-using FinalProjectApp.ViewModels.Authenticatoin;
-using JobsForAll.Application.Interfaces;
+﻿using JobsForAll.Application.Interfaces;
+using JobsForAll.Data.Context;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -15,6 +12,8 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using JobsForAll.Domain.Models;
+using JobsForAll.Domain.ViewModels.Authenticatoin;
 
 namespace JobsForAll.Application
 {
@@ -39,7 +38,7 @@ namespace JobsForAll.Application
 
         public async Task<ServiceResponse<bool, string>> CompleteUserProfile(CompleteUserProfile completeUserProfile, ApplicationUser user)
         {
-           // var user2 = await _userManager.FindByEmailAsync(loginRequest.Email);
+            // var user2 = await _userManager.FindByEmailAsync(loginRequest.Email);
             var serviceResponse = new ServiceResponse<bool, string>();
             if (user != null)
             {

@@ -1,6 +1,6 @@
-﻿namespace JobsForAll.Domain.Models
+﻿namespace JobsForAll.SqlDatabase.Models
 {
-    public class Comment
+    internal class DbComment
     {
         public int Id { get; set; }
         public string Body { get; set; }

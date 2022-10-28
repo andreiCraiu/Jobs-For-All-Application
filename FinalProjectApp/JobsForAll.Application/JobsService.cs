@@ -1,6 +1,5 @@
-﻿using FinalProjectApp.Data;
-using FinalProjectApp.Models;
-using JobsForAll.Application.Interfaces;
+﻿using JobsForAll.Application.Interfaces;
+using JobsForAll.Data.Context;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -8,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using JobsForAll.Domain.Models;
 
 namespace JobsForAll.Application
 {

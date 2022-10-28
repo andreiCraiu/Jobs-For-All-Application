@@ -1,7 +1,6 @@
-using FinalProjectApp.Data;
-using FinalProjectApp.Models;
 using JobsForAll.Application;
 using JobsForAll.Application.Interfaces;
+using JobsForAll.Data.Context;
 using JobsForAll.Domain.ViewModels;
 using JobsForAll.Helpers;
 using Microsoft.AspNetCore.Authentication;
@@ -18,6 +17,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using JobsForAll.Domain.Models;
 
 namespace FinalProjectApp
 {

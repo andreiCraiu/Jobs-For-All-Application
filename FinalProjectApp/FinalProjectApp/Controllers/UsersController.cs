@@ -1,7 +1,7 @@
-﻿using FinalProjectApp.Data;
-using FinalProjectApp.Models;
-using FinalProjectApp.ViewModels;
-using JobsForAll.Application.Interfaces;
+﻿using JobsForAll.Application.Interfaces;
+using JobsForAll.Data.Context;
+using JobsForAll.Domain.Models;
+using JobsForAll.Domain.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

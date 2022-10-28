@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace JobsForAll.Domain.Models
+namespace JobsForAll.SqlDatabase.Models
 {
-    public class ApplicationUser : IdentityUser
+    internal class DbApplicationUser : IdentityUser
     {
         public string Address { get; set; }
         public string Postcode { get; set; }
@@ -10,8 +10,14 @@ namespace JobsForAll.Domain.Models
         public string Details { get; set; }
         public int Rating { get; set; }
         public int JobsFinished { get; set; }
-
         public Role Role { get; set; }
     }
 
+    internal enum Role
+    {
+        Admin = 1,
+        JobRequester = 2,
+        JobFinder = 3,
+        Both = 4
+    }
 }

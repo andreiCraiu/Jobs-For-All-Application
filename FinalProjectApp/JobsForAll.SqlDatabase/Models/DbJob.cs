@@ -1,6 +1,6 @@
-﻿namespace JobsForAll.Domain.Models
+﻿namespace JobsForAll.SqlDatabase.Models
 {
-    public class Job
+    internal class DbJob
     {
         public int ID { get; set; }
         public string JobTitle { get; set; }

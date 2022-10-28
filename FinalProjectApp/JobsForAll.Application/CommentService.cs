@@ -1,6 +1,5 @@
-﻿using FinalProjectApp.Data;
-using FinalProjectApp.Models;
-using JobsForAll.Application.Interfaces;
+﻿using JobsForAll.Application.Interfaces;
+using JobsForAll.Data.Context;
 using JobsForAll.Domain.Models;
 using System;
 using System.Collections.Generic;

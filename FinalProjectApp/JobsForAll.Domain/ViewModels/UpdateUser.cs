@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace FinalProjectApp.ViewModels
+﻿namespace JobsForAll.Domain.ViewModels
 {
     public class UpdateUser
     {

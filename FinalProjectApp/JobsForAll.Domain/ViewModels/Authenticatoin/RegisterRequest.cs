@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace FinalProjectApp.ViewModels.Authentication
+namespace JobsForAll.Domain.ViewModels.Authenticatoin
 {
     public class RegisterRequest
     {

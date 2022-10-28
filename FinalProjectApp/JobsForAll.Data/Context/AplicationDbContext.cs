@@ -1,11 +1,10 @@
-﻿using FinalProjectApp.Models;
-using IdentityServer4.EntityFramework.Options;
+﻿using IdentityServer4.EntityFramework.Options;
 using JobsForAll.Domain.Models;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
-namespace FinalProjectApp.Data
+namespace JobsForAll.Data.Context
 {
     public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>
     {

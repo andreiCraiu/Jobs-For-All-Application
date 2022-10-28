@@ -1,4 +1,4 @@
-﻿using FinalProjectApp.Data;
+﻿using JobsForAll.Data.Context;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;

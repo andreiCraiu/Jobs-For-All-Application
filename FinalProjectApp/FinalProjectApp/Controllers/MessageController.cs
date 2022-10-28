@@ -1,5 +1,4 @@
-﻿using FinalProjectApp.Data;
-using FinalProjectApp.Models;
+﻿using JobsForAll.Data.Context;
 using JobsForAll.Domain.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
@@ -7,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using JobsForAll.Domain.Models;
 
 namespace JobsForAll.Controllers
 {
