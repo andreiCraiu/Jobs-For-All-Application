@@ -1,6 +1,6 @@
-﻿namespace JobsForAll.Services
+﻿namespace JobsForAll.Models
 {
-    public class Exception
+    public class Constants
     {
         public const string NULL_USER = "User is null";
         public const string NULL_JOB = "Job is null";

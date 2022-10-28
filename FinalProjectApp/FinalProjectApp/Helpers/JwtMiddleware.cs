@@ -15,8 +15,8 @@ namespace JobsForAll.Helpers
     {
         public JwtMiddleware(RequestDelegate next, IConfiguration configuration, IRepository repository)
         {
-            _next = next;
-            _configuration = configuration;
+            this.next = next;
+            this.configuration = configuration;
             this.repository = repository;
         }
 
@@ -27,13 +27,13 @@ namespace JobsForAll.Helpers
             if (token != null)
                 AttachUserToContext(context, token);
 
-            await _next(context);
+            await next(context);
         }
 
         //
 
-        private readonly RequestDelegate _next;
-        private readonly IConfiguration _configuration;
+        private readonly RequestDelegate next;
+        private readonly IConfiguration configuration;
         private readonly IRepository repository;
 
         private void AttachUserToContext(HttpContext context, string token)
@@ -41,7 +41,7 @@ namespace JobsForAll.Helpers
             try
             {
                 var tokenHandler = new JwtSecurityTokenHandler();
-                var key = Encoding.ASCII.GetBytes(_configuration["Jwt:SigningKey"]);
+                var key = Encoding.ASCII.GetBytes(configuration["Jwt:SigningKey"]);
                 tokenHandler.ValidateToken(token, new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,

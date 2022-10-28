@@ -9,13 +9,10 @@ namespace JobsForAll.Controllers
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
-        private readonly IAuthService _authenticationService;
-
         public AuthenticationController(IAuthService authenticationService)
         {
             _authenticationService = authenticationService;
         }
-
 
         [HttpPost]
         [Route("confirm")]
@@ -42,5 +39,9 @@ namespace JobsForAll.Controllers
 
             return Unauthorized();
         }
+
+        //
+
+        private readonly IAuthService _authenticationService;
     }
 }

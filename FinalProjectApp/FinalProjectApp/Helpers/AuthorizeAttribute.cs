@@ -12,20 +12,20 @@ namespace JobsForAll.Helpers
     {
         public AuthorizeAttribute(Role[] roles)
         {
-            _roles = new List<Role>();
-            _roles.AddRange(roles);
+            this.roles = new List<Role>();
+            this.roles.AddRange(roles);
         }
 
         public void OnAuthorization(AuthorizationFilterContext context)
         {
             var user = (ApplicationUser)context.HttpContext.Items["User"];
-            if (user == null || (_roles != null && !_roles.Contains(user.Role)))
+            if (user == null || (roles != null && !roles.Contains(user.Role)))
             {
                 // not logged in
                 context.Result = new JsonResult(new { message = "Unauthorized" }) { StatusCode = StatusCodes.Status401Unauthorized };
             }
         }
 
-        private readonly List<Role> _roles;
+        private readonly List<Role> roles;
     }
 }

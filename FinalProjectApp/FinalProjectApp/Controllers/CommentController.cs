@@ -8,14 +8,11 @@ namespace JobsForAll.Controllers
     [ApiController]
     public class CommentController : ControllerBase
     {
-        private readonly ICommentService _commentService;
-        private readonly IUserService _userService;
         public CommentController(ICommentService commentService, IUserService userService)
         {
             _commentService = commentService;
             _userService = userService;
         }
-
 
         [HttpPost]
         [Route("addComment/{commentedUserId}")]
@@ -44,8 +41,10 @@ namespace JobsForAll.Controllers
                 return BadRequest();
             }
         }
+
+        //
+
+        private readonly ICommentService _commentService;
+        private readonly IUserService _userService;
     }
-
-
-
 }

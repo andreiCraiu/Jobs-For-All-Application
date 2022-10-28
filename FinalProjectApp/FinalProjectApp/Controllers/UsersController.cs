@@ -13,20 +13,18 @@ namespace JobsForAll.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly SignInManager<ApplicationUser> signInManager;
-        private readonly UserManager<ApplicationUser> userManager;
-        private readonly IRepository repository;
-        private readonly IConfiguration configuration;
-        private readonly IUserService _userService;
-
-        public UsersController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager,
-                               IRepository repository, IConfiguration configuration, IUserService userService)
+        public UsersController(
+            UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager,
+            IRepository repository,
+            IConfiguration configuration,
+            IUserService userService)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
-            repository = repository;
+            this.repository = repository;
             this.configuration = configuration;
-            _userService = userService;
+            this.userService = userService;
         }
 
         [HttpGet]
@@ -53,7 +51,7 @@ namespace JobsForAll.Controllers
         [Route("getFilteredUsers/{filterString}")]
         public IActionResult FilterUsesr(string filterString)
         {
-            var users = _userService.FilterUsers(filterString).Result.ResponseOk;
+            var users = userService.FilterUsers(filterString).Result.ResponseOk;
             if (users != null)
                 return Ok(users);
             return BadRequest();
@@ -63,7 +61,7 @@ namespace JobsForAll.Controllers
         [Route("getAllUsers")]
         public IActionResult GetAllUsers()
         {
-            var users = _userService.GetAllUsers().Result.ResponseOk;
+            var users = userService.GetAllUsers().Result.ResponseOk;
             if (users != null)
                 return Ok(users);
             return BadRequest();
@@ -115,7 +113,13 @@ namespace JobsForAll.Controllers
             }
             return BadRequest();
         }
+
+        //
+
+        private readonly SignInManager<ApplicationUser> signInManager;
+        private readonly UserManager<ApplicationUser> userManager;
+        private readonly IRepository repository;
+        private readonly IConfiguration configuration;
+        private readonly IUserService userService;
     }
-
-
 }

@@ -9,8 +9,6 @@ namespace JobsForAll.Controllers
     [ApiController]
     public class RegisterUserController : ControllerBase
     {
-        private readonly IAuthService _authenticationService;
-        private readonly IUserService _userService;
         public RegisterUserController(IAuthService authenticationService, IUserService userService)
         {
             _authenticationService = authenticationService;
@@ -30,8 +28,6 @@ namespace JobsForAll.Controllers
             return Ok(registerServiceResult.ResponseOk);
         }
 
-
-
         [Route("completeUserProfile/{email}")]
         [HttpPost]
         public async Task<ActionResult> CompleteUserProfile(CompleteUserProfile completeUserProfile, string email)
@@ -39,7 +35,12 @@ namespace JobsForAll.Controllers
             var user = _userService.GetUserByEmail(email).Result.ResponseOk;
 
             var isUserProfileCompletedResponse = _authenticationService.CompleteUserProfile(completeUserProfile, user);
-            return isUserProfileCompletedResponse.Result.ResponseOk == true ? Ok(isUserProfileCompletedResponse.Result.ResponseOk) : BadRequest();
+            return isUserProfileCompletedResponse.Result.ResponseOk ? Ok(isUserProfileCompletedResponse.Result.ResponseOk) : BadRequest();
         }
+
+        //
+
+        private readonly IAuthService _authenticationService;
+        private readonly IUserService _userService;
     }
 }

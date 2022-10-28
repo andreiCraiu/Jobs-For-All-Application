@@ -1,6 +1,7 @@
 ﻿using JobsForAll.Contracts;
 using JobsForAll.Library.Contracts;
 using JobsForAll.Library.Models;
+using JobsForAll.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -40,7 +41,7 @@ namespace JobsForAll.Services
                     serviceResponse.ResponseOk = false;
                 }
             }
-            var exceptionMessage = comment == null ? Exception.NULL_COMMENT : Exception.NULL_USER;
+            var exceptionMessage = comment == null ? Constants.NULL_COMMENT : Constants.NULL_USER;
             serviceResponse.ResponseError = exceptionMessage;
             return serviceResponse;
         }
@@ -52,17 +53,18 @@ namespace JobsForAll.Services
             var userComments = repository.GetUserCommentsById(id);
             if (userComments != null)
             {
-                serviceResponse.ResponseOk = Enumerable.ToList<Comment>(userComments);
+                serviceResponse.ResponseOk = userComments.ToList();
                 return serviceResponse;
             }
             else
             {
-                serviceResponse.ResponseError = Exception.NULL_USER;
+                serviceResponse.ResponseError = Constants.NULL_USER;
             }
             return serviceResponse;
         }
 
         //
+
         private readonly IRepository repository;
     }
 }

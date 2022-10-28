@@ -1,6 +1,7 @@
 ﻿using JobsForAll.Contracts;
 using JobsForAll.Library.Contracts;
 using JobsForAll.Library.Models;
+using JobsForAll.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,8 +10,6 @@ namespace JobsForAll.Services
 {
     public class UserService : IUserService
     {
-        private readonly IRepository repository;
-
         public UserService(IRepository repository)
         {
             this.repository = repository;
@@ -27,7 +26,7 @@ namespace JobsForAll.Services
             }
             else
             {
-                serviceResponse.ResponseError = Exception.NULL_USER;
+                serviceResponse.ResponseError = Constants.NULL_USER;
             }
             return serviceResponse;
         }
@@ -43,7 +42,7 @@ namespace JobsForAll.Services
             }
             else
             {
-                serviceResponse.ResponseError = Exception.NULL_USER;
+                serviceResponse.ResponseError = Constants.NULL_USER;
             }
             return serviceResponse;
         }
@@ -59,7 +58,7 @@ namespace JobsForAll.Services
             }
             else
             {
-                serviceResponse.ResponseError = Exception.NULL_USER;
+                serviceResponse.ResponseError = Constants.NULL_USER;
             }
             return serviceResponse;
         }
@@ -75,9 +74,13 @@ namespace JobsForAll.Services
             }
             else
             {
-                serviceResponse.ResponseError = Exception.NULL_USER;
+                serviceResponse.ResponseError = Constants.NULL_USER;
             }
             return serviceResponse;
         }
+
+        //
+
+        private readonly IRepository repository;
     }
 }

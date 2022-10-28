@@ -2,6 +2,7 @@
 using JobsForAll.Library.Contracts;
 using JobsForAll.Library.Models;
 using JobsForAll.Library.Models.Authentication;
+using JobsForAll.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -17,11 +18,6 @@ namespace JobsForAll.Services
 {
     public class AuthService : IAuthService
     {
-        private readonly IRepository repository;
-        private readonly SignInManager<ApplicationUser> signInManager;
-        private readonly UserManager<ApplicationUser> userManager;
-        private readonly IConfiguration configuration;
-
         public AuthService(
             IRepository repository,
             SignInManager<ApplicationUser> signInManager,
@@ -60,7 +56,7 @@ namespace JobsForAll.Services
             }
             else
             {
-                serviceResponse.ResponseError = Exception.NULL_USER;
+                serviceResponse.ResponseError = Constants.NULL_USER;
                 serviceResponse.ResponseOk = false;
             }
             return serviceResponse;
@@ -125,5 +121,12 @@ namespace JobsForAll.Services
             serviceResponse.ResponseError = result.Errors;
             return serviceResponse;
         }
+
+        //
+
+        private readonly IRepository repository;
+        private readonly SignInManager<ApplicationUser> signInManager;
+        private readonly UserManager<ApplicationUser> userManager;
+        private readonly IConfiguration configuration;
     }
 }
