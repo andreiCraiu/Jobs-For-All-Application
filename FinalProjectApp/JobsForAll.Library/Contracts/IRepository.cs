@@ -21,5 +21,6 @@ namespace JobsForAll.Library.Contracts
         Task<bool> ConfirmUser(string email, string confirmationToken);
         IEnumerable<ApplicationUser> GetUsersByUserName(string filterString);
         IEnumerable<ApplicationUser> GetAllUsers();
+        void RemoveUser(ApplicationUser user);
     }
 }

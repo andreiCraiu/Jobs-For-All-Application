@@ -82,13 +82,11 @@ namespace JobsForAll.Controllers
         public IActionResult DeleteUSer()
         {
             var user = (ApplicationUser)HttpContext.Items["User"];
-            if (user != null)
-                return Ok(user);
-            return BadRequest();
+            if (user == null)
+                return BadRequest();
 
-            // repository.Remove(user);
-            // repository.SaveChanges();
-            // return Ok();
+            repository.RemoveUser(user);
+            return Ok(user);
         }
 
         [Route("updateUserProfile")]
@@ -109,6 +107,7 @@ namespace JobsForAll.Controllers
                 //todo: repository.Entry(user).State = EntityState.Modified;
 
                 await repository.SaveUserChangesAsync(user);
+                //todo: sa fie serviciu->baza de date
                 return Ok();
             }
             return BadRequest();

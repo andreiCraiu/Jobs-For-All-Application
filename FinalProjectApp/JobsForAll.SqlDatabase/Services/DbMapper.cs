@@ -12,6 +12,7 @@ namespace JobsForAll.SqlDatabase.Services
         };
 
         public Comment MapToComment(DbComment commentComment) => new Comment();
+
         public Job MapToJob(DbJob arg) => new Job()
         {
 

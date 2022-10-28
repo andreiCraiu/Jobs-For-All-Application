@@ -141,6 +141,11 @@ namespace JobsForAll.SqlDatabase.Services
             .ApplicationUsers
             .Select(mapper.MapToApplicationUser);
 
+        public void RemoveUser(ApplicationUser user)
+        {
+            //todo: detele user
+        }
+
         //
 
         private readonly IDataCore dataCore;
