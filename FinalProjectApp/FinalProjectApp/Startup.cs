@@ -1,36 +1,23 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.EntityFrameworkCore;
 using FinalProjectApp.Data;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
 using FinalProjectApp.Models;
-using IdentityServer4.Stores.Default;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.AspNetCore.Http;
-using FinalProjectApp.Controllers;
-using IdentityServer4.Stores;
-using System.Reflection;
-using System.IO;
-using System.Security.Cryptography.X509Certificates;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using FinalProjectApp.Helpers;
 using JobsForAll.Application;
 using JobsForAll.Application.Interfaces;
 using JobsForAll.Domain.ViewModels;
+using JobsForAll.Helpers;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using System.Text;
 
 namespace FinalProjectApp
 {
@@ -54,7 +41,7 @@ namespace FinalProjectApp
                     .AllowCredentials()
                     .SetIsOriginAllowed((host) => true));
             });
- 
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("JobsForAll")));
@@ -74,7 +61,7 @@ namespace FinalProjectApp
                       ValidateAudience = true,
                       ValidAudience = Configuration["Jwt:Site"],
                       ValidIssuer = Configuration["Jwt:Site"],
-                      IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:SigningKey"]))
+                      IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:SigningKey"])),
                   };
               });
 
@@ -83,7 +70,7 @@ namespace FinalProjectApp
                .AddEntityFrameworkStores<ApplicationDbContext>()
                .AddDefaultTokenProviders();
 
-     
+
 
             services.AddRazorPages();
 
@@ -95,7 +82,7 @@ namespace FinalProjectApp
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "FinalProjectApp", Version = "v1" });
             });
             services.AddMvc();
-           
+
             // services
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IJobsService, JobsService>();

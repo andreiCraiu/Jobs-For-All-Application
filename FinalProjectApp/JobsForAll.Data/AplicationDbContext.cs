@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
+﻿using FinalProjectApp.Models;
+using IdentityServer4.EntityFramework.Options;
+using JobsForAll.Domain.Models;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using IdentityServer4.EntityFramework.Options;
-using FinalProjectApp.Models;
-using JobsForAll.Domain.Models;
 
 namespace FinalProjectApp.Data
 {
