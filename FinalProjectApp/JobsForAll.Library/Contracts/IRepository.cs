@@ -14,7 +14,7 @@ namespace JobsForAll.Library.Contracts
         ApplicationUser? GetUserById(string userId);
         Task SaveComents(Comment comment, UserComment userComment);
         IEnumerable<Comment> GetUserCommentsById(string id);
-        Job GetJobById(int id);
+        Job? GetJobById(int id);
         Task AddJobs(Job job, JobRequester jobRequester);
         void RemoveJobRequestsAndJob(Job job);
         IEnumerable<Job> GetJobsByUserId(string userId);

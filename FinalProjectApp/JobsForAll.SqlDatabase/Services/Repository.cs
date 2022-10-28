@@ -38,14 +38,13 @@ namespace JobsForAll.SqlDatabase.Services
             return messages;
         }
 
-        public ApplicationUser? GetApplicationUsers(string id)
-        {
-            return dataCore.ApplicationUsers.Select(mapper.MapToApplicationUser).FirstOrDefault(user => user.Id == id);
-        }
+        public ApplicationUser? GetApplicationUsers(string id) => dataCore
+            .ApplicationUsers
+            .Select(mapper.MapToApplicationUser)
+            .FirstOrDefault(user => user.Id == id);
 
         public Task SaveUserChangesAsync(ApplicationUser user)
         {
-
             //todo: verificare daca exista user
             var dbUser = dataCore.ApplicationUsers.Where(it => it.Id == user.Id).FirstOrDefault();
             dbUser.Address = user.Address;
@@ -53,16 +52,15 @@ namespace JobsForAll.SqlDatabase.Services
             return Task.CompletedTask;//todo: cauta pe net cum trebuie sa fie
         }
 
-        public ApplicationUser GetUserByEmail(string email)
-        {
-            var userr = dataCore.ApplicationUsers.FirstOrDefault(user => user.Email == email);
-            return new ApplicationUser();
-        }
+        public ApplicationUser? GetUserByEmail(string email) => dataCore
+            .ApplicationUsers
+            .Select(mapper.MapToApplicationUser)
+            .FirstOrDefault(user => user.Email == email);
 
-        public ApplicationUser? GetUserById(string userId)
-        {
-            return dataCore.ApplicationUsers.Select(mapper.MapToApplicationUser).FirstOrDefault(user => user.Id == userId);
-        }
+        public ApplicationUser? GetUserById(string userId) => dataCore
+            .ApplicationUsers
+            .Select(mapper.MapToApplicationUser)
+            .FirstOrDefault(user => user.Id == userId);
 
         public async Task SaveComents(Comment comment, UserComment userComment)
         {
@@ -139,7 +137,9 @@ namespace JobsForAll.SqlDatabase.Services
             .Select(mapper.MapToApplicationUser)
             .ToList();
 
-        public IEnumerable<ApplicationUser> GetAllUsers() => dataCore.ApplicationUsers.Select(mapper.MapToApplicationUser);
+        public IEnumerable<ApplicationUser> GetAllUsers() => dataCore
+            .ApplicationUsers
+            .Select(mapper.MapToApplicationUser);
 
         //
 
