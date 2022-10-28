@@ -1,6 +1,6 @@
 using System;
 
-namespace FinalProjectApp
+namespace JobsForAll
 {
     public class WeatherForecast
     {
