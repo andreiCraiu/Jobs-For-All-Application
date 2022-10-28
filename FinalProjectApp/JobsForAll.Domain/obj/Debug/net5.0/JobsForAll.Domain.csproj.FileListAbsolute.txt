@@ -22,3 +22,15 @@ C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Domain\obj\Debug\net5.0\JobsForAll
 C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Domain\obj\Debug\net5.0\JobsForAll.Domain.dll
 C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Domain\obj\Debug\net5.0\ref\JobsForAll.Domain.dll
 C:\Code\FindJobApp\FinalProjectApp\JobsForAll.Domain\obj\Debug\net5.0\JobsForAll.Domain.pdb
+D:\.NET-Project\FinalProjectApp\JobsForAll.Domain\bin\Debug\net5.0\JobsForAll.Domain.deps.json
+D:\.NET-Project\FinalProjectApp\JobsForAll.Domain\bin\Debug\net5.0\JobsForAll.Domain.dll
+D:\.NET-Project\FinalProjectApp\JobsForAll.Domain\bin\Debug\net5.0\JobsForAll.Domain.pdb
+D:\.NET-Project\FinalProjectApp\JobsForAll.Domain\obj\Debug\net5.0\JobsForAll.Domain.csproj.AssemblyReference.cache
+D:\.NET-Project\FinalProjectApp\JobsForAll.Domain\obj\Debug\net5.0\JobsForAll.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\.NET-Project\FinalProjectApp\JobsForAll.Domain\obj\Debug\net5.0\JobsForAll.Domain.AssemblyInfoInputs.cache
+D:\.NET-Project\FinalProjectApp\JobsForAll.Domain\obj\Debug\net5.0\JobsForAll.Domain.AssemblyInfo.cs
+D:\.NET-Project\FinalProjectApp\JobsForAll.Domain\obj\Debug\net5.0\JobsForAll.Domain.csproj.CoreCompileInputs.cache
+D:\.NET-Project\FinalProjectApp\JobsForAll.Domain\obj\Debug\net5.0\JobsForAll.Domain.dll
+D:\.NET-Project\FinalProjectApp\JobsForAll.Domain\obj\Debug\net5.0\refint\JobsForAll.Domain.dll
+D:\.NET-Project\FinalProjectApp\JobsForAll.Domain\obj\Debug\net5.0\JobsForAll.Domain.pdb
+D:\.NET-Project\FinalProjectApp\JobsForAll.Domain\obj\Debug\net5.0\ref\JobsForAll.Domain.dll
