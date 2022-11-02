@@ -64,7 +64,8 @@ namespace JobsForAll.Services
 
         public async Task<bool> ConfirmUser(ConfirmUserRequest confirmUserRequest)
         {
-            return await repository.ConfirmUser(confirmUserRequest.Email, confirmUserRequest.ConfirmationToken);
+            return await repository.ConfirmUser(confirmUserRequest.Email, confirmUserRequest.ConfirmationToken).ConfigureAwait(false);//doar in servicii
+                                                                                                                                      //nu in puncte de intrare
         }
 
         public async Task<ServiceResponse<LoginResponse, string>> Login(LoginRequest loginRequest)

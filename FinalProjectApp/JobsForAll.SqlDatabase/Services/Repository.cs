@@ -92,7 +92,7 @@ namespace JobsForAll.SqlDatabase.Services
         {
             // await dataCore.Jobs.AddAsync(job);
             // await dataCore.JobRequesters.AddAsync(jobRequester);
-            // await dataCore.SaveChangesAsync();
+            await dataCore.SaveChangesAsync();
         }
 
         public void RemoveJobRequestsAndJob(Job job)

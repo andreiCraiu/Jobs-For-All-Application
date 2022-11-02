@@ -1,5 +1,7 @@
 ﻿using JobsForAll.SqlDatabase.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace JobsForAll.SqlDatabase.Contracts
 {
@@ -12,5 +14,6 @@ namespace JobsForAll.SqlDatabase.Contracts
         public DbSet<DbUserComment> UserComments { get; }
         public DbSet<DbComment> Comments { get; }
         int SaveChanges();
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
 }
