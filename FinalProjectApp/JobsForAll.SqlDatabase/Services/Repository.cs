@@ -19,37 +19,28 @@ namespace JobsForAll.SqlDatabase.Services
 
         public void AddMessages(Message message)
         {
-            //repository.Messages.Add(databaseMessage);
-            //repository.SaveChanges();
+            var dbMessage = mapper.MapToDbMessage(message);
+            //todo:save si sender si receiver
+            dataCore.Messages.Add(dbMessage);
+            dataCore.SaveChanges();
         }
 
         public IEnumerable<MessageViewModel> GetMessages()
         {
-            var messages = dataCore.Messages.Select(
-                m => new MessageViewModel
-                {
-                    Content = m.Content,
-                    Id = m.ID,
-                    ReceiverId = m.ReceiverId,
-                    SenderId = m.SenderId,
-                    SendTime = m.SendTime,
-                });
+            var messages = dataCore.Messages.AsEnumerable().Select(mapper.MapToMessage);
 
             return messages;
         }
 
-        public ApplicationUser? GetApplicationUsers(string id) => dataCore
-            .ApplicationUsers
-            .Select(mapper.MapToApplicationUser)
-            .FirstOrDefault(user => user.Id == id);
-
-        public Task SaveUserChangesAsync(ApplicationUser user)
+        public async Task SaveUserChangesAsync(ApplicationUser user)
         {
-            //todo: verificare daca exista user
             var dbUser = dataCore.ApplicationUsers.Where(it => it.Id == user.Id).FirstOrDefault();
+            if (dbUser == null)
+                throw new Exception("Userul nu exista");
+
             dbUser.Address = user.Address;
-            dataCore.SaveChanges();
-            return Task.CompletedTask;//todo: cauta pe net cum trebuie sa fie
+            //todo: si ce mai vrei update
+            await dataCore.SaveChangesAsync();
         }
 
         public ApplicationUser? GetUserByEmail(string email) => dataCore
@@ -64,43 +55,54 @@ namespace JobsForAll.SqlDatabase.Services
 
         public async Task SaveComents(Comment comment, UserComment userComment)
         {
-            var dbComment = new DbComment()
+            var dbComment = new DbComment
             {
+                Body = comment.Body,
+                Like = comment.Like,
+                Dislike = comment.Dislike,
                 Author = comment.Author,
             };
-            var dbUserComment = new DbUserComment()
-            {
-                Id = userComment.Id,
-            };
+            // var dbUserComment = new DbUserComment
+            // {
+            //     Id = 0,
+            //     ApplicationUser = null,
+            //     Comment = null
+            // };
             await dataCore.Comments.AddAsync(dbComment);
-            await dataCore.UserComments.AddAsync(dbUserComment);
-            //todo: await dataCore.SaveChangesAsync();
+            //todo: await dataCore.UserComments.AddAsync(dbUserComment);
+            await dataCore.SaveChangesAsync();
         }
 
-        public IEnumerable<Comment> GetUserCommentsById(string id) => from comment in dataCore.UserComments
-                                                                      where comment.ApplicationUser.Id == id
-                                                                      select mapper.MapToComment(comment.Comment);
+        public IEnumerable<Comment> GetUserCommentsById(string id) =>
+            from comment in dataCore.UserComments
+            where comment.ApplicationUser.Id == id
+            select mapper.MapToComment(comment.Comment);
 
-        public Job? GetJobById(int id) => dataCore
+        public Job? GetJobById(int jobId) => dataCore
             .Jobs
-            .Where(it => it.ID == id)
+            .Where(it => it.ID == jobId)
             .AsEnumerable()
             .Select(mapper.MapToJob)
             .FirstOrDefault();
 
         public async Task AddJobs(Job job, JobRequester jobRequester)
         {
-            // await dataCore.Jobs.AddAsync(job);
-            // await dataCore.JobRequesters.AddAsync(jobRequester);
+            var dbJob = mapper.MapToDbJob(job);
+            await dataCore.Jobs.AddAsync(dbJob);
+            //todo: await dataCore.JobRequesters.AddAsync(jobRequester);
             await dataCore.SaveChangesAsync();
         }
 
         public void RemoveJobRequestsAndJob(Job job)
         {
-            //var jobRequester = Queryable.FirstOrDefault<JobRequester>(repository.JobRequesters, jobsRequests => object.Equals(jobsRequests.Job, job));
-            //repository.JobRequesters.Remove((JobRequester)jobRequester);
-            //repository.Jobs.Remove(job);
-            //repository.SaveChanges();
+            //var jobRequester = Queryable.FirstOrDefault<JobRequester>(dataCore.JobRequesters, jobsRequests => object.Equals(jobsRequests.Job, job));
+            var existingJob = dataCore.Jobs.Where(it => it.ID == job.ID).FirstOrDefault();
+            if (existingJob == null)
+                throw new Exception("Jobul nu exista");
+
+            //todo: dataCore.JobRequesters.Remove((JobRequester)jobRequester);
+            dataCore.Jobs.Remove(existingJob);
+            dataCore.SaveChanges();
         }
 
         public IEnumerable<Job> GetJobsByUserId(string userId)
@@ -114,19 +116,17 @@ namespace JobsForAll.SqlDatabase.Services
 
         public async Task<bool> ConfirmUser(string email, string confirmationToken)
         {
-            //var toConfirm = dataCore.ApplicationUsers
-            //    .Where(u => u.Email == email && u.SecurityStamp == confirmationToken)
-            //    .FirstOrDefault();
-            //if (toConfirm != null)
-            //{
-            //    toConfirm.EmailConfirmed = true;
-            //    dataCore.Entry(toConfirm).State = EntityState.Modified;
-            //    await dataCore.SaveChangesAsync();
+            var toConfirm = dataCore.ApplicationUsers
+                .Where(it => it.Email == email && it.SecurityStamp == confirmationToken)
+                .FirstOrDefault();
+            if (toConfirm == null)
+                return false;
 
-            //    return true;
-            //}
+            toConfirm.EmailConfirmed = true;
+            // dataCore.Entry(toConfirm).State = EntityState.Modified;
+            dataCore.ApplicationUsers.Update(toConfirm);
+            await dataCore.SaveChangesAsync();
 
-            //return false;
             return true;
         }
 
@@ -143,7 +143,12 @@ namespace JobsForAll.SqlDatabase.Services
 
         public void RemoveUser(ApplicationUser user)
         {
-            //todo: detele user
+            var existingUser = dataCore.ApplicationUsers.Where(it => it.Id == user.Id).FirstOrDefault();
+            if (existingUser == null)
+                throw new Exception("Userul nu exista");
+
+            dataCore.ApplicationUsers.Remove(existingUser);
+            dataCore.SaveChanges();
         }
 
         //

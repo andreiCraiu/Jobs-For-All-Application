@@ -31,7 +31,7 @@ namespace JobsForAll.Controllers
         [Route("getUser/{id}")]
         public IActionResult GetUser(string id)
         {
-            var user = repository.GetApplicationUsers(id);
+            var user = repository.GetUserById(id);
             if (user != null)
                 return Ok(user);
             return BadRequest();

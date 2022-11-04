@@ -1,6 +1,6 @@
-﻿namespace JobsForAll.Library.Models
+﻿namespace JobsForAll.SqlDatabase.Models
 {
-    public enum Role
+    internal enum DbRole
     {
         Admin = 1,
         JobRequester = 2,

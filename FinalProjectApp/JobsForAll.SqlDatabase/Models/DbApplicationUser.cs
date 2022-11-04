@@ -10,14 +10,7 @@ namespace JobsForAll.SqlDatabase.Models
         public string Details { get; set; }
         public int Rating { get; set; }
         public int JobsFinished { get; set; }
-        public Role Role { get; set; }
-    }
 
-    internal enum Role
-    {
-        Admin = 1,
-        JobRequester = 2,
-        JobFinder = 3,
-        Both = 4
+        public DbRole Role { get; set; }
     }
 }
